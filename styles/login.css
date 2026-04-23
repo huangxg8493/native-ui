@@ -41,6 +41,10 @@ body {
     margin-bottom: 8px;
 }
 
+.form-group {
+    position: relative;
+}
+
 .form-group input[type="text"],
 .form-group input[type="password"] {
     width: 100%;
@@ -53,9 +57,11 @@ body {
 }
 
 .field-error {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
     color: #ff4d4f;
     font-size: 14px;
-    margin-top: 4px;
     display: none;
 }
 
