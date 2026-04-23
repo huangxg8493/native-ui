@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <div class="login-card">
+        <h1 class="login-title">用户注册</h1>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="phone">手机号</label>
+                <input type="text" id="phone" name="phone" placeholder="请输入手机号" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" placeholder="请输入密码">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">确认密码</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码">
+            </div>
+            <button type="submit" class="login-btn" id="registerBtn">注册</button>
+            <div class="error-msg" id="errorMsg"></div>
+            <div class="register-guide">
+                已有账号？<a href="login.html">去登录</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        (function() {
+            var form = document.getElementById('registerForm');
+            var registerBtn = document.getElementById('registerBtn');
+            var errorMsg = document.getElementById('errorMsg');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var phone = document.getElementById('phone').value.trim();
+                var password = document.getElementById('password').value;
+                var confirmPassword = document.getElementById('confirmPassword').value;
+
+                // 前端验证
+                if (!phone) {
+                    errorMsg.textContent = '请输入手机号';
+                    return;
+                }
+                if (!password) {
+                    errorMsg.textContent = '请输入密码';
+                    return;
+                }
+                if (!confirmPassword) {
+                    errorMsg.textContent = '请输入确认密码';
+                    return;
+                }
+                if (password !== confirmPassword) {
+                    errorMsg.textContent = '两次输入密码不一致';
+                    return;
+                }
+
+                errorMsg.textContent = '';
+                registerBtn.disabled = true;
+                registerBtn.textContent = '注册中...';
+
+                // 调用注册接口
+                fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        phone: phone,
+                        password: password
+                    })
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(res) {
+                    if (res.code === '200') {
+                        alert('注册成功，请登录');
+                        window.location.href = 'login.html';
+                    } else {
+                        errorMsg.textContent = res.message || '注册失败';
+                        registerBtn.disabled = false;
+                        registerBtn.textContent = '注册';
+                    }
+                })
+                .catch(function(err) {
+                    errorMsg.textContent = '网络异常，请稍后重试';
+                    registerBtn.disabled = false;
+                    registerBtn.textContent = '注册';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
