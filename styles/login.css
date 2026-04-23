@@ -52,6 +52,13 @@ body {
     transition: border-color 0.3s;
 }
 
+.field-error {
+    color: #ff4d4f;
+    font-size: 14px;
+    margin-top: 4px;
+    min-height: 20px;
+}
+
 .form-group input[type="text"]:focus,
 .form-group input[type="password"]:focus {
     border-color: #1890ff;

@@ -13,6 +13,7 @@
             <div class="form-group">
                 <label for="phone">手机号</label>
                 <input type="text" id="phone" name="phone" placeholder="请输入手机号" autocomplete="off">
+                <div class="field-error" id="phoneError"></div>
             </div>
             <div class="form-group">
                 <label for="password">密码</label>
@@ -49,6 +50,17 @@
             var form = document.getElementById('loginForm');
             var loginBtn = document.getElementById('loginBtn');
             var errorMsg = document.getElementById('errorMsg');
+            var phoneError = document.getElementById('phoneError');
+            var phoneInput = document.getElementById('phone');
+
+            function showPhoneError(msg) {
+                phoneError.textContent = msg;
+                phoneInput.focus();
+            }
+
+            function clearPhoneError() {
+                phoneError.textContent = '';
+            }
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -58,12 +70,15 @@
                 var remember = document.getElementById('remember').checked;
 
                 // 前端验证
+                clearPhoneError();
+                errorMsg.textContent = '';
+
                 if (!phone) {
-                    errorMsg.textContent = '请输入手机号';
+                    showPhoneError('请输入手机号');
                     return;
                 }
                 if (!/^1[3-9]\d{9}$/.test(phone)) {
-                    errorMsg.textContent = '请输入正确的手机号';
+                    showPhoneError('请输入正确的手机号');
                     return;
                 }
                 if (!password) {
@@ -71,7 +86,6 @@
                     return;
                 }
 
-                errorMsg.textContent = '';
                 loginBtn.disabled = true;
                 loginBtn.textContent = '登录中...';
 
