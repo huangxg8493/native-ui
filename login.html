@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <div class="login-card">
+        <h1 class="login-title">用户登录</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="phone">手机号</label>
+                <input type="text" id="phone" name="phone" placeholder="请输入手机号" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" placeholder="请输入密码">
+            </div>
+            <div class="remember-group">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">记住登录状态</label>
+            </div>
+            <button type="submit" class="login-btn" id="loginBtn">登录</button>
+            <div class="error-msg" id="errorMsg"></div>
+        </form>
+    </div>
+
+    <script>
+        (function() {
+            // 检查是否已登录
+            var token = localStorage.getItem('token');
+            if (token) {
+                window.location.href = 'main.html';
+                return;
+            }
+
+            // 记住登录状态 - 回填手机号
+            var savedPhone = localStorage.getItem('phone');
+            if (savedPhone) {
+                document.getElementById('phone').value = savedPhone;
+                document.getElementById('remember').checked = true;
+            }
+
+            var form = document.getElementById('loginForm');
+            var loginBtn = document.getElementById('loginBtn');
+            var errorMsg = document.getElementById('errorMsg');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var phone = document.getElementById('phone').value.trim();
+                var password = document.getElementById('password').value;
+                var remember = document.getElementById('remember').checked;
+
+                // 前端验证
+                if (!phone) {
+                    errorMsg.textContent = '请输入手机号';
+                    return;
+                }
+                if (!password) {
+                    errorMsg.textContent = '请输入密码';
+                    return;
+                }
+
+                errorMsg.textContent = '';
+                loginBtn.disabled = true;
+                loginBtn.textContent = '登录中...';
+
+                // 调用登录接口
+                fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        phone: phone,
+                        password: password
+                    })
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(res) {
+                    if (res.code === '200') {
+                        // 登录成功
+                        localStorage.setItem('token', res.data.token);
+                        if (remember) {
+                            localStorage.setItem('phone', phone);
+                        } else {
+                            localStorage.removeItem('phone');
+                        }
+                        window.location.href = 'main.html';
+                    } else {
+                        errorMsg.textContent = res.message || '登录失败';
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = '登录';
+                    }
+                })
+                .catch(function(err) {
+                    errorMsg.textContent = '网络异常，请稍后重试';
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = '登录';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
