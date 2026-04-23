@@ -56,7 +56,11 @@ body {
     color: #ff4d4f;
     font-size: 14px;
     margin-top: 4px;
-    min-height: 20px;
+    display: none;
+}
+
+.field-error.visible {
+    display: block;
 }
 
 .form-group input[type="text"]:focus,

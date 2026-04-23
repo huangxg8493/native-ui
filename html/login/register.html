@@ -55,23 +55,28 @@
             function validatePhone() {
                 var phone = phoneInput.value.trim();
                 phoneError.textContent = '';
+                phoneError.classList.remove('visible');
                 if (!phone) {
                     return;
                 }
                 if (!/^1[3-9]\d{9}$/.test(phone)) {
                     phoneError.textContent = '请输入正确的手机号';
+                    phoneError.classList.add('visible');
                 }
             }
 
             function validatePhoneRequired() {
                 var phone = phoneInput.value.trim();
                 phoneError.textContent = '';
+                phoneError.classList.remove('visible');
                 if (!phone) {
                     phoneError.textContent = '请输入手机号';
+                    phoneError.classList.add('visible');
                     return false;
                 }
                 if (!/^1[3-9]\d{9}$/.test(phone)) {
                     phoneError.textContent = '请输入正确的手机号';
+                    phoneError.classList.add('visible');
                     return false;
                 }
                 return true;
