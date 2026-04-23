@@ -53,32 +53,45 @@
             var phoneError = document.getElementById('phoneError');
             var phoneInput = document.getElementById('phone');
 
-            function showPhoneError(msg) {
-                phoneError.textContent = msg;
-                phoneInput.focus();
+            function validatePhone() {
+                var phone = phoneInput.value.trim();
+                phoneError.textContent = '';
+                if (!phone) {
+                    return;
+                }
+                if (!/^1[3-9]\d{9}$/.test(phone)) {
+                    phoneError.textContent = '请输入正确的手机号';
+                }
             }
 
-            function clearPhoneError() {
+            function validatePhoneRequired() {
+                var phone = phoneInput.value.trim();
                 phoneError.textContent = '';
+                if (!phone) {
+                    phoneError.textContent = '请输入手机号';
+                    return false;
+                }
+                if (!/^1[3-9]\d{9}$/.test(phone)) {
+                    phoneError.textContent = '请输入正确的手机号';
+                    return false;
+                }
+                return true;
             }
+
+            // 手机号输入框失去焦点时验证
+            phoneInput.addEventListener('blur', validatePhone);
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                var phone = document.getElementById('phone').value.trim();
+                var phone = phoneInput.value.trim();
                 var password = document.getElementById('password').value;
                 var remember = document.getElementById('remember').checked;
 
                 // 前端验证
-                clearPhoneError();
                 errorMsg.textContent = '';
 
-                if (!phone) {
-                    showPhoneError('请输入手机号');
-                    return;
-                }
-                if (!/^1[3-9]\d{9}$/.test(phone)) {
-                    showPhoneError('请输入正确的手机号');
+                if (!validatePhoneRequired()) {
                     return;
                 }
                 if (!password) {
