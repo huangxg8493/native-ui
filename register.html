@@ -32,6 +32,19 @@
 
     <script>
         (function() {
+            // Toast 消息弹窗
+            function showToast(message, type, duration) {
+                var existing = document.querySelector('.toast');
+                if (existing) existing.remove();
+                var toast = document.createElement('div');
+                toast.className = 'toast ' + type;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                setTimeout(function() {
+                    toast.remove();
+                }, duration || 3000);
+            }
+
             var form = document.getElementById('registerForm');
             var registerBtn = document.getElementById('registerBtn');
             var errorMsg = document.getElementById('errorMsg');
@@ -81,8 +94,10 @@
                 })
                 .then(function(res) {
                     if (res.code === '200') {
-                        alert('注册成功，请登录');
-                        window.location.href = 'login.html';
+                        showToast('注册成功，请登录', 'success');
+                        setTimeout(function() {
+                            window.location.href = 'login.html';
+                        }, 1500);
                     } else {
                         errorMsg.textContent = res.message || '注册失败';
                         registerBtn.disabled = false;
