@@ -58,10 +58,10 @@ body {
 
 .field-error {
     position: absolute;
-    left: 0;
+    left: 4px;
     bottom: -20px;
     color: #ff4d4f;
-    font-size: 14px;
+    font-size: 12px;
     display: none;
 }
 
