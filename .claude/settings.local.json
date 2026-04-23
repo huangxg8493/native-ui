@@ -1,10 +1,34 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git init *)",
-      "Bash(git add *)",
-      "Bash(git commit -m ' *)",
-      "Bash(git commit *)"
+      "Bash(cd *)",
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(mvn test *)",
+      "Bash(mvn clean *)",
+      "Bash(mvn compile *)",
+      "Bash(MAVEN_OPTS=\"-Xmx512m\" mvn test -Dtest=AddressMergerTest -DskipTests=false)",
+      "Bash(xargs wc *)",
+      "Bash(git -C *)",
+      "Bash(mvn dependency:resolve *)",
+      "Bash(mvn test-compile *)",
+      "Bash(mvn *)",
+      "Bash(xmllint *)",
+      "WebSearch",
+      "Bash(JAVA_HOME=/d/JAVA/jdk/java8 mvn test -Dtest=ClientAddressServiceTest -f D:/AI/address-update/pom.xml)",
+      "Bash(/d/JAVA/jdk/java8/bin/java *)",
+      "Read(//d/JAVA/jdk/java8//**)",
+      "Read(//d/JAVA/jdk/jdk1.8.0_481//**)",
+      "Bash(java *)",
+      "Bash(javac *)",
+      "Bash(echo *)",
+      "Bash(javap *)",
+      "Bash(xargs grep *)"
     ]
   }
 }
