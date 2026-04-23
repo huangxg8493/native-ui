@@ -1,6 +1,6 @@
 # 进度
 
-## 当前状态: 进行中
+## 当前状态: 已完成
 
 ## 已完成任务
 - [x] 登录页面设计文档 - docs/superpowers/specs/2026-04-23-login-page-design.md
@@ -12,11 +12,12 @@
 - [x] Task 2: 创建 styles/login.css 登录样式
 - [x] Task 3: 创建 login.html 登录页面
 - [x] Task 4: 创建 main.html 主页面
+- [x] Task 1: 修改 login.html 添加注册引导链接
+- [x] Task 2: 修改 styles/login.css 添加链接样式
+- [x] Task 3: 创建 register.html 注册页面
 
 ## 进行中任务
-- [ ] Task 1: 修改 login.html 添加注册引导链接
-- [ ] Task 2: 修改 styles/login.css 添加链接样式
-- [ ] Task 3: 创建 register.html 注册页面
+无
 
 ## 待开始任务
 无
