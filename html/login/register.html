@@ -21,7 +21,7 @@
             </div>
             <div class="collapse-bar" id="collapseToggle">
                 <span class="collapse-line"></span>
-                <span class="collapse-arrow">→</span>
+                <span class="collapse-arrow">▼</span>
             </div>
             <div class="optional-fields hidden">
                 <div class="form-group">
@@ -91,10 +91,10 @@
                 moreExpanded = !moreExpanded;
                 if (moreExpanded) {
                     optionalFields.classList.remove('hidden');
-                    collapseArrow.textContent = '←';
+                    collapseArrow.textContent = moreExpanded ? '▲' : '▼';
                 } else {
                     optionalFields.classList.add('hidden');
-                    collapseArrow.textContent = '→';
+                    collapseArrow.textContent = moreExpanded ? '▲' : '▼';
                 }
             });
 
