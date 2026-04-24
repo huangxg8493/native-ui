@@ -188,6 +188,11 @@ body {
     display: inline;
 }
 
+.form-group label .required {
+    color: #ff4d4f;
+    margin-right: 4px;
+}
+
 .collapse-arrow {
     font-size: 12px;
     color: #999;
