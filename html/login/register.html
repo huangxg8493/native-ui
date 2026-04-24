@@ -19,23 +19,23 @@
                 <label for="userName">用户名</label>
                 <input type="text" id="userName" name="userName" placeholder="请输入用户名" autocomplete="off">
             </div>
-            <div class="form-group">
+            <div class="form-group optional-fields hidden">
                 <label for="email">邮箱</label>
                 <input type="text" id="email" name="email" placeholder="请输入邮箱" autocomplete="off">
             </div>
-            <div class="form-group">
+            <div class="form-group optional-fields hidden">
                 <label for="province">省份</label>
                 <input type="text" id="province" name="province" placeholder="请输入省份">
             </div>
-            <div class="form-group">
+            <div class="form-group optional-fields hidden">
                 <label for="city">城市</label>
                 <input type="text" id="city" name="city" placeholder="请输入城市">
             </div>
-            <div class="form-group">
+            <div class="form-group optional-fields hidden">
                 <label for="district">区县</label>
                 <input type="text" id="district" name="district" placeholder="请输入区县">
             </div>
-            <div class="form-group">
+            <div class="form-group optional-fields hidden">
                 <label for="hobby">爱好</label>
                 <input type="text" id="hobby" name="hobby" placeholder="请输入爱好">
             </div>
@@ -47,6 +47,7 @@
                 <label for="confirmPassword">确认密码</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码">
             </div>
+            <button type="button" class="more-btn" id="moreBtn">更多</button>
             <button type="submit" class="login-btn" id="registerBtn">注册</button>
             <div class="error-msg" id="errorMsg"></div>
             <div class="register-guide">
@@ -75,6 +76,22 @@
             var errorMsg = document.getElementById('errorMsg');
             var phoneError = document.getElementById('phoneError');
             var phoneInput = document.getElementById('phone');
+            var moreBtn = document.getElementById('moreBtn');
+            var optionalFields = document.querySelectorAll('.optional-fields');
+
+            var moreExpanded = false;
+
+            moreBtn.addEventListener('click', function() {
+                moreExpanded = !moreExpanded;
+                optionalFields.forEach(function(field) {
+                    if (moreExpanded) {
+                        field.classList.remove('hidden');
+                    } else {
+                        field.classList.add('hidden');
+                    }
+                });
+                moreBtn.textContent = moreExpanded ? '收起' : '更多';
+            });
 
             function validatePhone() {
                 var phone = phoneInput.value.trim();
