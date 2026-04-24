@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-前端项目
+登录系统前端项目，包含登录/注册、地址管理等功能。根据用户登录状态自动路由到对应页面。
 
 ## 技术栈
 
