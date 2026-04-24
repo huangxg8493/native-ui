@@ -28,6 +28,7 @@
                 <div class="form-group">
                     <label for="email">邮箱</label>
                     <input type="text" id="email" name="email" placeholder="请输入邮箱" autocomplete="off">
+                    <div class="field-error" id="emailError"></div>
                 </div>
                 <div class="form-group">
                     <label for="province">省份</label>
@@ -82,6 +83,8 @@
             var errorMsg = document.getElementById('errorMsg');
             var phoneError = document.getElementById('phoneError');
             var phoneInput = document.getElementById('phone');
+            var emailError = document.getElementById('emailError');
+            var emailInput = document.getElementById('email');
             var collapseToggle = document.getElementById('collapseToggle');
             var optionalFields = document.querySelector('.optional-fields');
             var collapseArrow = collapseToggle.querySelector('.collapse-arrow');
@@ -114,6 +117,36 @@
                     phoneError.classList.add('visible');
                 }
             }
+
+            function validateEmail() {
+                var email = emailInput.value.trim();
+                emailError.textContent = '';
+                emailError.classList.remove('visible');
+                if (!email) {
+                    return;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    emailError.textContent = '请输入正确的邮箱';
+                    emailError.classList.add('visible');
+                }
+            }
+
+            function validateEmailRequired() {
+                var email = emailInput.value.trim();
+                emailError.textContent = '';
+                emailError.classList.remove('visible');
+                if (!email) {
+                    return true;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    emailError.textContent = '请输入正确的邮箱';
+                    emailError.classList.add('visible');
+                    return false;
+                }
+                return true;
+            }
+
+            emailInput.addEventListener('blur', validateEmail);
 
             function validatePhoneRequired() {
                 var phone = phoneInput.value.trim();
@@ -152,6 +185,10 @@
                 errorMsg.textContent = '';
 
                 if (!validatePhoneRequired()) {
+                    return;
+                }
+
+                if (!validateEmailRequired()) {
                     return;
                 }
 
