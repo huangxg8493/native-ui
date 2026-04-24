@@ -188,6 +188,26 @@
                     return;
                 }
 
+                if (!userName) {
+                    errorMsg.textContent = '请输入用户名称';
+                    return;
+                }
+
+                if (!password) {
+                    errorMsg.textContent = '请输入密码';
+                    return;
+                }
+
+                if (!confirmPassword) {
+                    errorMsg.textContent = '请输入确认密码';
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    errorMsg.textContent = '两次输入密码不一致';
+                    return;
+                }
+
                 if (!validateEmailRequired()) {
                     return;
                 }
