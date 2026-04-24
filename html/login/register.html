@@ -11,12 +11,16 @@
         <h1 class="login-title">用户注册</h1>
         <form id="registerForm">
             <div class="form-group">
-                <label for="phone"><span class="required">*</span>手机号</label>
+                <label for="phone">手机号</label>
+                <span class="required">*</span>
+                <input type="text" id="phone" name="phone" placeholder="请输入手机号" autocomplete="off">
                 <input type="text" id="phone" name="phone" placeholder="请输入手机号" autocomplete="off">
                 <div class="field-error" id="phoneError"></div>
             </div>
             <div class="form-group">
-                <label for="userName"><span class="required">*</span>用户名称</label>
+                <label for="userName">用户名称</label>
+                <span class="required">*</span>
+                <input type="text" id="userName" name="userName" placeholder="请输入用户名称" autocomplete="off">
                 <input type="text" id="userName" name="userName" placeholder="请输入用户名" autocomplete="off">
             </div>
             <div class="collapse-bar" id="collapseToggle">
@@ -48,11 +52,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="password"><span class="required">*</span>密码</label>
+                <label for="password">密码</label>
+                <span class="required">*</span>
+                <input type="password" id="password" name="password" placeholder="请输入密码">
                 <input type="password" id="password" name="password" placeholder="请输入密码">
             </div>
             <div class="form-group">
-                <label for="confirmPassword"><span class="required">*</span>确认密码</label>
+                <label for="confirmPassword">确认密码</label>
+                <span class="required">*</span>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码">
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码">
             </div>
             <button type="submit" class="login-btn" id="registerBtn">注册</button>
