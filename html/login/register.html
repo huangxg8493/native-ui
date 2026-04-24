@@ -21,6 +21,7 @@
             </div>
             <div class="collapse-bar" id="collapseToggle">
                 <span class="collapse-line"></span>
+                <span class="collapse-text">更多</span>
                 <span class="collapse-arrow">▼</span>
             </div>
             <div class="optional-fields hidden">
@@ -84,6 +85,7 @@
             var collapseToggle = document.getElementById('collapseToggle');
             var optionalFields = document.querySelector('.optional-fields');
             var collapseArrow = collapseToggle.querySelector('.collapse-arrow');
+            var collapseText = collapseToggle.querySelector('.collapse-text');
 
             var moreExpanded = false;
 
@@ -91,10 +93,12 @@
                 moreExpanded = !moreExpanded;
                 if (moreExpanded) {
                     optionalFields.classList.remove('hidden');
-                    collapseArrow.textContent = moreExpanded ? '▲' : '▼';
+                    collapseArrow.textContent = '▲';
+                    collapseText.textContent = '收起';
                 } else {
                     optionalFields.classList.add('hidden');
-                    collapseArrow.textContent = moreExpanded ? '▲' : '▼';
+                    collapseArrow.textContent = '▼';
+                    collapseText.textContent = '更多';
                 }
             });
 
