@@ -72,6 +72,14 @@ body {
     display: block;
 }
 
+.field-hint {
+    position: absolute;
+    left: 78px;
+    bottom: -20px;
+    color: #999;
+    font-size: 12px;
+}
+
 .form-group input[type="text"]:focus,
 .form-group input[type="password"]:focus {
     border-color: #1890ff;
