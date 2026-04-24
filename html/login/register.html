@@ -16,12 +16,36 @@
                 <div class="field-error" id="phoneError"></div>
             </div>
             <div class="form-group">
+                <label for="userName">用户名</label>
+                <input type="text" id="userName" name="userName" placeholder="请输入用户名" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" placeholder="请输入邮箱" autocomplete="off">
+            </div>
+            <div class="form-group">
                 <label for="password">密码</label>
                 <input type="password" id="password" name="password" placeholder="请输入密码">
             </div>
             <div class="form-group">
                 <label for="confirmPassword">确认密码</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码">
+            </div>
+            <div class="form-group">
+                <label for="province">省份</label>
+                <input type="text" id="province" name="province" placeholder="请输入省份">
+            </div>
+            <div class="form-group">
+                <label for="city">城市</label>
+                <input type="text" id="city" name="city" placeholder="请输入城市">
+            </div>
+            <div class="form-group">
+                <label for="district">区县</label>
+                <input type="text" id="district" name="district" placeholder="请输入区县">
+            </div>
+            <div class="form-group">
+                <label for="hobby">爱好</label>
+                <input type="text" id="hobby" name="hobby" placeholder="请输入爱好">
             </div>
             <button type="submit" class="login-btn" id="registerBtn">注册</button>
             <div class="error-msg" id="errorMsg"></div>
@@ -89,8 +113,14 @@
                 e.preventDefault();
 
                 var phone = phoneInput.value.trim();
+                var userName = document.getElementById('userName').value.trim();
+                var email = document.getElementById('email').value.trim();
                 var password = document.getElementById('password').value;
                 var confirmPassword = document.getElementById('confirmPassword').value;
+                var province = document.getElementById('province').value.trim();
+                var city = document.getElementById('city').value.trim();
+                var district = document.getElementById('district').value.trim();
+                var hobby = document.getElementById('hobby').value.trim();
 
                 // 前端验证
                 errorMsg.textContent = '';
@@ -98,18 +128,18 @@
                 if (!validatePhoneRequired()) {
                     return;
                 }
-                if (!password) {
-                    errorMsg.textContent = '请输入密码';
-                    return;
-                }
-                if (!confirmPassword) {
-                    errorMsg.textContent = '请输入确认密码';
-                    return;
-                }
-                if (password !== confirmPassword) {
-                    errorMsg.textContent = '两次输入密码不一致';
-                    return;
-                }
+
+                // 注册接口需要的字段
+                var registerData = {
+                    phone: phone,
+                    userName: userName,
+                    email: email,
+                    password: password,
+                    province: province,
+                    city: city,
+                    district: district,
+                    hobby: hobby
+                };
 
                 registerBtn.disabled = true;
                 registerBtn.textContent = '注册中...';
@@ -120,10 +150,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        phone: phone,
-                        password: password
-                    })
+                    body: JSON.stringify(registerData)
                 })
                 .then(function(response) {
                     return response.json();
