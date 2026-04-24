@@ -122,7 +122,7 @@
                     return response.json();
                 })
                 .then(function(res) {
-                    if (res.code === '200') {
+                    if (res.code === '000000') {
                         // 登录成功
                         localStorage.setItem('token', res.data.token);
                         if (remember) {
