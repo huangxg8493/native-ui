@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label for="password">密码</label>
                 <input type="password" id="password" name="password">
-                <div class="field-hint">请输入密码</div>
+                <div class="field-error" id="passwordError"></div>
             </div>
             <div class="remember-group">
                 <input type="checkbox" id="remember" name="remember">
@@ -53,6 +53,7 @@
             var errorMsg = document.getElementById('errorMsg');
             var phoneError = document.getElementById('phoneError');
             var phoneInput = document.getElementById('phone');
+            var passwordError = document.getElementById('passwordError');
 
             function validatePhone() {
                 var phone = phoneInput.value.trim();
@@ -96,12 +97,15 @@
 
                 // 前端验证
                 errorMsg.textContent = '';
+                passwordError.textContent = '';
+                passwordError.classList.remove('visible');
 
                 if (!validatePhoneRequired()) {
                     return;
                 }
                 if (!password) {
-                    errorMsg.textContent = '请输入密码';
+                    passwordError.textContent = '请输入密码';
+                    passwordError.classList.add('visible');
                     return;
                 }
 
