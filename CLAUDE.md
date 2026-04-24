@@ -14,6 +14,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 文件结构
 
+```
+├── index.html          # 首页
+├── address.html        # 地址管理页
+├── html/               # 页面片段
+│   └── login/
+│       ├── login.html  # 登录页
+│       └── register.html# 注册页
+├── styles/             # 样式文件
+│   ├── login.css
+│   └── address.css
+├── script/             # JavaScript 文件
+│   └── address.js
+├── http/               # HTTP 请求模块
+├── docs/               # 文档
+└── findings.md / progress.md / task_plan.md  # 规划文件
+```
+
+## 常用命令
+
+- 直接在浏览器打开 `index.html` 或 `address.html` 即可预览
+- 无构建步骤，纯静态前端项目
+
+## 代码风格
+
+- IIFE 模式避免全局污染
+- 组件化 HTML 片段（html/ 目录下）
+- Ant Design 风格 UI（主色 #1890ff）
+
 ## Claude Code 命令执行规范 (绝对遵守)
 ### 禁止使用 cd 复合命令
 **绝对禁止**生成类似 `cd <目录> && <命令>` 或 `cd <目录> ; <命令>` 的复合 Bash 命令。
