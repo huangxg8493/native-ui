@@ -19,12 +19,17 @@
                 <label for="userName">用户名称<span class="required">*</span></label>
                 <input type="text" id="userName" name="userName" placeholder="请输入用户名" autocomplete="off">
             </div>
-            <div class="collapse-bar" id="collapseToggle">
-                <span class="collapse-line"></span>
-                <span class="collapse-text">更多</span>
-                <span class="collapse-arrow">▼</span>
-            </div>
-            <div class="optional-fields hidden">
+            <button type="button" class="expand-trigger" aria-expanded="false">
+                <span class="divider-line"></span>
+                <span>更多</span>
+                <span class="expand-icon">
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 11.4L3.6 7 4.4 6.2 8 9.8 11.6 6.2 12.4 7z"/>
+                    </svg>
+                </span>
+                <span class="divider-line"></span>
+            </button>
+            <div class="collapsible-content" id="moreContent" aria-hidden="true">
                 <div class="form-group">
                     <label for="email">邮箱</label>
                     <input type="text" id="email" name="email" placeholder="请输入邮箱" autocomplete="off">
@@ -85,25 +90,22 @@
             var phoneInput = document.getElementById('phone');
             var emailError = document.getElementById('emailError');
             var emailInput = document.getElementById('email');
-            var collapseToggle = document.getElementById('collapseToggle');
-            var optionalFields = document.querySelector('.optional-fields');
-            var collapseArrow = collapseToggle.querySelector('.collapse-arrow');
-            var collapseText = collapseToggle.querySelector('.collapse-text');
+            var expandTrigger = document.querySelector('.expand-trigger');
+            var collapsibleContent = document.getElementById('moreContent');
 
-            var moreExpanded = false;
+            if (expandTrigger && collapsibleContent) {
+                expandTrigger.addEventListener('click', function (e) {
+                    e.preventDefault();
 
-            collapseToggle.addEventListener('click', function() {
-                moreExpanded = !moreExpanded;
-                if (moreExpanded) {
-                    optionalFields.classList.remove('hidden');
-                    collapseArrow.textContent = '▲';
-                    collapseText.textContent = '收起';
-                } else {
-                    optionalFields.classList.add('hidden');
-                    collapseArrow.textContent = '▼';
-                    collapseText.textContent = '更多';
-                }
-            });
+                    var isExpanded = this.classList.contains('expanded');
+
+                    this.classList.toggle('expanded');
+                    collapsibleContent.classList.toggle('open');
+
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    collapsibleContent.setAttribute('aria-hidden', isExpanded);
+                });
+            }
 
             function validatePhone() {
                 var phone = phoneInput.value.trim();
