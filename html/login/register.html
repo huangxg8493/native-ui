@@ -107,68 +107,13 @@
                 });
             }
 
-            function validatePhone() {
-                var phone = phoneInput.value.trim();
-                phoneError.textContent = '';
-                phoneError.classList.remove('visible');
-                if (!phone) {
-                    return;
-                }
-                if (!/^1[3-9]\d{9}$/.test(phone)) {
-                    phoneError.textContent = '请输入正确的手机号';
-                    phoneError.classList.add('visible');
-                }
-            }
-
-            function validateEmail() {
-                var email = emailInput.value.trim();
-                emailError.textContent = '';
-                emailError.classList.remove('visible');
-                if (!email) {
-                    return;
-                }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    emailError.textContent = '请输入正确的邮箱';
-                    emailError.classList.add('visible');
-                }
-            }
-
-            function validateEmailRequired() {
-                var email = emailInput.value.trim();
-                emailError.textContent = '';
-                emailError.classList.remove('visible');
-                if (!email) {
-                    return true;
-                }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    emailError.textContent = '请输入正确的邮箱';
-                    emailError.classList.add('visible');
-                    return false;
-                }
-                return true;
-            }
-
-            emailInput.addEventListener('blur', validateEmail);
-
-            function validatePhoneRequired() {
-                var phone = phoneInput.value.trim();
-                phoneError.textContent = '';
-                phoneError.classList.remove('visible');
-                if (!phone) {
-                    phoneError.textContent = '请输入手机号';
-                    phoneError.classList.add('visible');
-                    return false;
-                }
-                if (!/^1[3-9]\d{9}$/.test(phone)) {
-                    phoneError.textContent = '请输入正确的手机号';
-                    phoneError.classList.add('visible');
-                    return false;
-                }
-                return true;
-            }
-
-            // 手机号输入框失去焦点时验证
-            phoneInput.addEventListener('blur', validatePhone);
+            
+            // 错误码映射
+            var ERROR_CODE_MAP = {
+                '101004': '手机号已注册',
+                '101005': '手机号格式错误',
+                '101006': '密码格式错误'
+            };
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -185,8 +130,17 @@
 
                 // 前端验证
                 errorMsg.textContent = '';
+                phoneError.textContent = '';
+                phoneError.classList.remove('visible');
 
-                if (!validatePhoneRequired()) {
+                if (!phone) {
+                    phoneError.textContent = '请输入手机号';
+                    phoneError.classList.add('visible');
+                    return;
+                }
+                if (!/^1[3-9]\d{9}$/.test(phone)) {
+                    phoneError.textContent = '请输入正确的手机号';
+                    phoneError.classList.add('visible');
                     return;
                 }
 
@@ -197,6 +151,10 @@
 
                 if (!password) {
                     errorMsg.textContent = '请输入密码';
+                    return;
+                }
+                if (password.length < 6) {
+                    errorMsg.textContent = '密码至少6位';
                     return;
                 }
 
@@ -210,7 +168,11 @@
                     return;
                 }
 
-                if (!validateEmailRequired()) {
+                if (!email) {
+                    // 邮箱选填，不验证
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    emailError.textContent = '请输入正确的邮箱';
+                    emailError.classList.add('visible');
                     return;
                 }
 
@@ -241,13 +203,22 @@
                     return response.json();
                 })
                 .then(function(res) {
-                    if (res.code === '200') {
+                    if (res.code === '000000') {
                         showToast('注册成功，请登录', 'success');
                         setTimeout(function() {
                             window.location.href = 'login.html';
                         }, 1500);
                     } else {
-                        errorMsg.textContent = res.message || '注册失败';
+                        var errorMessage = ERROR_CODE_MAP[res.code] || res.message || '注册失败';
+                        // 根据错误码类型显示错误
+                        if (res.code === '101005') {
+                            phoneError.textContent = errorMessage;
+                            phoneError.classList.add('visible');
+                        } else if (res.code === '101006') {
+                            errorMsg.textContent = errorMessage;
+                        } else {
+                            errorMsg.textContent = errorMessage;
+                        }
                         registerBtn.disabled = false;
                         registerBtn.textContent = '注册';
                     }
