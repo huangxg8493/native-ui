@@ -28,6 +28,8 @@
       "Bash(javac *)",
       "Bash(echo *)",
       "Bash(javap *)",
+      "Bash(sed *)",
+      "Bash(cat *)",
       "Bash(xargs grep *)"
     ]
   }
