@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/antd/4.24.0/icons.css">
     <style>
         * {
             margin: 0;
@@ -66,8 +67,13 @@
 </head>
 <body>
     <div class="header">
-        <div class="header-title">管理系统</div>
-        <button class="logout-btn" id="logoutBtn">退出登录</button>
+        <div class="header-logo">管理系统</div>
+        <div class="top-nav" id="topNav">
+            <!-- 菜单将动态渲染到这里 -->
+        </div>
+        <div class="header-actions">
+            <button class="logout-btn" id="logoutBtn">退出登录</button>
+        </div>
     </div>
     <div class="content">
         <div class="welcome-card">
