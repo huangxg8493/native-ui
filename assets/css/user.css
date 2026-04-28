@@ -35,15 +35,20 @@
     outline: none;
 }
 
-#userManagementApp #queryBtn {
-    background-color: #1890ff;
-    color: white;
+/* 通用按钮样式 */
+#userManagementApp .btn {
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 10px;
     transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+#userManagementApp #queryBtn {
+    background-color: #1890ff;
+    color: white;
+    margin-left: 10px;
 }
 
 #userManagementApp #queryBtn:hover {
@@ -53,11 +58,6 @@
 #userManagementApp #addBtn {
     background-color: #52c41a;
     color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 #userManagementApp #addBtn:hover {
