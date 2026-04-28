@@ -39,3 +39,17 @@
 - **子菜单**: 显示 isLeaf=Y 且 menuType=MENU 类型
 - **展开方式**: hover 延迟 150ms 展开，200ms 收起
 - **图标方案**: 内联 SVG 图标
+
+## 图标库设计决策
+- **数据来源**: Ant Design Icons (~780个) + Element Plus Icons (~200个)
+- **输出格式**: SVG Sprite（`<symbol>` 标签）
+- **图标 ID 格式**: `ant-{name}`（Ant Design）、`el-{name}`（Element Plus）
+- **viewBox**: 统一为 `0 0 1024 1024`
+- **颜色控制**: 通过 `currentColor` 或 CSS fill 控制
+- **输出文件**:
+  - `assets/icons/ant-design-icons.svg`
+  - `assets/icons/element-plus-icons.svg`
+  - `assets/icons/icons.css`
+  - `assets/icons/index.html`（预览页面）
+- **使用方式**: `<svg><use href="#ant-user"></use></svg>`
+- **重要约束**: 只收集图标，不改任何现有代码

@@ -155,3 +155,35 @@
 - [x] 点击子菜单跳转到 menuUrl
 - [x] 显示菜单图标
 
+---
+
+## 新增任务：图标库建设（只收集图标，不改现有代码）
+
+### Task 1: 准备工作目录
+- [ ] Step 1: 创建 `assets/icons/` 目录
+- [ ] Step 2: git add assets/icons && git commit -m "chore: 创建图标库目录"
+
+### Task 2: 克隆并提取 Ant Design Icons
+- [ ] Step 1: 克隆 ant-design-icons 仓库到 temp 目录
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本转换为 Sprite 格式
+- [ ] Step 4: 运行转换脚本生成 `assets/icons/ant-design-icons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 3: 克隆并提取 Element Plus Icons
+- [ ] Step 1: 克隆 element-plus-icons 仓库到 temp 目录
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本转换为 Sprite 格式
+- [ ] Step 4: 运行转换脚本生成 `assets/icons/element-plus-icons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 4: 生成图标 CSS 辅助类
+- [ ] Step 1: 创建 `assets/icons/icons.css` - SVG Sprite 使用辅助类
+
+### Task 5: 创建图标预览页面
+- [ ] Step 1: 创建 `assets/icons/index.html` - 图标预览和搜索页面
+
+### Task 6: 提交图标库
+- [ ] Step 1: git add assets/icons/ && git commit -m "feat: 建立图标库 from Ant Design & Element Plus"
+- [ ] Step 2: git push
+
