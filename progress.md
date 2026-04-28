@@ -17,11 +17,12 @@
 - [x] Task 3: 创建 register.html 注册页面
 - [x] Task 1: 更新 login.html 登录成功存储逻辑
 - [x] Task 2: 更新 main.html 登出逻辑
+- [x] Task 1: 添加 Ant Design 图标 CDN 和基础布局
+- [x] Task 2: 添加顶部菜单 CSS 样式
+- [x] Task 3: 实现菜单渲染和交互 JS 逻辑
 
 ## 进行中任务
 无
 
 ## 待开始任务
-- [ ] Task 1: 添加 Ant Design 图标 CDN 和基础布局
-- [ ] Task 2: 添加顶部菜单 CSS 样式
-- [ ] Task 3: 实现菜单渲染和交互 JS 逻辑
+无
