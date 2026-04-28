@@ -89,6 +89,9 @@
             document.getElementById('logoutBtn').addEventListener('click', function() {
                 localStorage.removeItem('token');
                 localStorage.removeItem('phone');
+                localStorage.removeItem('user');
+                localStorage.removeItem('roles');
+                localStorage.removeItem('menus');
                 window.location.href = 'login/login.html';
             });
         })();
