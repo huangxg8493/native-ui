@@ -260,7 +260,35 @@
                     return;
                 }
 
-                // 图标 SVG 映射
+                // 加载图标库 SVG Sprite
+                async function loadIconSprites() {
+                    var files = [
+                        'assets/icons/ant-design-icons.svg',
+                        'assets/icons/element-plus-icons.svg'
+                    ];
+                    for (var url of files) {
+                        try {
+                            var resp = await fetch(url);
+                            var text = await resp.text();
+                            var div = document.createElement('div');
+                            div.style.display = 'none';
+                            div.innerHTML = text;
+                            document.body.appendChild(div);
+                        } catch (e) {
+                            console.warn('加载图标失败:', url, e);
+                        }
+                    }
+                }
+
+                // 使用图标库的 getIconSvg 函数
+                function getIconSvg(icon) {
+                    if (!icon) {
+                        return '<svg viewBox="0 0 1024 1024"><use href="#ant-setting"></use></svg>';
+                    }
+                    return '<svg viewBox="0 0 1024 1024"><use href="#' + icon + '"></use></svg>';
+                }
+
+                /* --- 原 iconMap 对象（保留不删）---
                 var iconMap = {
                     'setting': '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>',
                     'user': '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>',
@@ -275,6 +303,7 @@
                 function getIconSvg(icon) {
                     return iconMap[icon] || iconMap['default'];
                 }
+                */
 
                 // 渲染一级菜单
                 topMenus.forEach(function(menu, i) {
@@ -352,7 +381,10 @@
                 });
             }
 
-            renderMenu();
+            // 先加载图标库，再渲染菜单
+            loadIconSprites().then(function() {
+                renderMenu();
+            });
         })();
     </script>
 </body>
