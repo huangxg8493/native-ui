@@ -24,3 +24,10 @@
 - **注册接口**: 调用 POST /api/auth/register 接口
 - **注册验证**: 前端验证密码与确认密码一致性
 - **注册成功**: 提示"注册成功，请登录"并跳转 login.html
+
+## 登录认证信息存储设计决策
+- **存储方案**: 分散存储，token、phone、user、roles、menus 分别存储
+- **存储方式**: user、roles、menus 使用 JSON.stringify 存储
+- **"记住登录"行为**: 仅记住 phone 字段，user/roles/menus 每次登录重新存储
+- **更新文件**: login.html（存储）、main.html（清除）
+- **其他页面读取**: `JSON.parse(localStorage.getItem('user'))`

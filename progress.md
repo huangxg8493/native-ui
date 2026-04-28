@@ -20,4 +20,5 @@
 无
 
 ## 待开始任务
-无
+- [ ] Task 1: 更新 login.html 登录成功存储逻辑
+- [ ] Task 2: 更新 main.html 登出逻辑

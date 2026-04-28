@@ -67,3 +67,67 @@
 - [x] register.html 前端验证密码与确认密码一致性
 - [x] register.html 注册成功后跳转 login.html
 
+---
+
+## 新增任务：登录认证信息存储
+
+### Task 1: 更新 login.html 登录成功存储逻辑
+- [ ] Step 1: 更新 login.html - 登录成功回调存储 user、roles、menus
+  - 将原代码：
+    ```js
+    if (res.code === '000000') {
+        // 登录成功
+        localStorage.setItem('token', res.data.token);
+        if (remember) {
+            localStorage.setItem('phone', phone);
+        } else {
+            localStorage.removeItem('phone');
+        }
+        window.location.href = '../main.html';
+    }
+    ```
+  - 替换为：
+    ```js
+    if (res.code === '000000') {
+        // 登录成功，存储认证信息
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('phone', res.data.phone);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        localStorage.setItem('roles', JSON.stringify(res.data.roles));
+        localStorage.setItem('menus', JSON.stringify(res.data.menus));
+        if (!remember) {
+            localStorage.removeItem('phone');
+        }
+        window.location.href = '../main.html';
+    }
+    ```
+- [ ] Step 2: git add html/login/login.html && git commit -m "feat: 登录成功存储用户、角色、菜单信息"
+
+### Task 2: 更新 main.html 登出逻辑
+- [ ] Step 1: 更新 main.html - 登出函数清除全部认证信息
+  - 将原代码：
+    ```js
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('phone');
+        window.location.href = 'login/login.html';
+    });
+    ```
+  - 替换为：
+    ```js
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('phone');
+        localStorage.removeItem('user');
+        localStorage.removeItem('roles');
+        localStorage.removeItem('menus');
+        window.location.href = 'login/login.html';
+    });
+    ```
+- [ ] Step 2: git add html/main.html && git commit -m "feat: 退出登录清除用户、角色、菜单信息"
+
+## 自检清单（登录认证信息存储）
+- [ ] login.html 登录成功存储 token、phone、user、roles、menus
+- [ ] main.html 退出登录清除 token、phone、user、roles、menus
+- [ ] 其他页面可通过 localStorage.getItem('user') 获取用户信息
+
