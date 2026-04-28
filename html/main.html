@@ -409,6 +409,11 @@
                     };
                 }
 
+                var contentEl = document.getElementById('tabContent');
+                var globalVarName = moduleId.split('-').map(function(s) {
+                    return s.charAt(0).toUpperCase() + s.slice(1);
+                }).join('') + 'Module';
+
                 // 加载 CSS（已加载则跳过）
                 if (!document.querySelector('link[href="' + mod.css + '"]')) {
                     var link = document.createElement('link');
@@ -417,13 +422,21 @@
                     document.head.appendChild(link);
                 }
 
-                // 调用模块 init（使用约定：全局变量名 = 模块ID首字母大写 + Module）
-                var contentEl = document.getElementById('tabContent');
-                var globalVarName = moduleId.split('-').map(function(s) {
-                    return s.charAt(0).toUpperCase() + s.slice(1);
-                }).join('') + 'Module';
-                if (window[globalVarName]) {
-                    window[globalVarName].init(contentEl);
+                // 加载 JS（已加载则跳过）
+                if (!document.querySelector('script[src="' + mod.js + '"]')) {
+                    var script = document.createElement('script');
+                    script.src = mod.js;
+                    script.onload = function() {
+                        if (window[globalVarName]) {
+                            window[globalVarName].init(contentEl);
+                        }
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    // 已加载时直接调用
+                    if (window[globalVarName]) {
+                        window[globalVarName].init(contentEl);
+                    }
                 }
             }
         })();
