@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="../../assets/css/user.css">
+</head>
+<body>
+    <div class="container" id="userManagementApp">
+        <h1>用户管理</h1>
+
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <div class="search-bar-row">
+                <label>手机号</label>
+                <input type="text" id="searchPhone" placeholder="请输入手机号">
+                <label style="margin-left:16px">状态</label>
+                <select id="searchStatus">
+                    <option value="">全部</option>
+                    <option value="Y">正常</option>
+                    <option value="N">禁用</option>
+                </select>
+                <button id="queryBtn">查询</button>
+            </div>
+            <button id="addBtn">+ 新增用户</button>
+        </div>
+
+        <!-- 数据表格 -->
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>手机号</th>
+                    <th>用户名</th>
+                    <th>邮箱</th>
+                    <th>省市</th>
+                    <th>状态</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+        </table>
+
+        <!-- 分页 -->
+        <div class="pagination">
+            <span id="pageInfo"></span>
+            <select id="pageSizeSelect">
+                <option value="5">5条/页</option>
+                <option value="10" selected>10条/页</option>
+                <option value="20">20条/页</option>
+                <option value="50">50条/页</option>
+            </select>
+            <button id="prevBtn">上一页</button>
+            <button id="nextBtn">下一页</button>
+        </div>
+    </div>
+
+    <!-- 新增/编辑弹窗 -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">新增用户</h2>
+            <form id="userForm">
+                <input type="hidden" id="formUserId">
+                <div class="form-row">
+                    <label>手机号</label>
+                    <input type="text" id="formPhone" maxlength="11">
+                </div>
+                <div class="form-row">
+                    <label>密码</label>
+                    <input type="password" id="formPassword">
+                </div>
+                <div class="form-row">
+                    <label>状态</label>
+                    <select id="formStatus">
+                        <option value="Y">正常</option>
+                        <option value="N">禁用</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancelBtn">取消</button>
+                    <button type="submit">确定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 分配角色弹窗 -->
+    <div id="roleModal" class="modal">
+        <div class="modal-content">
+            <h2 id="roleModalTitle">分配角色</h2>
+            <div id="roleList"></div>
+            <div class="form-actions">
+                <button type="button" id="roleCancelBtn">取消</button>
+                <button type="button" id="roleConfirmBtn">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 容器 -->
+    <div id="toast" class="toast" style="display:none"></div>
+
+    <script src="../../assets/script/user.js"></script>
+</body>
+</html>
