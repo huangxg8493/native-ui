@@ -262,10 +262,10 @@
                     link.appendChild(document.createTextNode(menu.menuName));
 
                     // 如果有子菜单，添加箭头
-                    // var children = menu.children || [];
-                    // var leafMenus = children.filter(function(c) {
-                    //     return c.menuType === 'MENU' && c.isLeaf === 'Y';
-                    // });
+                    var children = menu.children || [];
+                    var leafMenus = children.filter(function(c) {
+                        return c.menuType === 'MENU' && c.isLeaf === 'Y';
+                    });
 
                     // if (leafMenus.length > 0) {
                     //     var arrow = document.createElement('span');
