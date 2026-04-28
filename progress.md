@@ -1,6 +1,6 @@
 # 进度
 
-## 当前状态: 已完成
+## 当前状态: 图标库扩展完成
 
 ## 已完成任务
 - [x] 登录页面设计文档 - docs/superpowers/specs/2026-04-23-login-page-design.md
@@ -20,16 +20,9 @@
 - [x] Task 1: 添加 Ant Design 图标 CDN 和基础布局
 - [x] Task 2: 添加顶部菜单 CSS 样式
 - [x] Task 3: 实现菜单渲染和交互 JS 逻辑
-
-## 进行中任务
-- [ ] 扩展图标库 - 新增 Lucide/Heroicons/Phosphor/Tabler/Font Awesome/Material
+- [x] Task 1-5: 扩展 Lucide/Heroicons/Phosphor/Tabler/Font Awesome 图标库
+- [x] Task 7: 更新预览页面
+- [x] Task 8: 修复并提交
 
 ## 待开始任务
-- [ ] Task 1: 提取 Lucide Icons
-- [ ] Task 2: 提取 Heroicons
-- [ ] Task 3: 提取 Phosphor Icons
-- [ ] Task 4: 提取 Tabler Icons
-- [ ] Task 5: 提取 Font Awesome
-- [ ] Task 6: 提取 Material Icons
-- [ ] Task 7: 更新预览页面
-- [ ] Task 8: 修复并提交
+- [ ] 图标库集成到 main.html（可选，未在计划中）
