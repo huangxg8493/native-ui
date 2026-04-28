@@ -15,10 +15,11 @@
 - [x] Task 1: 修改 login.html 添加注册引导链接
 - [x] Task 2: 修改 styles/login.css 添加链接样式
 - [x] Task 3: 创建 register.html 注册页面
+- [x] Task 1: 更新 login.html 登录成功存储逻辑
+- [x] Task 2: 更新 main.html 登出逻辑
 
 ## 进行中任务
 无
 
 ## 待开始任务
-- [ ] Task 1: 更新 login.html 登录成功存储逻辑
-- [ ] Task 2: 更新 main.html 登出逻辑
+无
