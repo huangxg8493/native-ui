@@ -267,7 +267,7 @@
             // 使用图标库的 getIconSvg 函数
             function getIconSvg(icon) {
                 if (!icon) {
-                    return '<svg viewBox="0 0 1024 1024"><use href="#ant-setting"></use></svg>';
+                    return '';  // 不配置图标时返回空
                 }
                 return '<svg viewBox="0 0 1024 1024"><use href="#' + icon + '"></use></svg>';
             }
