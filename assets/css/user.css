@@ -1,0 +1,91 @@
+/* 用户管理页面样式 - 复用 address.css 风格 */
+
+#userManagementApp .search-bar {
+    margin-bottom: 20px;
+}
+
+#userManagementApp .search-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+#userManagementApp .search-bar-row label {
+    font-weight: 500;
+    color: #333;
+}
+
+#userManagementApp .search-bar input,
+#userManagementApp .search-bar select {
+    padding: 8px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#userManagementApp .search-bar input {
+    width: 160px;
+}
+
+#userManagementApp .search-bar input:focus,
+#userManagementApp .search-bar select:focus {
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    outline: none;
+}
+
+#userManagementApp #queryBtn {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+#userManagementApp #queryBtn:hover {
+    background-color: #40a9ff;
+}
+
+#userManagementApp #addBtn {
+    background-color: #52c41a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#userManagementApp #addBtn:hover {
+    background-color: #73d13d;
+}
+
+/* 角色列表复选框 */
+#roleList {
+    margin: 15px 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.role-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.role-item:last-child {
+    border-bottom: none;
+}
+
+.role-item input {
+    margin-right: 8px;
+}
+
+.role-item label {
+    cursor: pointer;
+}
