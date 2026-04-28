@@ -225,6 +225,9 @@
         </div>
     </main>
 
+    <!-- TabManager 全局对象 -->
+    <script src="../assets/script/tab-manager.js"></script>
+
     <script>
         (function() {
             // 检查是否已登录
@@ -272,19 +275,6 @@
                 return '<svg viewBox="0 0 1024 1024"><use href="#' + icon + '"></use></svg>';
             }
 
-            /* --- 原 iconMap 对象（保留不删）---
-            var iconMap = {
-                'setting': '...',
-                ...
-            };
-            --- 原图标映射结束 --- */
-
-            /* --- 原 getIconSvg 函数（保留不删）---
-            function getIconSvg(icon) {
-                return iconMap[icon] || iconMap['default'];
-            }
-            --- 原函数结束 --- */
-
             // 渲染顶部菜单
             function renderMenu() {
                 var menus = JSON.parse(localStorage.getItem('menus') || '[]');
@@ -316,10 +306,6 @@
                     link.href = 'javascript:;';
 
                     // 一级菜单图标
-                    // var iconSpan = document.createElement('span');
-                    // iconSpan.className = 'icon';
-                    // iconSpan.innerHTML = getIconSvg(menu.icon);
-                    // link.appendChild(iconSpan);
                     link.appendChild(document.createTextNode(menu.menuName));
 
                     // 如果有子菜单，添加箭头
@@ -327,13 +313,6 @@
                     var leafMenus = children.filter(function(c) {
                         return c.menuType === 'MENU' && c.isLeaf === 'Y';
                     });
-
-                    // if (leafMenus.length > 0) {
-                    //     var arrow = document.createElement('span');
-                    //     arrow.className = 'menu-arrow';
-                    //     arrow.innerHTML = '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 11.4L3.6 7 4.4 6.2 8 9.8 11.6 6.2 12.4 7z"/></svg>';
-                    //     link.appendChild(arrow);
-                    // }
 
                     li.appendChild(link);
 
@@ -350,7 +329,13 @@
                                 '<span>' + child.menuName + '</span>';
                             item.addEventListener('click', function() {
                                 if (child.menuUrl) {
-                                    window.location.href = child.menuUrl;
+                                    var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
+                                    TabManager.open(moduleId);
+                                }
+                                if (moduleId && child.menuType === 'MENU') {
+                                    TabManager.register(moduleId, child.menuName, function() {
+                                        loadModule(moduleId);
+                                    });
                                 }
                             });
                             dropdown.appendChild(item);
@@ -384,7 +369,42 @@
             // 先加载图标库，再渲染菜单
             loadIconSprites().then(function() {
                 renderMenu();
+                // Tab 关闭按钮的点击事件委托
+                document.getElementById('tabBar').addEventListener('click', function(e) {
+                    var closeBtn = e.target.closest('.tab-close');
+                    if (closeBtn) {
+                        var id = closeBtn.dataset.id;
+                        TabManager.close(id);
+                        return;
+                    }
+                    var tabItem = e.target.closest('.tab-item');
+                    if (tabItem) {
+                        var id = tabItem.dataset.id;
+                        TabManager.open(id);
+                    }
+                });
             });
+
+            // 动态加载模块
+            function loadModule(moduleId) {
+                var moduleMap = {
+                    'system-user': { js: '../assets/script/user.js', css: '../assets/css/user.css' }
+                };
+                var mod = moduleMap[moduleId];
+                if (!mod) return;
+                // 加载 CSS（已加载则跳过）
+                if (!document.querySelector('link[href="' + mod.css + '"]')) {
+                    var link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = mod.css;
+                    document.head.appendChild(link);
+                }
+                // 调用模块 init
+                var contentEl = document.getElementById('tabContent');
+                if (moduleId === 'system-user' && window.UserModule) {
+                    UserModule.init(contentEl);
+                }
+            }
         })();
     </script>
 </body>
