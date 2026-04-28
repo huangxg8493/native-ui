@@ -128,11 +128,13 @@
                 })
                 .then(function(res) {
                     if (res.code === '000000') {
-                        // 登录成功
+                        // 登录成功，存储认证信息
                         localStorage.setItem('token', res.data.token);
-                        if (remember) {
-                            localStorage.setItem('phone', phone);
-                        } else {
+                        localStorage.setItem('phone', res.data.phone);
+                        localStorage.setItem('user', JSON.stringify(res.data.user));
+                        localStorage.setItem('roles', JSON.stringify(res.data.roles));
+                        localStorage.setItem('menus', JSON.stringify(res.data.menus));
+                        if (!remember) {
                             localStorage.removeItem('phone');
                         }
                         window.location.href = '../main.html';
