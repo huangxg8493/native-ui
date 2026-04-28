@@ -33,7 +33,9 @@
       "Bash(xargs grep *)",
       "WebFetch(domain:cdn.bootcdn.net)",
       "Bash(curl *)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(git clone *)",
+      "Bash(node *)"
     ]
   }
 }
