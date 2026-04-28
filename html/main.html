@@ -44,6 +44,82 @@
             color: #ff4d4f;
             border-color: #ff4d4f;
         }
+        .header-logo {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1890ff;
+        }
+        .top-nav {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            margin-left: 24px;
+        }
+        .menu-item {
+            position: relative;
+            padding: 0 16px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #333;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .menu-item:hover {
+            background: #e6f7ff;
+        }
+        .menu-item .anticon {
+            margin-right: 6px;
+            font-size: 14px;
+        }
+        .menu-item .menu-arrow {
+            margin-left: 4px;
+            font-size: 10px;
+            color: #999;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 64px;
+            left: 0;
+            min-width: 160px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1000;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            color: #333;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .dropdown-item:first-child {
+            border-radius: 4px 4px 0 0;
+        }
+        .dropdown-item:last-child {
+            border-radius: 0 0 4px 4px;
+        }
+        .dropdown-item:hover {
+            background: #e6f7ff;
+        }
+        .dropdown-item .anticon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        .no-menu {
+            padding: 12px 16px;
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+        }
         .content {
             padding: 24px;
         }
