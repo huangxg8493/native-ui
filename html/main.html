@@ -330,12 +330,12 @@
                             item.addEventListener('click', function() {
                                 if (child.menuUrl) {
                                     var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
+                                    if (child.menuType === 'MENU') {
+                                        TabManager.register(moduleId, child.menuName, function() {
+                                            loadModule(moduleId);
+                                        });
+                                    }
                                     TabManager.open(moduleId);
-                                }
-                                if (moduleId && child.menuType === 'MENU') {
-                                    TabManager.register(moduleId, child.menuName, function() {
-                                        loadModule(moduleId);
-                                    });
                                 }
                             });
                             dropdown.appendChild(item);
