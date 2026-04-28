@@ -1,6 +1,6 @@
 # 进度
 
-## 当前状态: 图标库扩展完成
+## 当前状态: 实施用户管理页面（Tab 式 SPA）
 
 ## 已完成任务
 - [x] 登录页面设计文档 - docs/superpowers/specs/2026-04-23-login-page-design.md
@@ -25,4 +25,9 @@
 - [x] Task 8: 修复并提交
 
 ## 待开始任务
-- [ ] 图标库集成到 main.html（可选，未在计划中）
+- [ ] Task 1: TabManager 核心实现
+- [ ] Task 2: 用户管理页面 HTML 结构
+- [ ] Task 3: 用户管理样式
+- [ ] Task 4: 用户管理逻辑
+- [ ] Task 5: Tab 栏样式
+- [ ] Task 6: 联调与验证

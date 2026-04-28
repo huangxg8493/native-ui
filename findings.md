@@ -79,3 +79,20 @@
   - `assets/icons/fontawesome-icons.svg`
   - `assets/icons/material-icons.svg`
 - **约束**: 只收集图标，不改现有代码，main.html 暂不更新
+
+## Tab 式 SPA 多页面架构设计决策
+- **核心**: TabManager 作为 SPA 核心，管理 Tab 的打开/关闭/切换
+- **Tab 数据结构**: { id, title, renderFn }，id 由菜单 URL 转换得到（如 `/system/user` → `system-user`）
+- **Tab 渲染**: 点击菜单时注册 Tab 并打开，已存在则激活而非重建
+- **内容区**: main.html 中 `<main class="main-content">` 下新增 `<div id="tabBar">` 和 `<div id="tabContent">`
+- **欢迎页**: 关闭所有 Tab 后显示默认欢迎页（content-card）
+- **模块动态加载**: loadModule 函数根据 moduleId 动态加载 CSS 和 JS
+
+## 用户管理页面设计决策
+- **页面文件**: `html/client/user.html`（HTML结构）、`assets/css/user.css`（样式）、`assets/script/user.js`（逻辑）
+- **模块接口**: IIFE 模式，暴露 `UserModule.init(container)` / `refresh()` / `destroy()`
+- **弹窗设计**: 新增/编辑共用一个表单弹窗，分配角色为独立复选框弹窗
+- **状态标签**: status=Y 显示绿色"正常"，status=N 显示红色"禁用"
+- **角色列表来源**: 从 localStorage.roles 获取当前用户角色
+- **分页**: 每页 5/10/20/50 条，默认 10
+
