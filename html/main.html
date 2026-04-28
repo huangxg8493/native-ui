@@ -125,10 +125,10 @@
             top: 100%;
             left: 0;
             min-width: 120px;
-            background: #1a1a2e;
-            border: 1px solid rgba(0, 255, 204, 0.2);
+            background: #fff;
+            border: 1px solid rgba(0, 255, 204, 0.3);
             border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             display: none;
             z-index: 1000;
             padding: 4px 0;
@@ -139,7 +139,7 @@
         .dropdown-item {
             padding: 10px 16px;
             cursor: pointer;
-            color: #b8c5d6;
+            color: #333;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -152,6 +152,10 @@
         .dropdown-item .icon svg {
             width: 14px;
             height: 14px;
+            fill: #666;
+        }
+        .dropdown-item:hover .icon svg {
+            fill: #00ffcc;
         }
         .no-menu {
             padding: 10px 16px;
@@ -243,8 +247,8 @@
             // 加载图标库 SVG Sprite
             async function loadIconSprites() {
                 var files = [
-                    'assets/icons/ant-design-icons.svg',
-                    'assets/icons/element-plus-icons.svg'
+                    '../assets/icons/ant-design-icons.svg',
+                    '../assets/icons/element-plus-icons.svg'
                 ];
                 for (var url of files) {
                     try {
