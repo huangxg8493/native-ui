@@ -176,6 +176,102 @@
                 localStorage.removeItem('menus');
                 window.location.href = 'login/login.html';
             });
+
+            // 渲染顶部菜单
+            function renderMenu() {
+                var menus = JSON.parse(localStorage.getItem('menus') || '[]');
+                var topNav = document.getElementById('topNav');
+
+                if (!menus || menus.length === 0) {
+                    topNav.innerHTML = '<span class="no-menu">暂无菜单</span>';
+                    return;
+                }
+
+                // 过滤出一级目录（CATALOG 类型）
+                var topMenus = menus.filter(function(m) {
+                    return m.menuType === 'CATALOG';
+                });
+
+                if (topMenus.length === 0) {
+                    topNav.innerHTML = '<span class="no-menu">暂无菜单</span>';
+                    return;
+                }
+
+                // 图标映射
+                var iconMap = {
+                    'setting': 'anticon-setting',
+                    'user': 'anticon-user',
+                    'team': 'anticon-team',
+                    'Safety': 'anticon-safety',
+                    'database': 'anticon-database',
+                    'file': 'anticon-file',
+                    'default': 'anticon-app'
+                };
+
+                function getIconClass(icon) {
+                    return iconMap[icon] || iconMap['default'];
+                }
+
+                // 渲染一级菜单
+                topMenus.forEach(function(menu) {
+                    var menuItem = document.createElement('div');
+                    menuItem.className = 'menu-item';
+                    menuItem.innerHTML =
+                        '<span class="anticon ' + getIconClass(menu.icon) + '"></span>' +
+                        '<span>' + menu.menuName + '</span>' +
+                        '<span class="menu-arrow">▼</span>';
+
+                    // 创建下拉菜单
+                    var dropdown = document.createElement('div');
+                    dropdown.className = 'dropdown-menu';
+
+                    var children = menu.children || [];
+                    var leafMenus = children.filter(function(c) {
+                        return c.menuType === 'MENU' && c.isLeaf === 'Y';
+                    });
+
+                    if (leafMenus.length === 0) {
+                        dropdown.innerHTML = '<div class="no-menu">暂无子菜单</div>';
+                    } else {
+                        leafMenus.forEach(function(child) {
+                            var item = document.createElement('div');
+                            item.className = 'dropdown-item';
+                            item.innerHTML =
+                                '<span class="anticon ' + getIconClass(child.icon) + '"></span>' +
+                                '<span>' + child.menuName + '</span>';
+                            item.addEventListener('click', function() {
+                                if (child.menuUrl) {
+                                    window.location.href = child.menuUrl;
+                                }
+                            });
+                            dropdown.appendChild(item);
+                        });
+                    }
+
+                    menuItem.appendChild(dropdown);
+                    topNav.appendChild(menuItem);
+
+                    // hover 事件
+                    var hoverTimer = null;
+                    var leaveTimer = null;
+
+                    menuItem.addEventListener('mouseenter', function() {
+                        clearTimeout(leaveTimer);
+                        hoverTimer = setTimeout(function() {
+                            dropdown.classList.add('show');
+                        }, 150);
+                    });
+
+                    menuItem.addEventListener('mouseleave', function() {
+                        clearTimeout(hoverTimer);
+                        leaveTimer = setTimeout(function() {
+                            dropdown.classList.remove('show');
+                        }, 200);
+                    });
+                });
+            }
+
+            renderMenu();
         })();
     </script>
 </body>
