@@ -1,0 +1,12 @@
+/* 图标样式 - 使用 Unicode 符号 */
+
+.icon-setting::before { content: "⚙️"; }
+.icon-user::before { content: "👤"; }
+.icon-team::before { content: "👥"; }
+.icon-safety::before { content: "🛡️"; }
+.icon-database::before { content: "🗄️"; }
+.icon-file::before { content: "📄"; }
+.icon-app::before { content: "📱"; }
+
+/* 默认图标 */
+.icon-default::before { content: "📁"; }

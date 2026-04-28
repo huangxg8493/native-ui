@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/antd/4.24.0/icons.css">
+    <link rel="stylesheet" href="../assets/css/icons.css">
     <style>
         * {
             margin: 0;
@@ -69,7 +69,7 @@
         .menu-item:hover {
             background: #e6f7ff;
         }
-        .menu-item .anticon {
+        .menu-item .icon {
             margin-right: 6px;
             font-size: 14px;
         }
@@ -110,7 +110,7 @@
         .dropdown-item:hover {
             background: #e6f7ff;
         }
-        .dropdown-item .anticon {
+        .dropdown-item .icon {
             margin-right: 8px;
             font-size: 14px;
         }
@@ -199,13 +199,13 @@
 
                 // 图标映射
                 var iconMap = {
-                    'setting': 'anticon-setting',
-                    'user': 'anticon-user',
-                    'team': 'anticon-team',
-                    'Safety': 'anticon-safety',
-                    'database': 'anticon-database',
-                    'file': 'anticon-file',
-                    'default': 'anticon-app'
+                    'setting': 'icon-setting',
+                    'user': 'icon-user',
+                    'team': 'icon-team',
+                    'safety': 'icon-safety',
+                    'database': 'icon-database',
+                    'file': 'icon-file',
+                    'default': 'icon-app'
                 };
 
                 function getIconClass(icon) {
@@ -217,7 +217,7 @@
                     var menuItem = document.createElement('div');
                     menuItem.className = 'menu-item';
                     menuItem.innerHTML =
-                        '<span class="anticon ' + getIconClass(menu.icon) + '"></span>' +
+                        '<span class="icon ' + getIconClass(menu.icon) + '"></span>' +
                         '<span>' + menu.menuName + '</span>' +
                         '<span class="menu-arrow">▼</span>';
 
@@ -237,7 +237,7 @@
                             var item = document.createElement('div');
                             item.className = 'dropdown-item';
                             item.innerHTML =
-                                '<span class="anticon ' + getIconClass(child.icon) + '"></span>' +
+                                '<span class="icon ' + getIconClass(child.icon) + '"></span>' +
                                 '<span>' + child.menuName + '</span>';
                             item.addEventListener('click', function() {
                                 if (child.menuUrl) {
