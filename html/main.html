@@ -330,15 +330,24 @@
                             item.addEventListener('click', function() {
                                 if (child.menuUrl) {
                                     var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
-                                    if (child.menuType === 'MENU') {
-                                        TabManager.register(moduleId, child.menuName, function() {
-                                            loadModule(moduleId);
-                                        });
-                                    }
                                     TabManager.open(moduleId);
                                 }
                             });
                             dropdown.appendChild(item);
+                        });
+
+                        // 为每个菜单项预注册 Tab（循环结束后统一注册）
+                        leafMenus.forEach(function(child) {
+                            if (child.menuType === 'MENU' && child.menuUrl) {
+                                var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
+                                if (moduleId) {
+                                    (function(mid, mname) {
+                                        TabManager.register(mid, mname, function() {
+                                            loadModule(mid);
+                                        });
+                                    })(moduleId, child.menuName);
+                                }
+                            }
                         });
 
                         li.appendChild(dropdown);
@@ -391,7 +400,15 @@
                     'system-user': { js: '../assets/script/user.js', css: '../assets/css/user.css' }
                 };
                 var mod = moduleMap[moduleId];
-                if (!mod) return;
+
+                // 如果没有预配置，使用约定路径
+                if (!mod) {
+                    mod = {
+                        js: '../assets/script/' + moduleId + '.js',
+                        css: '../assets/css/' + moduleId + '.css'
+                    };
+                }
+
                 // 加载 CSS（已加载则跳过）
                 if (!document.querySelector('link[href="' + mod.css + '"]')) {
                     var link = document.createElement('link');
@@ -399,10 +416,14 @@
                     link.href = mod.css;
                     document.head.appendChild(link);
                 }
-                // 调用模块 init
+
+                // 调用模块 init（使用约定：全局变量名 = 模块ID首字母大写 + Module）
                 var contentEl = document.getElementById('tabContent');
-                if (moduleId === 'system-user' && window.UserModule) {
-                    UserModule.init(contentEl);
+                var globalVarName = moduleId.split('-').map(function(s) {
+                    return s.charAt(0).toUpperCase() + s.slice(1);
+                }).join('') + 'Module';
+                if (window[globalVarName]) {
+                    window[globalVarName].init(contentEl);
                 }
             }
         })();
