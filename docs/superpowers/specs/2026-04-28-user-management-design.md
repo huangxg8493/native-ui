@@ -7,7 +7,52 @@
 
 ## 1. 概述
 
-新建用户管理页面 `html/client/user.html`，独立完整页面风格（与 `address.html` 一致），实现用户 CRUD 和角色分配功能。
+新建用户管理页面 `html/client/user.html`，实现用户 CRUD 和角色分配功能。
+采用 **Tab 式多页面**架构：用户管理作为 SPA 子模块，点击菜单时以 Tab 形式打开，可同时存在多个 Tab 并切换。
+
+---
+
+## 2. 整体架构
+
+### 2.1 Tab 多页面架构
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  logo   [系统管理 ▼] [用户管理 ▼]         [退出]        │ ← 顶部导航（不变）
+├─────────────────────────────────────────────────────────┤
+│  [用户管理 ✕] [菜单管理 ✕]                              │ ← Tab 栏（新增）
+├─────────────────────────────────────────────────────────┤
+│  用户管理                                                │ ← 页面内容区
+│  [搜索栏...]                                            │
+│  [数据表格...]                                          │
+│  [分页...]                                              │
+└─────────────────────────────────────────────────────────┘
+```
+
+**核心行为：**
+- 点击"用户管理"菜单 → 如未打开则新增 Tab，如已打开则激活 Tab
+- 点击"菜单管理"菜单 → 同上
+- 点击 Tab 标题 → 切换显示对应页面
+- 点击 Tab 关闭按钮 → 关闭 Tab，切到最近一个 Tab
+- 关闭最后一个 Tab → 显示默认欢迎页
+
+### 2.2 Tab 数据结构
+
+每个 Tab 维护独立状态：
+```javascript
+{
+    id: 'user-management',        // 唯一标识
+    title: '用户管理',             // Tab 显示名称
+    content: '...',               // 页面 HTML 内容
+    state: { pageNum: 1, ... }    // 该页面的表单/搜索状态
+}
+```
+
+### 2.3 路由
+
+- Tab 状态存储在内存中，不持久化
+- 刷新页面后 Tab 状态丢失，回到默认欢迎页
+- URL 不变，所有状态在 localStorage.token 下管理
 
 ---
 
@@ -148,25 +193,83 @@
 
 ## 8. 页面文件
 
-- `html/client/user.html` — 页面结构
-- `assets/css/user.css` — 样式（复用 address.css 风格）
-- `assets/script/user.js` — 逻辑（IIFE 模式）
+- `main.html` — 修改，新增 Tab 栏容器和 Tab 切换逻辑
+- `html/client/user.html` — 用户管理页面内容（作为 Tab 内容片段）
+- `assets/css/user.css` — 用户管理页面样式（复用 address.css 风格）
+- `assets/script/user.js` — 用户管理页面逻辑（IIFE 模式，暴露 init/refresh 等接口供 Tab 管理器调用）
 
 ---
 
-## 9. 交互流程
+## 9. Tab 切换管理器（main.html 新增）
 
-1. 进入页面 → 自动查询第一页列表
-2. 输入手机号/选择状态 → 点查询 → 刷新列表
-3. 点新增 → 弹出空白表单 → 填写 → 提交成功 → 刷新列表
-4. 点编辑 → 弹出预填表单 → 修改 → 提交成功 → 刷新列表
-5. 点删除 → 弹出确认 → 确认后删除 → 刷新列表
-6. 点分配角色 → 弹出角色勾选 → 勾选后提交 → 刷新列表
-7. 分页切换 → 请求对应页数据
+### 9.1 职责
+
+- 管理 Tab 列表（添加、删除、激活）
+- 渲染 Tab 栏 UI
+- 渲染当前激活 Tab 的内容
+
+### 9.2 接口
+
+```javascript
+var TabManager = {
+    tabs: [],           // 当前打开的 Tab 列表
+    activeId: null,     // 当前激活的 Tab ID
+
+    open: function(id, title, renderFn) {},   // 打开/激活 Tab
+    close: function(id) {},                     // 关闭 Tab
+    activate: function(id) {},                  // 切换到 Tab
+    render: function() {}                       // 渲染 Tab 栏
+};
+```
+
+### 9.3 Tab 注册
+
+各业务页面模块需先向 TabManager 注册：
+```javascript
+TabManager.register('user-management', '用户管理', function(container) {
+    UserModule.init(container);
+});
+```
+
+菜单点击时调用 `TabManager.open('user-management', '用户管理', renderFn)`。
 
 ---
 
-## 10. Toast 提示
+## 10. 用户管理模块接口
+
+为了配合 Tab 管理，用户管理模块暴露以下接口：
+
+```javascript
+var UserModule = {
+    init: function(container) {},    // 初始化，渲染到指定容器
+    refresh: function() {},          // 刷新列表
+    destroy: function() {}          // 销毁，清理事件/定时器
+};
+```
+
+---
+
+## 11. 交互流程（更新）
+
+1. 用户登录 → 进入 main.html → 显示欢迎页
+2. 点击"用户管理"菜单 → 检查是否已有对应 Tab
+   - 没有 → 新建 Tab，调用 `UserModule.init()` 渲染内容
+   - 有 → 激活已有 Tab
+3. 在用户管理 Tab 内：
+   - 输入手机号/选择状态 → 点查询 → 刷新列表
+   - 点新增 → 弹出空白表单 → 填写 → 提交成功 → 刷新列表
+   - 点编辑 → 弹出预填表单 → 修改 → 提交成功 → 刷新列表
+   - 点删除 → 弹出确认 → 确认后删除 → 刷新列表
+   - 点分配角色 → 弹出角色勾选 → 勾选后提交 → 刷新列表
+   - 分页切换 → 请求对应页数据
+4. 点击另一个菜单（如菜单管理）→ 新建 Tab 并激活
+5. 点击 Tab 切换 → 显示对应页面内容
+6. 点击 Tab ✕ → 关闭 Tab，如关闭当前 Tab 则激活最近一个
+7. 关闭所有 Tab → 显示默认欢迎页
+
+---
+
+## 12. Toast 提示
 
 - 操作成功：绿色 toast，2秒后消失
 - 操作失败：红色 toast，显示后端返回 message
