@@ -203,6 +203,96 @@
             color: #666;
             font-size: 14px;
         }
+
+        /* --- Tab 栏 --- */
+        .tab-bar {
+            background: #fff;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            min-height: 40px;
+        }
+
+        .tab-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            border: 1px solid #e8e8e8;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            margin-right: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+            background: #fafafa;
+            transition: all 0.2s;
+        }
+
+        .tab-item:hover {
+            color: #1890ff;
+            background: #fff;
+        }
+
+        .tab-item.active {
+            color: #1890ff;
+            background: #fff;
+            border-color: #1890ff;
+            position: relative;
+        }
+
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #fff;
+        }
+
+        .tab-close {
+            margin-left: 8px;
+            width: 16px;
+            height: 16px;
+            line-height: 14px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 14px;
+            color: #999;
+            transition: all 0.2s;
+        }
+
+        .tab-close:hover {
+            background: #ff4d4f;
+            color: #fff;
+        }
+
+        /* Tab 内容区 */
+        #tabContent {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            min-height: 500px;
+        }
+
+        #tabContent.active {
+            display: block;
+        }
+
+        #welcomeContent {
+            display: flex;
+        }
+
+        /* Tab 栏按钮通用样式 */
+        .tab-bar .btn {
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.2s;
+        }
     </style>
 </head>
 <body>
@@ -219,9 +309,12 @@
 
     <!-- 主内容区域 -->
     <main class="main-content">
-        <div class="content-card">
-            <h2>登录成功</h2>
-            <p>欢迎使用管理系统</p>
+        <div id="tabBar" class="tab-bar"></div>
+        <div id="tabContent">
+            <div id="welcomeContent" class="content-card">
+                <h2>登录成功</h2>
+                <p>欢迎使用管理系统</p>
+            </div>
         </div>
     </main>
 
