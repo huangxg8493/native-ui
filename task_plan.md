@@ -160,97 +160,97 @@
 ## 新增任务：图标库建设（只收集图标，不改现有代码）
 
 ### Task 1: 准备工作目录
-- [ ] Step 1: 创建 `assets/icons/` 目录
-- [ ] Step 2: git add assets/icons && git commit -m "chore: 创建图标库目录"
+- [x] Step 1: 创建 `assets/icons/` 目录
+- [x] Step 2: git add assets/icons && git commit -m "chore: 创建图标库目录"
 
 ### Task 2: 克隆并提取 Ant Design Icons
-- [ ] Step 1: 克隆 ant-design-icons 仓库到 temp 目录
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本转换为 Sprite 格式
-- [ ] Step 4: 运行转换脚本生成 `assets/icons/ant-design-icons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 ant-design-icons 仓库到 temp 目录
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本转换为 Sprite 格式
+- [x] Step 4: 运行转换脚本生成 `assets/icons/ant-design-icons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 3: 克隆并提取 Element Plus Icons
-- [ ] Step 1: 克隆 element-plus-icons 仓库到 temp 目录
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本转换为 Sprite 格式
-- [ ] Step 4: 运行转换脚本生成 `assets/icons/element-plus-icons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 element-plus-icons 仓库到 temp 目录
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本转换为 Sprite 格式
+- [x] Step 4: 运行转换脚本生成 `assets/icons/element-plus-icons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 4: 生成图标 CSS 辅助类
-- [ ] Step 1: 创建 `assets/icons/icons.css` - SVG Sprite 使用辅助类
+- [x] Step 1: 创建 `assets/icons/icons.css` - SVG Sprite 使用辅助类
 
 ### Task 5: 创建图标预览页面
-- [ ] Step 1: 创建 `assets/icons/index.html` - 图标预览和搜索页面
+- [x] Step 1: 创建 `assets/icons/index.html` - 图标预览和搜索页面
 
 ### Task 6: 提交图标库
-- [ ] Step 1: git add assets/icons/ && git commit -m "feat: 建立图标库 from Ant Design & Element Plus"
-- [ ] Step 2: git push
+- [x] Step 1: git add assets/icons/ && git commit -m "feat: 建立图标库 from Ant Design & Element Plus"
+- [x] Step 2: git push
 
 ---
 
 ## 新增任务：菜单图标库集成
 
 ### Task 1: 修改 main.html 集成图标库
-- [ ] Step 1: 添加 SVG Sprite 加载函数 `loadIconSprites`
-- [ ] Step 2: 注释原 iconMap 对象（保留不删）
-- [ ] Step 3: 添加新的 getIconSvg 函数（使用图标库 ID）
-- [ ] Step 4: 注释原 getIconSvg 函数（保留不删）
-- [ ] Step 5: 在页面加载时调用 loadIconSprites 后再 renderMenu
-- [ ] Step 6: git add html/main.html && git commit -m "feat: 集成图标库到菜单系统"
+- [x] Step 1: 添加 SVG Sprite 加载函数 `loadIconSprites`
+- [x] Step 2: 注释原 iconMap 对象（保留不删）
+- [x] Step 3: 添加新的 getIconSvg 函数（使用图标库 ID）
+- [x] Step 4: 注释原 getIconSvg 函数（保留不删）
+- [x] Step 5: 在页面加载时调用 loadIconSprites 后再 renderMenu
+- [x] Step 6: git add html/main.html && git commit -m "feat: 集成图标库到菜单系统"
 
 ---
 
 ## 新增任务：扩展图标库（Lucide/Heroicons/Phosphor/Tabler/Font Awesome/Material）
 
 ### Task 1: 提取 Lucide Icons
-- [ ] Step 1: 克隆 lucide-icons/lucide 仓库
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本
-- [ ] Step 4: 生成 `assets/icons/lucide-icons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 lucide-icons/lucide 仓库
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本
+- [x] Step 4: 生成 `assets/icons/lucide-icons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 2: 提取 Heroicons
-- [ ] Step 1: 克隆 tailwindlabs/heroicons 仓库
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本
-- [ ] Step 4: 生成 `assets/icons/heroicons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 tailwindlabs/heroicons 仓库
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本
+- [x] Step 4: 生成 `assets/icons/heroicons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 3: 提取 Phosphor Icons
-- [ ] Step 1: 克隆 phosphor-icons/phosphor-icons 仓库
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本
-- [ ] Step 4: 生成 `assets/icons/phosphor-icons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 phosphor-icons/phosphor-icons 仓库
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本
+- [x] Step 4: 生成 `assets/icons/phosphor-icons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 4: 提取 Tabler Icons
-- [ ] Step 1: 克隆 tabler/tabler-icons 仓库
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本
-- [ ] Step 4: 生成 `assets/icons/tabler-icons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 tabler/tabler-icons 仓库
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本
+- [x] Step 4: 生成 `assets/icons/tabler-icons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 5: 提取 Font Awesome
-- [ ] Step 1: 克隆 FortAwesome/Font-Awesome 仓库
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本
-- [ ] Step 4: 生成 `assets/icons/fontawesome-icons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 FortAwesome/Font-Awesome 仓库
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本
+- [x] Step 4: 生成 `assets/icons/fontawesome-icons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 6: 提取 Material Icons
-- [ ] Step 1: 克隆 google/material-design-icons 仓库
-- [ ] Step 2: 检查 SVG 文件位置
-- [ ] Step 3: 创建并运行 Node.js 脚本
-- [ ] Step 4: 生成 `assets/icons/material-icons.svg`
-- [ ] Step 5: 清理临时文件
+- [x] Step 1: 克隆 google/material-design-icons 仓库
+- [x] Step 2: 检查 SVG 文件位置
+- [x] Step 3: 创建并运行 Node.js 脚本
+- [x] Step 4: 生成 `assets/icons/material-icons.svg`
+- [x] Step 5: 清理临时文件
 
 ### Task 7: 更新预览页面
-- [ ] Step 1: 更新 `assets/icons/index.html` 支持所有图标库分类展示
-- [ ] Step 2: 提交
+- [x] Step 1: 更新 `assets/icons/index.html` 支持所有图标库分类展示
+- [x] Step 2: 提交
 
 ### Task 8: 修复并提交
-- [ ] Step 1: 修复 DOCTYPE 问题（如有）
-- [ ] Step 2: 提交所有新图标库文件
-- [ ] Step 3: git push
+- [x] Step 1: 修复 DOCTYPE 问题（如有）
+- [x] Step 2: 提交所有新图标库文件
+- [x] Step 3: git push
 
