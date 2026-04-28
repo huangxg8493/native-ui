@@ -79,9 +79,21 @@
         setTimeout(function() { toast.style.display = 'none'; }, 2000);
     }
 
+    // HTML 转义，防止 XSS
+    function escapeHtml(str) {
+        if (str == null) return '';
+        return String(str).replace(/[&<>"']/g, function(c) {
+            return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c];
+        });
+    }
+
     // HTTP 请求封装
     function request(url, method, body) {
         var token = localStorage.getItem('token');
+        if (!token) {
+            showToast('请先登录', 'error');
+            return Promise.reject('No token');
+        }
         var options = {
             method: method,
             headers: {
@@ -90,7 +102,15 @@
             }
         };
         if (body) options.body = JSON.stringify(body);
-        return fetch(url, options).then(function(resp) { return resp.json(); });
+        return fetch(url, options)
+            .then(function(resp) {
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                return resp.json();
+            })
+            .catch(function(err) {
+                showToast('网络错误', 'error');
+                throw err;
+            });
     }
 
     // 格式化时间 YYYY-MM-DD HH:mm
@@ -275,16 +295,16 @@
                 : '<span style="color:#ff4d4f;font-weight:bold">禁用</span>';
             html += '<tr>' +
                 '<td>' + (start + i) + '</td>' +
-                '<td>' + user.phone + '</td>' +
-                '<td>' + (user.userName || '-') + '</td>' +
-                '<td>' + (user.email || '-') + '</td>' +
-                '<td>' + provinceCity + '</td>' +
+                '<td>' + escapeHtml(user.phone) + '</td>' +
+                '<td>' + escapeHtml(user.userName || '-') + '</td>' +
+                '<td>' + escapeHtml(user.email || '-') + '</td>' +
+                '<td>' + escapeHtml(provinceCity) + '</td>' +
                 '<td>' + statusHtml + '</td>' +
                 '<td>' + formatTime(user.createTime) + '</td>' +
                 '<td>' +
                     '<button class="editBtn btn" data-userid="' + user.userId + '">编辑</button>' +
                     '<button class="deleteBtn btn" style="background-color:#ff4d4f" data-userid="' + user.userId + '">删除</button>' +
-                    '<button class="roleBtn btn" data-userid="' + user.userId + '" data-phone="' + user.phone + '">分配角色</button>' +
+                    '<button class="roleBtn btn" data-userid="' + user.userId + '" data-phone="' + escapeHtml(user.phone) + '">分配角色</button>' +
                 '</td>' +
                 '</tr>';
         });
