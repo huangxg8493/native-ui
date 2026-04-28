@@ -4,7 +4,7 @@
 - 前端项目，使用原生 HTML/CSS/JavaScript
 - Ant Design 风格 UI，主色 #1890ff
 - IIFE 模式避免全局污染
-- 目前仅有 address.html 和 address.css
+- 目前仅有 html/client/address.html 和 address.css
 
 ## 设计决策
 - **布局方案**: 简洁居中卡片式（白色卡片垂直居中）
@@ -38,4 +38,4 @@
 - **一级菜单**: 仅显示 menuType=CATALOG 类型
 - **子菜单**: 显示 isLeaf=Y 且 menuType=MENU 类型
 - **展开方式**: hover 延迟 150ms 展开，200ms 收起
-- **图标方案**: Ant Design 图标字体（CDN）
+- **图标方案**: 内联 SVG 图标

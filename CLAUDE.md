@@ -16,10 +16,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 ├── index.html          # 首页
-├── address.html        # 地址管理页
-├── html/               # 页面片段
+├── html/
+│   ├── client/
+│   │   └── address.html # 地址管理页
 │   └── login/
-│       ├── login.html  # 登录页
+│       ├── login.html   # 登录页
 │       └── register.html# 注册页
 ├── styles/             # 样式文件
 │   ├── login.css
@@ -33,7 +34,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 常用命令
 
-- 直接在浏览器打开 `index.html` 或 `address.html` 即可预览
+- 直接在浏览器打开 `index.html` 或 `html/client/address.html` 即可预览
 - 无构建步骤，纯静态前端项目
 
 ## 代码风格
