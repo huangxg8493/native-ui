@@ -1,0 +1,32 @@
+/**
+ * 图标 CSS 辅助类
+ * 用于 SVG Sprite 图标显示
+ *
+ * 使用方式：
+ * <svg class="icon anticon"><use href="#ant-xxx"></use></svg>
+ * <svg class="icon el-icon"><use href="#el-xxx"></use></svg>
+ */
+
+/* 基础图标容器 */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: -0.15em;
+  fill: currentColor;
+}
+
+/* Ant Design 图标风格 */
+.anticon {
+  font-size: 14px;
+  line-height: 1;
+  color: inherit;
+}
+
+/* Element Plus 图标风格 */
+.el-icon {
+  font-size: inherit;
+  line-height: 1;
+  color: inherit;
+}
