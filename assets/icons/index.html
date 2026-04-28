@@ -99,13 +99,156 @@
       color: #999;
       font-size: 16px;
     }
+    .header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .btn-help {
+      padding: 8px 16px;
+      background: #1890ff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-help:hover {
+      background: #40a9ff;
+    }
+    .usage-guide {
+      display: none;
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .usage-guide.show {
+      display: block;
+    }
+    .usage-guide h3 {
+      margin-bottom: 16px;
+      color: #333;
+      font-size: 16px;
+    }
+    .usage-guide h4 {
+      margin: 16px 0 8px;
+      color: #666;
+      font-size: 14px;
+    }
+    .usage-guide p, .usage-guide li {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .usage-guide ul {
+      padding-left: 20px;
+    }
+    .usage-guide code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      color: #1890ff;
+    }
+    .usage-guide pre {
+      background: #f5f5f5;
+      padding: 12px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .usage-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+    }
+    .usage-guide th, .usage-guide td {
+      border: 1px solid #e8e8e8;
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .usage-guide th {
+      background: #fafafa;
+    }
   </style>
 </head>
 <body>
   <div class="header">
-    <input type="text" class="search-box" id="searchInput" placeholder="搜索图标名称...">
+    <div class="header-actions">
+      <input type="text" class="search-box" id="searchInput" placeholder="搜索图标名称...">
+      <button class="btn-help" id="btnHelp">使用说明</button>
+    </div>
     <div class="stats" id="stats"></div>
   </div>
+
+  <div class="usage-guide" id="usageGuide">
+    <h3>图标库使用说明</h3>
+
+    <h4>1. 引入 SVG Sprite 文件</h4>
+    <p>在页面 HTML 中添加以下代码，加载图标 Sprite：</p>
+    <pre>&lt;script&gt;
+  async function loadIconSprites() {
+    const files = [
+      'assets/icons/ant-design-icons.svg',
+      'assets/icons/element-plus-icons.svg'
+    ];
+    for (const url of files) {
+      const resp = await fetch(url);
+      const text = await resp.text();
+      const div = document.createElement('div');
+      div.style.display = 'none';
+      div.innerHTML = text;
+      document.body.appendChild(div);
+    }
+  }
+  loadIconSprites();
+&lt;/script&gt;</pre>
+
+    <h4>2. 使用图标</h4>
+    <p>在页面任意位置使用 <code>&lt;use&gt;</code> 引用图标：</p>
+    <pre>&lt;!-- Ant Design 图标 --&gt;
+&lt;svg width="16" height="16"&gt;&lt;use href="#ant-user"&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;svg width="24" height="24"&gt;&lt;use href="#ant-setting"&gt;&lt;/use&gt;&lt;/svg&gt;
+
+&lt;!-- Element Plus 图标 --&gt;
+&lt;svg width="16" height="16"&gt;&lt;use href="#el-user"&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;svg width="24" height="24"&gt;&lt;use href="#el-setting"&gt;&lt;/use&gt;&lt;/svg&gt;</pre>
+
+    <h4>3. CSS 辅助类（可选）</h4>
+    <p>引入 <code>icons.css</code> 后可以使用类名：</p>
+    <pre>&lt;link rel="stylesheet" href="assets/icons/icons.css"&gt;
+
+&lt;span class="icon anticon"&gt;
+  &lt;svg&gt;&lt;use href="#ant-user"&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/span&gt;</pre>
+
+    <h4>4. 常用图标示例</h4>
+    <table>
+      <tr><th>图标名称</th><th>Ant Design ID</th><th>Element Plus ID</th></tr>
+      <tr><td>用户</td><td><code>#ant-user</code></td><td><code>#el-user</code></td></tr>
+      <tr><td>设置</td><td><code>#ant-setting</code></td><td><code>#el-setting</code></td></tr>
+      <tr><td>首页</td><td><code>#ant-home</code></td><td><code>#el-home</code></td></tr>
+      <tr><td>搜索</td><td><code>#ant-search</code></td><td><code>#el-search</code></td></tr>
+      <tr><td>菜单</td><td><code>#ant-menu</code></td><td><code>#el-menu</code></td></tr>
+      <tr><td>编辑</td><td><code>#ant-edit</code></td><td><code>#el-edit</code></td></tr>
+      <tr><td>删除</td><td><code>#ant-delete</code></td><td><code>#el-delete</code></td></tr>
+      <tr><td>添加</td><td><code>#ant-plus</code></td><td><code>#el-plus</code></td></tr>
+    </table>
+
+    <h4>5. 颜色和尺寸控制</h4>
+    <pre>/* 通过 CSS 控制图标颜色和尺寸 */
+svg { color: #1890ff; }
+svg { width: 24px; height: 24px; }</pre>
+  </div>
+
   <div class="grid" id="grid"></div>
   <div class="toast" id="toast">已复制到剪贴板</div>
 
@@ -231,6 +374,13 @@
         const filter = e.target.value.trim();
         renderIcons(filter);
         updateStats(filter);
+      });
+
+      // 使用说明按钮
+      const btnHelp = document.getElementById('btnHelp');
+      const usageGuide = document.getElementById('usageGuide');
+      btnHelp.addEventListener('click', () => {
+        usageGuide.classList.toggle('show');
       });
 
       // 启动
