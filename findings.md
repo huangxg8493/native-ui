@@ -53,3 +53,11 @@
   - `assets/icons/index.html`（预览页面）
 - **使用方式**: `<svg><use href="#ant-user"></use></svg>`
 - **重要约束**: 只收集图标，不改任何现有代码
+
+## 菜单图标库集成设计决策
+- **目标**: 将 main.html 菜单图标改为使用 assets/icons 图标库
+- **实现方式**: 动态加载 SVG Sprite，修改 getIconSvg 函数
+- **图标 ID 来源**: 数据库菜单项的 icon 字段
+- **ID 格式**: `ant-{name}` 或 `el-{name}`
+- **原有代码处理**: 注释保留，不删除
+- **加载时机**: 页面加载时先加载图标库，再渲染菜单

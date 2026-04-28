@@ -187,3 +187,15 @@
 - [ ] Step 1: git add assets/icons/ && git commit -m "feat: 建立图标库 from Ant Design & Element Plus"
 - [ ] Step 2: git push
 
+---
+
+## 新增任务：菜单图标库集成
+
+### Task 1: 修改 main.html 集成图标库
+- [ ] Step 1: 添加 SVG Sprite 加载函数 `loadIconSprites`
+- [ ] Step 2: 注释原 iconMap 对象（保留不删）
+- [ ] Step 3: 添加新的 getIconSvg 函数（使用图标库 ID）
+- [ ] Step 4: 注释原 getIconSvg 函数（保留不删）
+- [ ] Step 5: 在页面加载时调用 loadIconSprites 后再 renderMenu
+- [ ] Step 6: git add html/main.html && git commit -m "feat: 集成图标库到菜单系统"
+

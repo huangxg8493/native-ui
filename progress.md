@@ -22,12 +22,7 @@
 - [x] Task 3: 实现菜单渲染和交互 JS 逻辑
 
 ## 进行中任务
-- [ ] 图标库建设 - 从 Ant Design Icons 和 Element Plus Icons 提取图标
+- [ ] 菜单图标库集成 - 将 main.html 菜单图标改为使用图标库
 
 ## 待开始任务
-- [ ] Task 1: 准备工作目录
-- [ ] Task 2: 克隆并提取 Ant Design Icons
-- [ ] Task 3: 克隆并提取 Element Plus Icons
-- [ ] Task 4: 生成图标 CSS 辅助类
-- [ ] Task 5: 创建图标预览页面
-- [ ] Task 6: 提交图标库
+- [ ] Task 1: 修改 main.html 集成图标库
