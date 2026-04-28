@@ -61,3 +61,21 @@
 - **ID 格式**: `ant-{name}` 或 `el-{name}`
 - **原有代码处理**: 注释保留，不删除
 - **加载时机**: 页面加载时先加载图标库，再渲染菜单
+
+## 扩展图标库设计决策
+- **新增图标库**: Lucide、Heroicons、Phosphor、Tabler、Font Awesome、Material Icons
+- **ID 前缀**:
+  - Lucide: `lucide-`
+  - Heroicons: `hero-`
+  - Phosphor: `ph-`
+  - Tabler: `tabler-`
+  - Font Awesome: `fa-`
+  - Material: `mat-`
+- **输出文件**:
+  - `assets/icons/lucide-icons.svg`
+  - `assets/icons/heroicons.svg`
+  - `assets/icons/phosphor-icons.svg`
+  - `assets/icons/tabler-icons.svg`
+  - `assets/icons/fontawesome-icons.svg`
+  - `assets/icons/material-icons.svg`
+- **约束**: 只收集图标，不改现有代码，main.html 暂不更新

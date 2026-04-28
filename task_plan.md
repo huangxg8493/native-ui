@@ -199,3 +199,58 @@
 - [ ] Step 5: 在页面加载时调用 loadIconSprites 后再 renderMenu
 - [ ] Step 6: git add html/main.html && git commit -m "feat: 集成图标库到菜单系统"
 
+---
+
+## 新增任务：扩展图标库（Lucide/Heroicons/Phosphor/Tabler/Font Awesome/Material）
+
+### Task 1: 提取 Lucide Icons
+- [ ] Step 1: 克隆 lucide-icons/lucide 仓库
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本
+- [ ] Step 4: 生成 `assets/icons/lucide-icons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 2: 提取 Heroicons
+- [ ] Step 1: 克隆 tailwindlabs/heroicons 仓库
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本
+- [ ] Step 4: 生成 `assets/icons/heroicons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 3: 提取 Phosphor Icons
+- [ ] Step 1: 克隆 phosphor-icons/phosphor-icons 仓库
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本
+- [ ] Step 4: 生成 `assets/icons/phosphor-icons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 4: 提取 Tabler Icons
+- [ ] Step 1: 克隆 tabler/tabler-icons 仓库
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本
+- [ ] Step 4: 生成 `assets/icons/tabler-icons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 5: 提取 Font Awesome
+- [ ] Step 1: 克隆 FortAwesome/Font-Awesome 仓库
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本
+- [ ] Step 4: 生成 `assets/icons/fontawesome-icons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 6: 提取 Material Icons
+- [ ] Step 1: 克隆 google/material-design-icons 仓库
+- [ ] Step 2: 检查 SVG 文件位置
+- [ ] Step 3: 创建并运行 Node.js 脚本
+- [ ] Step 4: 生成 `assets/icons/material-icons.svg`
+- [ ] Step 5: 清理临时文件
+
+### Task 7: 更新预览页面
+- [ ] Step 1: 更新 `assets/icons/index.html` 支持所有图标库分类展示
+- [ ] Step 2: 提交
+
+### Task 8: 修复并提交
+- [ ] Step 1: 修复 DOCTYPE 问题（如有）
+- [ ] Step 2: 提交所有新图标库文件
+- [ ] Step 3: git push
+

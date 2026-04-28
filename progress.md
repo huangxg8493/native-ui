@@ -22,7 +22,14 @@
 - [x] Task 3: 实现菜单渲染和交互 JS 逻辑
 
 ## 进行中任务
-- [ ] 菜单图标库集成 - 将 main.html 菜单图标改为使用图标库
+- [ ] 扩展图标库 - 新增 Lucide/Heroicons/Phosphor/Tabler/Font Awesome/Material
 
 ## 待开始任务
-- [ ] Task 1: 修改 main.html 集成图标库
+- [ ] Task 1: 提取 Lucide Icons
+- [ ] Task 2: 提取 Heroicons
+- [ ] Task 3: 提取 Phosphor Icons
+- [ ] Task 4: 提取 Tabler Icons
+- [ ] Task 5: 提取 Font Awesome
+- [ ] Task 6: 提取 Material Icons
+- [ ] Task 7: 更新预览页面
+- [ ] Task 8: 修复并提交
