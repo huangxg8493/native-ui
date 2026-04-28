@@ -68,11 +68,11 @@
         .icon {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-right: 8px;
-            width: 20px;
+            margin-right: 6px;
+            width: 24px;
             height: 20px;
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: 500;
             color: inherit;
         }
 
@@ -226,16 +226,16 @@
                     return;
                 }
 
-                // 图标 Unicode 映射
+                // 图标中文映射
                 var iconMap = {
-                    'setting': '\2699',
-                    'user': '\1F464',
-                    'team': '\1F465',
-                    'safety': '\1F6E1',
-                    'database': '\1F5C4',
-                    'file': '\1F4C4',
-                    'menu': '\2630',
-                    'default': '\1F4CC'
+                    'setting': '设',
+                    'user': '用',
+                    'team': '角',
+                    'safety': '安',
+                    'database': '库',
+                    'file': '文',
+                    'menu': '菜',
+                    'default': '图'
                 };
 
                 function getIconText(icon) {
