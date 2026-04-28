@@ -131,3 +131,27 @@
 - [x] main.html 退出登录清除 token、phone、user、roles、menus
 - [x] 其他页面可通过 localStorage.getItem('user') 获取用户信息
 
+---
+
+## 新增任务：主页菜单系统
+
+### Task 1: 添加 Ant Design 图标 CDN 和基础布局
+- [ ] Step 1: 在 head 中添加 Ant Design 图标 CDN
+- [ ] Step 2: 添加顶部菜单栏 HTML 结构
+- [ ] Step 3: git add html/main.html && git commit -m "feat: 添加顶部菜单栏基础结构和图标CDN"
+
+### Task 2: 添加顶部菜单 CSS 样式
+- [ ] Step 1: 在 style 标签中添加菜单相关 CSS
+- [ ] Step 2: git add html/main.html && git commit -m "style: 添加顶部菜单栏 CSS 样式"
+
+### Task 3: 实现菜单渲染和交互 JS 逻辑
+- [ ] Step 1: 将原 script 内容替换为完整实现（菜单渲染、hover 交互、点击跳转）
+- [ ] Step 2: git add html/main.html && git commit -m "feat: 实现顶部菜单渲染和hover交互逻辑"
+
+## 自检清单（主页菜单系统）
+- [ ] main.html 顶部显示一级菜单（CATALOG 类型）
+- [ ] hover 150ms 后展开下拉菜单
+- [ ] 下拉显示子菜单（MENU 类型）
+- [ ] 点击子菜单跳转到 menuUrl
+- [ ] 显示菜单图标
+

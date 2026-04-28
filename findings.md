@@ -31,3 +31,11 @@
 - **"记住登录"行为**: 仅记住 phone 字段，user/roles/menus 每次登录重新存储
 - **更新文件**: login.html（存储）、main.html（清除）
 - **其他页面读取**: `JSON.parse(localStorage.getItem('user'))`
+
+## 主页菜单系统设计决策
+- **菜单布局**: 顶部水平菜单，一级菜单横向排列
+- **菜单数据来源**: localStorage.getItem('menus')
+- **一级菜单**: 仅显示 menuType=CATALOG 类型
+- **子菜单**: 显示 isLeaf=Y 且 menuType=MENU 类型
+- **展开方式**: hover 延迟 150ms 展开，200ms 收起
+- **图标方案**: Ant Design 图标字体（CDN）
