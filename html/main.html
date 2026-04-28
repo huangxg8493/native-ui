@@ -262,17 +262,17 @@
                     link.appendChild(document.createTextNode(menu.menuName));
 
                     // 如果有子菜单，添加箭头
-                    var children = menu.children || [];
-                    var leafMenus = children.filter(function(c) {
-                        return c.menuType === 'MENU' && c.isLeaf === 'Y';
-                    });
+                    // var children = menu.children || [];
+                    // var leafMenus = children.filter(function(c) {
+                    //     return c.menuType === 'MENU' && c.isLeaf === 'Y';
+                    // });
 
-                    if (leafMenus.length > 0) {
-                        var arrow = document.createElement('span');
-                        arrow.className = 'menu-arrow';
-                        arrow.innerHTML = '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 11.4L3.6 7 4.4 6.2 8 9.8 11.6 6.2 12.4 7z"/></svg>';
-                        link.appendChild(arrow);
-                    }
+                    // if (leafMenus.length > 0) {
+                    //     var arrow = document.createElement('span');
+                    //     arrow.className = 'menu-arrow';
+                    //     arrow.innerHTML = '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 11.4L3.6 7 4.4 6.2 8 9.8 11.6 6.2 12.4 7z"/></svg>';
+                    //     link.appendChild(arrow);
+                    // }
 
                     li.appendChild(link);
 
