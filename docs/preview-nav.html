@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏预览</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+        /* 深灰 + 蓝绿点缀方案 */
+        .top-nav {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 204, 0.15);
+        }
+        .top-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffcc, transparent);
+            opacity: 0.6;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 60px;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+        .nav-menu { display: flex; list-style: none; }
+        .nav-item { position: relative; margin-left: 3px; }
+        .nav-item:first-of-type { margin-left: 24px; }
+        .nav-link, .nav-link-common {
+            text-decoration: none;
+            color: #b8c5d6;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(0, 255, 204, 0.1);
+            color: #00ffcc;
+        }
+        .menu-arrow { margin-left: 4px; color: #00ffcc; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 120px;
+            background: #1a1a2e;
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: none;
+            z-index: 1000;
+            padding: 4px 0;
+        }
+        .dropdown-menu.show { display: block; }
+        .dropdown-item {
+            padding: 10px 16px;
+            cursor: pointer;
+            color: #b8c5d6;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+        .dropdown-item:hover {
+            background: rgba(0, 255, 204, 0.1);
+            color: #00ffcc;
+        }
+        .logout-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #00ffcc;
+            transition: all 0.3s;
+            margin-left: auto;
+        }
+        .logout-btn:hover {
+            background: rgba(0, 255, 204, 0.1);
+            border-color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">管理系统</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a class="nav-link" href="#">首页</a></li>
+                <li class="nav-item"><a class="nav-link-common" href="#">用户管理</a></li>
+                <li class="nav-item"><a class="nav-link-common" href="#">系统设置</a></li>
+            </ul>
+            <button class="logout-btn">退出</button>
+        </div>
+    </nav>
+    <div style="padding: 40px; text-align: center; color: #666;">
+        <p>深灰底色 + 蓝绿(#00ffcc)点缀效果</p>
+    </div>
+</body>
+</html>

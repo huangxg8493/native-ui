@@ -18,12 +18,23 @@
 
         /* --- 顶部导航栏 --- */
         .top-nav {
-            background-color: #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             padding: 0 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 204, 0.15);
+        }
+        .top-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffcc, transparent);
+            opacity: 0.6;
         }
         .nav-container {
             display: flex;
@@ -34,7 +45,7 @@
         .logo {
             font-size: 18px;
             font-weight: bold;
-            color: #1890ff;
+            color: #00ffcc;
         }
         .nav-menu {
             display: flex;
@@ -51,7 +62,7 @@
         }
         .nav-link {
             text-decoration: none;
-            color: #333;
+            color: #b8c5d6;
             font-size: 14px;
             padding: 8px 12px;
             border-radius: 4px;
@@ -61,7 +72,7 @@
         }
         .nav-link-common {
             text-decoration: none;
-            color: #333;
+            color: #b8c5d6;
             font-size: 14px;
             padding: 8px 3px;
             border-radius: 4px;
@@ -70,10 +81,17 @@
             transition: all 0.2s ease;
         }
         .nav-link:hover {
-            background-color: #e6f7ff;
-            color: #1890ff;
+            background-color: rgba(0, 255, 204, 0.1);
+            color: #00ffcc;
+        }
+        .nav-link-common:hover {
+            background-color: rgba(0, 255, 204, 0.1);
+            color: #00ffcc;
         }
         .nav-link:hover .icon {
+            color: #1890ff;
+        }
+        .nav-link-common:hover .icon {
             color: #1890ff;
         }
 
@@ -107,9 +125,10 @@
             top: 100%;
             left: 0;
             min-width: 120px;
-            background-color: #fff;
+            background: #1a1a2e;
+            border: 1px solid rgba(0, 255, 204, 0.2);
             border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             display: none;
             z-index: 1000;
             padding: 4px 0;
@@ -120,15 +139,15 @@
         .dropdown-item {
             padding: 10px 16px;
             cursor: pointer;
-            color: #333;
+            color: #b8c5d6;
             font-size: 14px;
             display: flex;
             align-items: center;
             transition: background 0.2s ease;
         }
         .dropdown-item:hover {
-            background-color: #e6f7ff;
-            color: #1890ff;
+            background: rgba(0, 255, 204, 0.1);
+            color: #00ffcc;
         }
         .dropdown-item .icon svg {
             width: 14px;
@@ -144,18 +163,18 @@
         /* --- 退出按钮 --- */
         .logout-btn {
             padding: 8px 16px;
-            background: #fff;
-            border: 1px solid #d9d9d9;
+            background: transparent;
+            border: 1px solid rgba(0, 255, 204, 0.3);
             border-radius: 4px;
             font-size: 14px;
             cursor: pointer;
-            color: #666;
+            color: #00ffcc;
             transition: all 0.3s;
             margin-left: auto;
         }
         .logout-btn:hover {
-            color: #ff4d4f;
-            border-color: #ff4d4f;
+            background: rgba(0, 255, 204, 0.1);
+            border-color: #00ffcc;
         }
 
         /* --- 主内容区域 --- */
