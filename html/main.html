@@ -518,7 +518,7 @@
             function loadModule(moduleId) {
                 console.log('[loadModule] 开始加载模块, moduleId:', moduleId);
                 var moduleMap = {
-                    'system-user': { js: '../assets/script/user.js', css: '../assets/css/user.css' }
+                    'user': { js: '../assets/script/user.js', css: '../assets/css/user.css' }
                 };
                 var mod = moduleMap[moduleId];
                 console.log('[loadModule] 查找预配置映射:', mod);
@@ -555,8 +555,10 @@
                     var script = document.createElement('script');
                     script.src = mod.js;
                     script.onload = function() {
-                        console.log('[loadModule] JS 加载完成，检查全局变量:', globalVarName);
-                        console.log('[loadModule] window[globalVarName] 是否存在:', !!window[globalVarName]);
+                        console.log('[loadModule] JS 加载完成');
+                        console.log('[loadModule] contentEl.innerHTML 长度:', contentEl.innerHTML.length);
+                        console.log('[loadModule] contentEl.innerHTML 前100字符:', contentEl.innerHTML.substring(0, 100));
+                        console.log('[loadModule] window.UserModule 存在:', !!window.UserModule);
                         if (window[globalVarName]) {
                             console.log('[loadModule] 调用模块 init() 方法');
                             window[globalVarName].init(contentEl);
