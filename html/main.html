@@ -527,7 +527,8 @@
             function loadModule(moduleId) {
                 console.log('[loadModule] 开始加载模块, moduleId:', moduleId);
                 var moduleMap = {
-                    'user': { js: '../assets/script/user.js', css: '../assets/css/user.css' }
+                    'system-user': { type: 'html', html: '../html/sys/user.html' },
+                    'user': { type: 'html', html: '../html/sys/user.html' }
                 };
                 var mod = moduleMap[moduleId];
                 console.log('[loadModule] 查找预配置映射:', mod);
@@ -546,6 +547,31 @@
                     return s.charAt(0).toUpperCase() + s.slice(1);
                 }).join('') + 'Module';
                 console.log('[loadModule] 计算的全局变量名:', globalVarName);
+
+                // HTML 模式：fetch 加载 HTML 片段
+                if (mod && mod.type === 'html') {
+                    console.log('[loadModule] HTML模式加载:', mod.html);
+                    fetch(mod.html)
+                        .then(function(resp) {
+                            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                            return resp.text();
+                        })
+                        .then(function(html) {
+                            console.log('[loadModule] HTML加载成功，长度:', html.length);
+                            contentEl.innerHTML = html;
+                            // 等待 DOM 解析完成后调用 init
+                            setTimeout(function() {
+                                console.log('[loadModule] window[globalVarName] 存在:', !!window[globalVarName]);
+                                if (window[globalVarName]) {
+                                    window[globalVarName].init(contentEl);
+                                }
+                            }, 0);
+                        })
+                        .catch(function(err) {
+                            console.error('[loadModule] HTML加载失败:', err);
+                        });
+                    return;  // 提前返回，不执行下面的 JS 模式
+                }
 
                 // 加载 CSS（已加载则跳过）
                 if (!document.querySelector('link[href="' + mod.css + '"]')) {
