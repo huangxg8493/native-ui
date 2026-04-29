@@ -279,3 +279,20 @@
 ### Task 6: 联调与验证
 - [x] Step 1: 在浏览器中打开 main.html 验证完整流程
 
+---
+
+## 新增任务：用户管理页面 HTML 片段化改造
+
+### Task 1: 改造 user.html 为 HTML 片段
+- [ ] Step 1: 将 `html/sys/user.html` 内容替换为 HTML 片段结构（移除 DOCTYPE/html/head/body，保留业务 DOM 和 CSS/JS 引用）
+
+### Task 2: 重构 user.js 移除模板字符串
+- [ ] Step 1: 删除 `assets/script/user.js` 中的 `HTML_TEMPLATE` 变量
+- [ ] Step 2: 修改 `init` 方法，不再设置 `innerHTML`，直接调用 `bindEvents()`
+- [ ] Step 3: 确认 `bindEvents` 中的 `getElementById` 调用保持不变
+
+### Task 3: 扩展 main.html loadModule 支持 HTML 模式
+- [ ] Step 1: 在 `loadModule` 函数中添加 `moduleMap` 配置 `{ 'user': { type: 'html', html: '../html/sys/user.html' } }`
+- [ ] Step 2: 添加 HTML 模式处理逻辑（fetch 加载、innerHTML 注入、setTimeout 后调用 init）
+- [ ] Step 3: 保留 JS 模式作为其他模块的回退
+

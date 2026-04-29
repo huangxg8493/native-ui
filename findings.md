@@ -96,3 +96,15 @@
 - **角色列表来源**: 从 localStorage.roles 获取当前用户角色
 - **分页**: 每页 5/10/20/50 条，默认 10
 
+## 用户管理页面 HTML 片段化改造设计决策
+- **背景**: 当前 user.html 未被使用，实际使用 user.js 中的内嵌 HTML_TEMPLATE
+- **目标**: 改为物理分离，user.html 作为 HTML 片段通过 fetch 加载
+- **loadModule 扩展**: 支持 `type: 'html'` 配置，使用 fetch 加载 HTML 片段
+- **moduleMap 配置**: `{ 'user': { type: 'html', html: '../html/sys/user.html' } }`
+- **路径设计**:
+  - main.html 加载 user.html: `../html/sys/user.html`
+  - user.html 加载 CSS: `../../assets/css/user.css`
+  - user.html 加载 JS: `../../assets/script/user.js`
+- **globalVarName**: `user` → `UserModule`
+- **执行顺序**: user.html → user.js → main.html
+

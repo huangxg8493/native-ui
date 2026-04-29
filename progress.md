@@ -1,6 +1,6 @@
 # 进度
 
-## 当前状态: 实施用户管理页面（Tab 式 SPA）
+## 当前状态: 用户管理页面 HTML 片段化改造
 
 ## 已完成任务
 - [x] 登录页面设计文档 - docs/superpowers/specs/2026-04-23-login-page-design.md
@@ -25,9 +25,6 @@
 - [x] Task 8: 修复并提交
 
 ## 待开始任务
-- [ ] Task 1: TabManager 核心实现
-- [ ] Task 2: 用户管理页面 HTML 结构
-- [ ] Task 3: 用户管理样式
-- [ ] Task 4: 用户管理逻辑
-- [ ] Task 5: Tab 栏样式
-- [ ] Task 6: 联调与验证
+- [ ] Task 1: 改造 user.html 为 HTML 片段
+- [ ] Task 2: 重构 user.js 移除模板字符串
+- [ ] Task 3: 扩展 main.html loadModule 支持 HTML 模式
