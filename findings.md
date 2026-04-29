@@ -108,3 +108,10 @@
 - **globalVarName**: `user` → `UserModule`
 - **执行顺序**: user.html → user.js → main.html
 
+## 用户管理页面风格美化设计决策
+- **目标**: user.html 风格与 address.html 保持一致
+- **方案**: user.css 完全独立，不引用 address.css，样式手动与 address.css 对齐
+- **涉及文件**: 只修改 `assets/css/user.css`
+- **样式对齐**: 容器、搜索栏、表格、弹窗、按钮、分页等所有通用样式
+- **专用样式**: .editBtn、.deleteBtn、.roleBtn、.role-item、#roleList 等 user 页面专用样式保留
+
