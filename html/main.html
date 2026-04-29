@@ -558,13 +558,29 @@
                         .then(function(html) {
                             console.log('[loadModule] HTML加载成功，长度:', html.length);
                             contentEl.innerHTML = html;
-                            // 等待 DOM 解析完成后调用 init
-                            setTimeout(function() {
+
+                            // 手动加载 CSS
+                            var cssLink = document.createElement('link');
+                            cssLink.rel = 'stylesheet';
+                            cssLink.href = '../assets/css/' + moduleId + '.css';
+                            console.log('[loadModule] 加载CSS:', cssLink.href);
+                            document.head.appendChild(cssLink);
+
+                            // 手动加载 JS
+                            var script = document.createElement('script');
+                            script.src = '../assets/script/' + moduleId + '.js';
+                            console.log('[loadModule] 加载JS:', script.src);
+                            script.onload = function() {
+                                console.log('[loadModule] JS加载完成, globalVarName:', globalVarName);
                                 console.log('[loadModule] window[globalVarName] 存在:', !!window[globalVarName]);
                                 if (window[globalVarName]) {
                                     window[globalVarName].init(contentEl);
                                 }
-                            }, 0);
+                            };
+                            script.onerror = function() {
+                                console.error('[loadModule] JS加载失败:', script.src);
+                            };
+                            document.head.appendChild(script);
                         })
                         .catch(function(err) {
                             console.error('[loadModule] HTML加载失败:', err);
