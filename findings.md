@@ -115,3 +115,11 @@
 - **样式对齐**: 容器、搜索栏、表格、弹窗、按钮、分页等所有通用样式
 - **专用样式**: .editBtn、.deleteBtn、.roleBtn、.role-item、#roleList 等 user 页面专用样式保留
 
+## user.html JS/CSS 统一加载设计决策
+- **问题**: innerHTML 注入的 script 标签不会自动执行，导致 JS 无法加载
+- **方案**: user.html 只保留纯 HTML，CSS 和 JS 完全由 loadModule 统一加载
+- **CSS 加载**: 手动创建 link 标签，`'../assets/css/' + moduleId + '.css'`
+- **JS 加载**: 手动创建 script 标签，`'../assets/script/' + moduleId + '.js'`
+- **init 调用**: script.onload 中调用 UserModule.init(contentEl)
+- **涉及文件**: user.html（移除 link/script）、main.html（修改 loadModule）
+

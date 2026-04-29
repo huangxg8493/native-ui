@@ -1,6 +1,6 @@
 # 进度
 
-## 当前状态: 用户管理页面风格美化
+## 当前状态: user.html JS/CSS 统一加载
 
 ## 已完成任务
 - [x] 登录页面设计文档 - docs/superpowers/specs/2026-04-23-login-page-design.md
@@ -23,9 +23,11 @@
 - [x] Task 1-5: 扩展 Lucide/Heroicons/Phosphor/Tabler/Font Awesome 图标库
 - [x] Task 7: 更新预览页面
 - [x] Task 8: 修复并提交
-
 - [x] Task 1: 改造 user.html 为 HTML 片段
 - [x] Task 2: 重构 user.js 移除模板字符串
 - [x] Task 3: 扩展 main.html loadModule 支持 HTML 模式
-
 - [x] Task 1: 重写 user.css 与 address.css 对齐
+
+## 待开始任务
+- [ ] Task 1: 修改 user.html 移除 link 和 script
+- [ ] Task 2: 修改 loadModule HTML 模式手动加载 CSS 和 JS

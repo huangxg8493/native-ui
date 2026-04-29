@@ -303,3 +303,13 @@
 ### Task 1: 重写 user.css 与 address.css 对齐
 - [x] Step 1: 将 `assets/css/user.css` 内容完全替换为与 address.css 对齐的样式（容器、搜索栏、表格、弹窗、按钮等），保留 user 页面专用样式（.editBtn、.deleteBtn、.roleBtn、.role-item、#roleList）
 
+---
+
+## 新增任务：user.html JS/CSS 统一加载
+
+### Task 1: 修改 user.html 移除 link 和 script
+- [ ] Step 1: 移除 user.html 中的 `<link>` 和 `<script>` 标签，只保留纯 HTML 结构（Toast 容器）
+
+### Task 2: 修改 loadModule HTML 模式手动加载 CSS 和 JS
+- [ ] Step 1: 替换 loadModule 中的 HTML 模式加载逻辑，改为手动创建 link 加载 CSS、手动创建 script 加载 JS、script.onload 中调用 UserModule.init()
+
