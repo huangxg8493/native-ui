@@ -307,3 +307,15 @@ th {
     from { opacity: 1; }
     to { opacity: 0; }
 }
+
+/* 修改密码按钮 */
+.changePwdBtn {
+    background-color: #faad14 !important;
+    color: #fff !important;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 4px;
+}
