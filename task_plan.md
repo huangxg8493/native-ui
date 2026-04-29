@@ -301,5 +301,5 @@
 ## 新增任务：用户管理页面风格美化
 
 ### Task 1: 重写 user.css 与 address.css 对齐
-- [ ] Step 1: 将 `assets/css/user.css` 内容完全替换为与 address.css 对齐的样式（容器、搜索栏、表格、弹窗、按钮等），保留 user 页面专用样式（.editBtn、.deleteBtn、.roleBtn、.role-item、#roleList）
+- [x] Step 1: 将 `assets/css/user.css` 内容完全替换为与 address.css 对齐的样式（容器、搜索栏、表格、弹窗、按钮等），保留 user 页面专用样式（.editBtn、.deleteBtn、.roleBtn、.role-item、#roleList）
 

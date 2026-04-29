@@ -28,4 +28,4 @@
 - [x] Task 2: 重构 user.js 移除模板字符串
 - [x] Task 3: 扩展 main.html loadModule 支持 HTML 模式
 
-- [ ] Task 1: 重写 user.css 与 address.css 对齐
+- [x] Task 1: 重写 user.css 与 address.css 对齐
