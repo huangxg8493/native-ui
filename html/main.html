@@ -184,7 +184,7 @@
         /* --- 主内容区域 --- */
         .main-content {
             padding: 24px;
-            max-width: 1200px;
+            /**max-width: 1200px;*/
             margin: 0 auto;
         }
         .content-card {
@@ -415,14 +415,29 @@
                         dropdown.className = 'dropdown-menu';
 
                         leafMenus.forEach(function(child) {
+                            console.log('[菜单渲染] 处理子菜单项:', {
+                                menuId: child.menuId,
+                                menuName: child.menuName,
+                                menuUrl: child.menuUrl,
+                                menuType: child.menuType,
+                                icon: child.icon,
+                                isLeaf: child.isLeaf
+                            });
                             var item = document.createElement('li');
                             item.className = 'dropdown-item';
                             item.innerHTML =
                                 '<span class="icon">' + getIconSvg(child.icon) + '</span>' +
                                 '<span>' + child.menuName + '</span>';
                             item.addEventListener('click', function() {
+                                console.log('[菜单点击] 点击菜单项:', {
+                                    menuId: child.menuId,
+                                    menuName: child.menuName,
+                                    menuUrl: child.menuUrl
+                                });
                                 if (child.menuUrl) {
                                     var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
+                                    console.log('[菜单点击] 转换后的 moduleId:', moduleId);
+                                    console.log('[菜单点击] 调用 TabManager.open()');
                                     TabManager.open(moduleId);
                                 }
                             });
@@ -431,11 +446,23 @@
 
                         // 为每个菜单项预注册 Tab（循环结束后统一注册）
                         leafMenus.forEach(function(child) {
+                            console.log('[Tab注册] 检查菜单项是否需要注册:', {
+                                menuId: child.menuId,
+                                menuName: child.menuName,
+                                menuUrl: child.menuUrl,
+                                menuType: child.menuType
+                            });
                             if (child.menuType === 'MENU' && child.menuUrl) {
                                 var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
+                                console.log('[Tab注册] 转换后的 moduleId:', moduleId);
                                 if (moduleId) {
                                     (function(mid, mname) {
+                                        console.log('[Tab注册] 注册 Tab:', {
+                                            moduleId: mid,
+                                            menuName: mname
+                                        });
                                         TabManager.register(mid, mname, function() {
+                                            console.log('[Tab注册] Tab 激活回调触发, moduleId:', mid);
                                             loadModule(mid);
                                         });
                                     })(moduleId, child.menuName);
@@ -489,10 +516,12 @@
 
             // 动态加载模块
             function loadModule(moduleId) {
+                console.log('[loadModule] 开始加载模块, moduleId:', moduleId);
                 var moduleMap = {
                     'system-user': { js: '../assets/script/user.js', css: '../assets/css/user.css' }
                 };
                 var mod = moduleMap[moduleId];
+                console.log('[loadModule] 查找预配置映射:', mod);
 
                 // 如果没有预配置，使用约定路径
                 if (!mod) {
@@ -500,37 +529,52 @@
                         js: '../assets/script/' + moduleId + '.js',
                         css: '../assets/css/' + moduleId + '.css'
                     };
+                    console.log('[loadModule] 无预配置，使用约定路径:', mod);
                 }
 
                 var contentEl = document.getElementById('tabContent');
                 var globalVarName = moduleId.split('-').map(function(s) {
                     return s.charAt(0).toUpperCase() + s.slice(1);
                 }).join('') + 'Module';
+                console.log('[loadModule] 计算的全局变量名:', globalVarName);
 
                 // 加载 CSS（已加载则跳过）
                 if (!document.querySelector('link[href="' + mod.css + '"]')) {
+                    console.log('[loadModule] 动态加载 CSS:', mod.css);
                     var link = document.createElement('link');
                     link.rel = 'stylesheet';
                     link.href = mod.css;
                     document.head.appendChild(link);
+                } else {
+                    console.log('[loadModule] CSS 已存在，跳过加载:', mod.css);
                 }
 
                 // 加载 JS（已加载则跳过）
                 if (!document.querySelector('script[src="' + mod.js + '"]')) {
+                    console.log('[loadModule] 动态加载 JS:', mod.js);
                     var script = document.createElement('script');
                     script.src = mod.js;
                     script.onload = function() {
+                        console.log('[loadModule] JS 加载完成，检查全局变量:', globalVarName);
+                        console.log('[loadModule] window[globalVarName] 是否存在:', !!window[globalVarName]);
                         if (window[globalVarName]) {
+                            console.log('[loadModule] 调用模块 init() 方法');
                             window[globalVarName].init(contentEl);
                         }
+                    };
+                    script.onerror = function() {
+                        console.error('[loadModule] JS 加载失败:', mod.js);
                     };
                     document.head.appendChild(script);
                 } else {
                     // 已加载时直接调用
+                    console.log('[loadModule] JS 已存在，直接调用 init()');
                     if (window[globalVarName]) {
+                        console.log('[loadModule] 调用模块 init() 方法');
                         window[globalVarName].init(contentEl);
                     }
                 }
+                console.log('[loadModule] 模块加载流程结束');
             }
         })();
     </script>
