@@ -75,7 +75,12 @@
             document.getElementById('formPhone').readOnly = false;
             document.getElementById('formPassword').value = '';
             document.getElementById('formPassword').parentElement.querySelector('label').textContent = '密码';
+            document.getElementById('formUserName').value = '';
+            document.getElementById('formEmail').value = '';
+            document.getElementById('formCity').value = '';
             document.getElementById('formStatus').value = 'Y';
+            document.getElementById('formCreateTime').value = '-';
+            document.getElementById('formUpdateTime').value = '-';
             document.getElementById('userModal').style.display = 'flex';
         });
 
@@ -92,13 +97,18 @@
                 document.getElementById('formUserId').value = userId;
                 var row = target.closest('tr');
                 var cells = row.cells;
+                // 序号=0, 手机号=1, 用户名=2, 邮箱=3, 省市区=4, 状态=5, 创建时间=6, 更新时间=7, 操作=8
                 document.getElementById('formPhone').value = cells[1].textContent.trim();
                 document.getElementById('formPhone').readOnly = true;
                 document.getElementById('formPassword').value = '';
                 document.getElementById('formPassword').parentElement.querySelector('label').textContent = '密码（不填则不修改）';
-                // 设置当前状态
+                document.getElementById('formUserName').value = cells[2].textContent.trim();
+                document.getElementById('formEmail').value = cells[3].textContent.trim();
+                document.getElementById('formCity').value = cells[4].textContent.trim();
                 var statusCell = cells[5].textContent.trim();
                 document.getElementById('formStatus').value = statusCell === '正常' ? 'Y' : 'N';
+                document.getElementById('formCreateTime').value = cells[6].textContent.trim();
+                document.getElementById('formUpdateTime').value = cells[7].textContent.trim();
                 document.getElementById('userModal').style.display = 'flex';
             }
 
@@ -140,7 +150,13 @@
                 return;
             }
 
-            var payload = { phone: phone, status: status };
+            var payload = {
+                phone: phone,
+                status: status,
+                userName: document.getElementById('formUserName').value.trim(),
+                email: document.getElementById('formEmail').value.trim(),
+                city: document.getElementById('formCity').value.trim()
+            };
             if (userId) {
                 payload.userId = parseInt(userId);
                 if (password) payload.password = password;
