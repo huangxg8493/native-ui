@@ -437,6 +437,15 @@
                                 if (child.menuUrl) {
                                     var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
                                     console.log('[菜单点击] 转换后的 moduleId:', moduleId);
+
+                                    // 如果 tab 已关闭，需要重新注册
+                                    if (!TabManager.tabs.some(function(t) { return t.id === moduleId; })) {
+                                        console.log('[菜单点击] Tab 不存在，重新注册:', moduleId);
+                                        TabManager.register(moduleId, child.menuName, function() {
+                                            loadModule(moduleId);
+                                        });
+                                    }
+
                                     console.log('[菜单点击] 调用 TabManager.open()');
                                     TabManager.open(moduleId);
                                 }
