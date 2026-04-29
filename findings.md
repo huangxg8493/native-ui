@@ -123,3 +123,11 @@
 - **init 调用**: script.onload 中调用 UserModule.init(contentEl)
 - **涉及文件**: user.html（移除 link/script）、main.html（修改 loadModule）
 
+## 用户管理页面字段补全设计决策
+- **背景**: 接口 `/api/users/query` 返回的字段与 user.html 表格、弹窗字段不一致
+- **表格字段**（9列）: 序号、手机号、用户名、邮箱、省市区（取 city）、状态、创建时间、更新时间、操作
+- **省市区说明**: 只取接口返回的 city 字段值，province/district 不单独展示
+- **弹窗字段**（8个）: 手机号、密码（新增必填，编辑可选）、用户名、邮箱、省市区（取 city）、状态、创建时间（只读）、更新时间（只读）
+- **不使用的字段**: district（区县）、hobby（爱好）、province（省份单独展示）
+- **涉及文件**: `html/sys/user.html`（表头、弹窗）、`assets/script/user.js`（renderTable、表单回填/提交）
+

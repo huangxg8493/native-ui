@@ -31,4 +31,10 @@
 - [x] Task 1: 修改 user.html 移除 link 和 script
 - [x] Task 2: 修改 loadModule HTML 模式手动加载 CSS 和 JS
 
+## 进行中任务
+- [ ] Task 1: 修改表格表头
+- [ ] Task 2: 修改 JS 渲染逻辑
+- [ ] Task 3: 修改新增/编辑弹窗
+- [ ] Task 4: 修改 JS 表单回填逻辑
+
 ## 待开始任务
