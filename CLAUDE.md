@@ -27,7 +27,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   └── address.css
 ├── script/             # JavaScript 文件
 │   └── address.js
-├── http/               # HTTP 请求模块
+├── http/               # HTTP 请求模块（API 调用封装）
 ├── docs/               # 文档
 └── findings.md / progress.md / task_plan.md  # 规划文件
 ```
