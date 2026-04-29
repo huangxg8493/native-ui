@@ -435,3 +435,31 @@
     "data": null
 }
 ```
+
+### 9. 更新用户密码
+
+- **接口 URL**: `POST /api/users/update/pwd`
+- **请求方法**: POST
+- **Content-Type**: `application/json`
+- **描述**: 更新用户信息
+
+**请求体**:
+```json
+{
+    "userId": 1234567890,
+    "phone": "13900000002",
+    "password": "newpassword123",
+    "newPassword": "newpassword456"
+}
+```
+
+**字段说明**:
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| userId | Long | 是 | 用户ID |
+| phone | String | 否 | 手机号 |
+| password | String | 否 | 原密码 |
+| newPassword | String | 否 | 新密码 |
+
+**成功响应** (HTTP 200): 同创建用户
