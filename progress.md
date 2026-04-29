@@ -28,6 +28,7 @@
 - [x] Task 3: 扩展 main.html loadModule 支持 HTML 模式
 - [x] Task 1: 重写 user.css 与 address.css 对齐
 
+- [x] Task 1: 修改 user.html 移除 link 和 script
+- [x] Task 2: 修改 loadModule HTML 模式手动加载 CSS 和 JS
+
 ## 待开始任务
-- [ ] Task 1: 修改 user.html 移除 link 和 script
-- [ ] Task 2: 修改 loadModule HTML 模式手动加载 CSS 和 JS
