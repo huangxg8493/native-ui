@@ -222,13 +222,13 @@
         var tbody = document.getElementById('userTableBody');
         if (!tbody) return;
         if (!data || data.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999">暂无数据</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#999">暂无数据</td></tr>';
             return;
         }
         var start = (currentPage - 1) * currentPageSize + 1;
         var html = '';
         data.forEach(function(user, i) {
-            var provinceCity = [user.province, user.city].filter(Boolean).join('/') || '-';
+            var provinceCity = user.city || '-';
             var statusHtml = user.status === 'Y'
                 ? '<span style="color:#52c41a;font-weight:bold">正常</span>'
                 : '<span style="color:#ff4d4f;font-weight:bold">禁用</span>';
@@ -240,6 +240,7 @@
                 '<td>' + escapeHtml(provinceCity) + '</td>' +
                 '<td>' + statusHtml + '</td>' +
                 '<td>' + formatTime(user.createTime) + '</td>' +
+                '<td>' + formatTime(user.updateTime) + '</td>' +
                 '<td>' +
                     '<button class="editBtn btn" data-userid="' + user.userId + '">编辑</button>' +
                     '<button class="deleteBtn btn" style="background-color:#ff4d4f" data-userid="' + user.userId + '">删除</button>' +
