@@ -24,7 +24,6 @@
 - [x] Task 7: 更新预览页面
 - [x] Task 8: 修复并提交
 
-## 待开始任务
-- [ ] Task 1: 改造 user.html 为 HTML 片段
-- [ ] Task 2: 重构 user.js 移除模板字符串
-- [ ] Task 3: 扩展 main.html loadModule 支持 HTML 模式
+- [x] Task 1: 改造 user.html 为 HTML 片段
+- [x] Task 2: 重构 user.js 移除模板字符串
+- [x] Task 3: 扩展 main.html loadModule 支持 HTML 模式
