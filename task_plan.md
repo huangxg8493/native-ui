@@ -318,26 +318,26 @@
 ## 新增任务：用户管理页面字段补全
 
 ### Task 1: 修改表格表头
-- [ ] Step 1: 修改 `html/sys/user.html` 表头 - 将 `<th>省市</th>` 改为 `<th>省市区</th>`，在"创建时间"后新增 `<th>更新时间</th>`，操作列前移。colspan 8 → 9
-- [ ] Step 2: 修改空数据提示 `colspan="8"` 改为 `colspan="9"`
-- [ ] Step 3: git add html/sys/user.html && git commit -m "feat: user表格表头增加省市区(取city)、更新时间字段"
+- [x] Step 1: 修改 `html/sys/user.html` 表头 - 将 `<th>省市</th>` 改为 `<th>省市区</th>`，在"创建时间"后新增 `<th>更新时间</th>`，操作列前移。colspan 8 → 9
+- [x] Step 2: 修改空数据提示 `colspan="8"` 改为 `colspan="9"`
+- [x] Step 3: git add html/sys/user.html && git commit -m "feat: user表格表头增加省市区(取city)、更新时间字段"
 
 ### Task 2: 修改 JS 渲染逻辑
-- [ ] Step 1: 修改 `assets/script/user.js` 的 `renderTable()` 函数
+- [x] Step 1: 修改 `assets/script/user.js` 的 `renderTable()` 函数
   - 省市列改为只取 `user.city`（原来是 `[user.province, user.city]`）
   - 新增更新时间列 `'<td>' + formatTime(user.updateTime) + '</td>'`
   - 空数据 colspan 8 → 9
-- [ ] Step 2: git add assets/script/user.js && git commit -m "feat: user.js渲染逻辑增加更新时间列，省市列改取city"
+- [x] Step 2: git add assets/script/user.js && git commit -m "feat: user.js渲染逻辑增加更新时间列，省市列改取city"
 
 ### Task 3: 修改新增/编辑弹窗
-- [ ] Step 1: 修改 `html/sys/user.html` 的 `userModal` 表单
+- [x] Step 1: 修改 `html/sys/user.html` 的 `userModal` 表单
   - 新增用户名、邮箱、省市区（取 city）、创建时间（只读）、更新时间（只读）字段
   - 表单字段顺序：手机号 → 密码 → 用户名 → 邮箱 → 省市区 → 状态 → 创建时间 → 更新时间
-- [ ] Step 2: git add html/sys/user.html && git commit -m "feat: user弹窗表单增加用户名、邮箱、省市区(取city)、创建/更新时间只读字段"
+- [x] Step 2: git add html/sys/user.html && git commit -m "feat: user弹窗表单增加用户名、邮箱、省市区(取city)、创建/更新时间只读字段"
 
 ### Task 4: 修改 JS 表单回填逻辑
-- [ ] Step 1: 修改 `assets/script/user.js` 中编辑按钮点击处理 - 回填所有 8 个字段（手机号、用户名、邮箱、省市区、状态、创建时间、更新时间）
-- [ ] Step 2: 修改新增时表单重置逻辑 - 重置所有新增字段，创建/更新时间显示 "-"
-- [ ] Step 3: 修改表单提交 payload - 增加 userName、email、city 字段
-- [ ] Step 4: git add assets/script/user.js && git commit -m "feat: user.js表单回填和提交增加用户名、邮箱、省市区字段"
+- [x] Step 1: 修改 `assets/script/user.js` 中编辑按钮点击处理 - 回填所有 8 个字段（手机号、用户名、邮箱、省市区、状态、创建时间、更新时间）
+- [x] Step 2: 修改新增时表单重置逻辑 - 重置所有新增字段，创建/更新时间显示 "-"
+- [x] Step 3: 修改表单提交 payload - 增加 userName、email、city 字段
+- [x] Step 4: git add assets/script/user.js && git commit -m "feat: user.js表单回填和提交增加用户名、邮箱、省市区字段"
 
