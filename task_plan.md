@@ -259,23 +259,23 @@
 ## 新增任务：用户管理页面（Tab 式 SPA + CRUD + 角色分配）
 
 ### Task 1: TabManager 核心实现
-- [ ] Step 1: 创建 `assets/script/tab-manager.js` - 定义 TabManager 全局对象（register/open/close/activate/render/showWelcome）
-- [ ] Step 2: 修改 `html/main.html` - 引入 tab-manager.js，将菜单点击从 `window.location.href` 改为 `TabManager.open()`，添加 loadModule 动态加载函数
+- [x] Step 1: 创建 `assets/script/tab-manager.js` - 定义 TabManager 全局对象（register/open/close/activate/render/showWelcome）
+- [x] Step 2: 修改 `html/main.html` - 引入 tab-manager.js，将菜单点击从 `window.location.href` 改为 `TabManager.open()`，添加 loadModule 动态加载函数
 
 ### Task 2: 用户管理页面 HTML 结构
-- [ ] Step 1: 创建 `html/client/user.html` - 包含搜索栏、数据表格、分页、新增/编辑弹窗、分配角色弹窗的完整 HTML 结构
+- [x] Step 1: 创建 `html/client/user.html` - 包含搜索栏、数据表格、分页、新增/编辑弹窗、分配角色弹窗的完整 HTML 结构
 
 ### Task 3: 用户管理样式
-- [ ] Step 1: 创建 `assets/css/user.css` - 搜索栏、表格、弹窗、角色列表复选框等样式
+- [x] Step 1: 创建 `assets/css/user.css` - 搜索栏、表格、弹窗、角色列表复选框等样式
 
 ### Task 4: 用户管理逻辑
-- [ ] Step 1: 创建 `assets/script/user.js` - IIFE 模块，暴露 init/refresh/destroy 接口，包含查询/新增/编辑/删除/分配角色的完整逻辑
+- [x] Step 1: 创建 `assets/script/user.js` - IIFE 模块，暴露 init/refresh/destroy 接口，包含查询/新增/编辑/删除/分配角色的完整逻辑
 
 ### Task 5: Tab 栏样式
-- [ ] Step 1: 在 `html/main.html` 的 `<style>` 中新增 Tab 栏 CSS 样式（.tab-bar/.tab-item/.tab-close 等）
-- [ ] Step 2: 在 main.html HTML 结构中添加 Tab 栏容器 `<div id="tabBar">` 和内容区 `<div id="tabContent">`
-- [ ] Step 3: 修改 main.html 中菜单点击逻辑，注册 Tab 并调用 TabManager.open()
+- [x] Step 1: 在 `html/main.html` 的 `<style>` 中新增 Tab 栏 CSS 样式（.tab-bar/.tab-item/.tab-close 等）
+- [x] Step 2: 在 main.html HTML 结构中添加 Tab 栏容器 `<div id="tabBar">` 和内容区 `<div id="tabContent">`
+- [x] Step 3: 修改 main.html 中菜单点击逻辑，注册 Tab 并调用 TabManager.open()
 
 ### Task 6: 联调与验证
-- [ ] Step 1: 在浏览器中打开 main.html 验证完整流程
+- [x] Step 1: 在浏览器中打开 main.html 验证完整流程
 
