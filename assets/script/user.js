@@ -100,8 +100,6 @@
                 // 序号=0, 手机号=1, 用户名=2, 邮箱=3, 省市区=4, 状态=5, 创建时间=6, 更新时间=7, 操作=8
                 document.getElementById('formPhone').value = cells[1].textContent.trim();
                 document.getElementById('formPhone').readOnly = true;
-                document.getElementById('formPassword').value = '';
-                document.getElementById('formPassword').parentElement.querySelector('label').textContent = '密码（不填则不修改）';
                 document.getElementById('formUserName').value = cells[2].textContent.trim();
                 document.getElementById('formEmail').value = cells[3].textContent.trim();
                 document.getElementById('formCity').value = cells[4].textContent.trim();
@@ -159,7 +157,6 @@
             };
             if (userId) {
                 payload.userId = parseInt(userId);
-                if (password) payload.password = password;
                 request('/api/users/update', 'POST', payload).then(function(res) {
                     if (res.code === '000000') {
                         showToast('更新成功', 'success');
@@ -259,6 +256,7 @@
                 '<td>' + formatTime(user.updateTime) + '</td>' +
                 '<td>' +
                     '<button class="editBtn btn" data-userid="' + user.userId + '">编辑</button>' +
+                    '<button class="changePwdBtn btn" style="background-color:#faad14" data-userid="' + user.userId + '" data-phone="' + escapeHtml(user.phone) + '">修改密码</button>' +
                     '<button class="deleteBtn btn" style="background-color:#ff4d4f" data-userid="' + user.userId + '">删除</button>' +
                     '<button class="roleBtn btn" data-userid="' + user.userId + '" data-phone="' + escapeHtml(user.phone) + '">分配角色</button>' +
                 '</td>' +
