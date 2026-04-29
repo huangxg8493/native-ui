@@ -341,3 +341,30 @@
 - [x] Step 3: 修改表单提交 payload - 增加 userName、email、city 字段
 - [x] Step 4: git add assets/script/user.js && git commit -m "feat: user.js表单回填和提交增加用户名、邮箱、省市区字段"
 
+---
+
+## 新增任务：修改密码功能独立化
+
+### Task 1: HTML 修改 - 移除编辑弹窗密码行，新增修改密码弹窗
+- [ ] Step 1: 移除 `html/sys/user.html` 中编辑弹窗的密码字段行（第53-56行）
+- [ ] Step 2: 在 `roleModal` 之后、`toast` 之前新增修改密码弹窗 HTML
+- [ ] Step 3: git add html/sys/user.html && git commit -m "feat: 移除编辑弹窗密码字段，新增修改密码弹窗"
+
+### Task 2: JS 修改 - 编辑逻辑移除密码处理，操作列增加修改密码按钮
+- [ ] Step 1: 操作列增加修改密码按钮 `changePwdBtn`
+- [ ] Step 2: 编辑回填逻辑移除密码相关代码（formPassword 重置和提示文字）
+- [ ] Step 3: 表单提交逻辑移除 `if (password) payload.password = password;`
+- [ ] Step 4: git add assets/script/user.js && git commit -m "feat: 编辑弹窗移除密码字段，操作列增加修改密码按钮"
+
+### Task 3: JS 修改 - 新增修改密码弹窗的事件绑定和提交逻辑
+- [ ] Step 1: 在 `bindEvents` 函数中新增修改密码按钮点击处理（打开弹窗、回填 userId/phone）
+- [ ] Step 2: 新增修改密码表单提交逻辑（调用 `/api/users/update/pwd`，校验原密码/新密码/确认密码）
+- [ ] Step 3: 修改密码成功后 2 秒跳转到登录页
+- [ ] Step 4: 新增修改密码取消按钮事件
+- [ ] Step 5: 在弹窗背景点击关闭逻辑中添加 `passwordModal`
+- [ ] Step 6: git add assets/script/user.js && git commit -m "feat: 新增修改密码弹窗的事件绑定和提交逻辑"
+
+### Task 4: CSS 修改 - 新增修改密码按钮样式
+- [ ] Step 1: 在 `assets/css/user.css` 中新增 `.changePwdBtn` 样式（背景色 #faad14）
+- [ ] Step 2: git add assets/css/user.css && git commit -m "feat: 新增修改密码按钮样式"
+
