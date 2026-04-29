@@ -19,6 +19,11 @@
             var tab = this.tabs.find(function(t) { return t.id === id; });
             if (!tab) return;
             this.activeId = id;
+
+            // 隐藏欢迎页
+            var welcome = document.getElementById('welcomeContent');
+            if (welcome) welcome.style.display = 'none';
+
             this.render();
             tab.renderFn();
         },
