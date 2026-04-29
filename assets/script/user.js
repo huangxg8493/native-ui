@@ -133,6 +133,18 @@
                 }).join('');
                 document.getElementById('roleModal').style.display = 'flex';
             }
+
+            if (target.classList.contains('changePwdBtn')) {
+                currentUserId = parseInt(userId);
+                var phone = target.dataset.phone;
+                document.getElementById('passwordModalTitle').textContent = '修改密码';
+                document.getElementById('formPwdUserId').value = userId;
+                document.getElementById('formPwdPhone').value = phone;
+                document.getElementById('formOldPassword').value = '';
+                document.getElementById('formNewPassword').value = '';
+                document.getElementById('formConfirmPassword').value = '';
+                document.getElementById('passwordModal').style.display = 'flex';
+            }
         });
 
         // 表单提交（新增/编辑）
@@ -222,8 +234,57 @@
             queryUsers();
         });
 
+        // 修改密码表单提交
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var userId = document.getElementById('formPwdUserId').value;
+            var phone = document.getElementById('formPwdPhone').value.trim();
+            var oldPassword = document.getElementById('formOldPassword').value;
+            var newPassword = document.getElementById('formNewPassword').value;
+            var confirmPassword = document.getElementById('formConfirmPassword').value;
+
+            if (!oldPassword) {
+                showToast('请输入原密码', 'error');
+                return;
+            }
+            if (!newPassword || newPassword.length < 6) {
+                showToast('密码最少6位', 'error');
+                return;
+            }
+            if (newPassword !== confirmPassword) {
+                showToast('两次密码输入不一致', 'error');
+                return;
+            }
+
+            var payload = {
+                userId: parseInt(userId),
+                phone: phone,
+                password: oldPassword,
+                newPassword: newPassword
+            };
+
+            request('/api/users/update/pwd', 'POST', payload).then(function(res) {
+                if (res.code === '000000') {
+                    showToast('密码修改成功，即将跳转到登录页', 'success');
+                    document.getElementById('passwordModal').style.display = 'none';
+                    setTimeout(function() {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    showToast(res.message || '修改失败', 'error');
+                }
+            }).catch(function(err) {
+                showToast('网络错误', 'error');
+            });
+        });
+
+        // 修改密码取消
+        document.getElementById('passwordCancelBtn').addEventListener('click', function() {
+            document.getElementById('passwordModal').style.display = 'none';
+        });
+
         // 弹窗背景点击关闭
-        ['userModal', 'roleModal'].forEach(function(id) {
+        ['userModal', 'roleModal', 'passwordModal'].forEach(function(id) {
             document.getElementById(id).addEventListener('click', function(e) {
                 if (e.target === this) this.style.display = 'none';
             });
