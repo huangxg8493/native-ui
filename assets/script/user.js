@@ -8,67 +8,6 @@
     var currentUserId;     // 当前编辑/分配角色的用户ID
     var container;         // 模块容器
 
-    // HTML 模板（缓存，不依赖 DOM 迁移）
-    var HTML_TEMPLATE =
-        '<div class="container" id="userManagementApp">' +
-        '<h1>用户管理</h1>' +
-        '<div class="search-bar">' +
-        '<div class="search-bar-row">' +
-        '<label>手机号</label>' +
-        '<input type="text" id="searchPhone" placeholder="请输入手机号">' +
-        '<label style="margin-left:16px">状态</label>' +
-        '<select id="searchStatus">' +
-        '<option value="">全部</option>' +
-        '<option value="Y">正常</option>' +
-        '<option value="N">禁用</option>' +
-        '</select>' +
-        '<button id="queryBtn" class="btn">查询</button>' +
-        '</div>' +
-        '<button id="addBtn" class="btn" style="background-color:#52c41a">+ 新增用户</button>' +
-        '</div>' +
-        '<table id="userTable">' +
-        '<thead><tr>' +
-        '<th>序号</th><th>手机号</th><th>用户名</th><th>邮箱</th><th>省市</th><th>状态</th><th>创建时间</th><th>操作</th>' +
-        '</tr></thead>' +
-        '<tbody id="userTableBody"></tbody>' +
-        '</table>' +
-        '<div class="pagination">' +
-        '<span id="pageInfo"></span>' +
-        '<select id="pageSizeSelect">' +
-        '<option value="5">5条/页</option>' +
-        '<option value="10" selected>10条/页</option>' +
-        '<option value="20">20条/页</option>' +
-        '<option value="50">50条/页</option>' +
-        '</select>' +
-        '<button id="prevBtn" class="btn">上一页</button>' +
-        '<button id="nextBtn" class="btn">下一页</button>' +
-        '</div>' +
-        '</div>' +
-
-        '<div id="userModal" class="modal" style="display:none">' +
-        '<div class="modal-content">' +
-        '<h2 id="modalTitle">新增用户</h2>' +
-        '<form id="userForm">' +
-        '<input type="hidden" id="formUserId">' +
-        '<div class="form-row"><label>手机号</label><input type="text" id="formPhone" maxlength="11"></div>' +
-        '<div class="form-row"><label>密码</label><input type="password" id="formPassword"></div>' +
-        '<div class="form-row"><label>状态</label>' +
-        '<select id="formStatus"><option value="Y">正常</option><option value="N">禁用</option></select></div>' +
-        '<div class="form-actions"><button type="button" id="cancelBtn" class="btn" style="background-color:#999">取消</button>' +
-        '<button type="submit" class="btn">确定</button></div>' +
-        '</form></div></div>' +
-
-        '<div id="roleModal" class="modal" style="display:none">' +
-        '<div class="modal-content">' +
-        '<h2 id="roleModalTitle">分配角色</h2>' +
-        '<div id="roleList"></div>' +
-        '<div class="form-actions">' +
-        '<button type="button" id="roleCancelBtn" class="btn" style="background-color:#999">取消</button>' +
-        '<button type="button" id="roleConfirmBtn" class="btn">确定</button>' +
-        '</div></div></div>' +
-
-        '<div id="toast" class="toast" style="display:none"></div>';
-
     // Toast 提示
     function showToast(message, type) {
         var toast = document.getElementById('toast');
@@ -350,10 +289,7 @@
     window.UserModule = {
         init: function(cont) {
             container = cont;
-            container.innerHTML = HTML_TEMPLATE;
-            // 绑定事件
             bindEvents();
-            // 初始查询
             queryUsers();
         },
         refresh: function() {
