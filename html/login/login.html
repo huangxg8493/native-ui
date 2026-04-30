@@ -131,7 +131,12 @@
                         // 登录成功，存储认证信息
                         localStorage.setItem('token', res.data.token);
                         localStorage.setItem('phone', res.data.phone);
-                        localStorage.setItem('user', JSON.stringify(res.data.user));
+                        // 大整数转为字符串避免精度丢失
+                        var user = res.data.user;
+                        if (user && user.userId) {
+                            user.userId = String(user.userId);
+                        }
+                        localStorage.setItem('user', JSON.stringify(user));
                         localStorage.setItem('roles', JSON.stringify(res.data.roles));
                         localStorage.setItem('menus', JSON.stringify(res.data.menus));
                         if (!remember) {
