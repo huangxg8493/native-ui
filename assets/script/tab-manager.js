@@ -8,10 +8,10 @@
         activeId: null,
 
         // 注册一个 Tab（但不打开）
-        register: function(id, title, renderFn) {
+        register: function(id, title, renderFn, closable) {
             // 已在 tabs 中则不重复注册
             if (this.tabs.some(function(t) { return t.id === id; })) return;
-            this.tabs.push({ id: id, title: title, renderFn: renderFn });
+            this.tabs.push({ id: id, title: title, renderFn: renderFn, closable: closable !== undefined ? closable : true });
         },
 
         // 打开/激活 Tab
@@ -57,9 +57,10 @@
             var html = '';
             this.tabs.forEach(function(tab) {
                 var active = tab.id === TabManager.activeId ? 'active' : '';
+                var closeBtn = tab.closable !== false ? '<span class="tab-close" data-id="' + tab.id + '">×</span>' : '';
                 html += '<div class="tab-item ' + active + '" data-id="' + tab.id + '">' +
                     '<span class="tab-title">' + tab.title + '</span>' +
-                    '<span class="tab-close" data-id="' + tab.id + '">×</span>' +
+                    closeBtn +
                     '</div>';
             });
             container.innerHTML = html;
