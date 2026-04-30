@@ -1,16 +1,16 @@
-# 用户密码重置功能实施计划
+# 首页实施计划
 
 ## 目标
 
-将 user.html 中的"修改密码"功能改为"重置密码"功能，管理员可直接重置用户密码为默认密码 123456
+在 main.html 中实现首页 Tab，左侧 30% 展示用户信息/日历/公告，右侧 70% 展示待办事项 CRUD
 
 ## 架构
 
-移除密码修改弹窗，改为点击重置按钮后直接 confirm 确认，然后调用重置接口
+首页作为 TabManager 中的一个 Tab，渲染到 `#tabContent` 区域。模块独立加载，复用现有 `loadModule` 约定路径机制。
 
 ## 技术栈
 
-原生 HTML/CSS/JavaScript（无框架）
+原生 JS (IIFE)，localStorage 存储，TabManager 动态渲染
 
 ---
 
@@ -18,40 +18,59 @@
 
 | 文件 | 操作 |
 |------|------|
-| `html/sys/user.html` | 修改：删除密码弹窗，更新按钮文案 |
-| `assets/script/user.js` | 修改：移除密码表单逻辑，改造重置按钮事件处理 |
+| `assets/css/home.css` | 新建：首页样式 |
+| `assets/script/tab-manager.js` | 修改：增加不可关闭 Tab 支持 |
+| `assets/script/home.js` | 新建：首页模块 |
+| `html/main.html` | 修改：注册首页 Tab |
 
 ---
 
 ## 任务清单
 
-### Task 1: 修改 user.html
+### Task 1: 创建首页样式
 
 **涉及文件:**
-- 修改: `html/sys/user.html:104-129`（删除密码弹窗）
-- 修改: `html/sys/user.html:320`（按钮文案）
+- 新建: `assets/css/home.css`
 
 **步骤:**
-- [x] Step 1: 删除密码弹窗 HTML（删除 #passwordModal）
-- [x] Step 2: 修改按钮文案（"修改密码" → "重置密码"）
-- [x] Step 3: git add html/sys/user.html && git commit -m "feat(user): 将修改密码改为重置密码功能"
+- [ ] Step 1: 创建 home.css（简洁商务风格样式）
+- [ ] Step 2: git add assets/css/home.css && git commit -m "feat(home): 创建首页样式文件"
 
-### Task 2: 修改 user.js
+### Task 2: 修改 TabManager 支持不可关闭 Tab
 
 **涉及文件:**
-- 修改: `assets/script/user.js:137-147`（改造重置按钮点击事件）
-- 修改: `assets/script/user.js:237-284`（删除密码表单逻辑）
+- 修改: `assets/script/tab-manager.js`（register 和 render 方法）
 
 **步骤:**
-- [x] Step 1: 修改 changePwdBtn 点击事件（confirm + 调用重置接口）
-- [x] Step 2: 删除密码表单相关代码（passwordForm、passwordCancelBtn、弹窗关闭数组中的 passwordModal）
-- [x] Step 3: git add assets/script/user.js && git commit -m "feat(user): 重置密码功能实现"
+- [ ] Step 1: 修改 register 方法，增加 closable 参数（默认 true）
+- [ ] Step 2: 修改 render 方法，closable 为 false 时不显示关闭按钮
+- [ ] Step 3: git add assets/script/tab-manager.js && git commit -m "feat(tab-manager): 支持不可关闭 Tab"
+
+### Task 3: 创建首页模块
+
+**涉及文件:**
+- 新建: `assets/script/home.js`
+
+**步骤:**
+- [ ] Step 1: 创建 home.js（用户信息、日历、公告、代办 CRUD）
+- [ ] Step 2: git add assets/script/home.js && git commit -m "feat(home): 创建首页模块"
+
+### Task 4: 修改 main.html 注册首页 Tab
+
+**涉及文件:**
+- 修改: `html/main.html`
+
+**步骤:**
+- [ ] Step 1: 添加 home.js 引用
+- [ ] Step 2: 注册首页 Tab（不可关闭），默认打开
+- [ ] Step 3: git add html/main.html && git commit -m "feat(home): 注册首页 Tab，默认打开"
 
 ---
 
 ## 验证步骤
 
-1. 在浏览器打开 user.html
-2. 找到任意用户的"重置密码"按钮并点击
-3. 确认弹出确认框提示"重置后密码为 123456"
-4. 点击确定后，验证 Toast 提示"重置成功，密码已重置为 123456"
+1. 登录后跳转到 main.html
+2. Tab 栏左侧显示"首页" Tab，无关闭按钮
+3. 左侧显示用户信息（姓名、头像、手机号）、日历（今日高亮）、公告列表
+4. 右侧显示待办事项列表，可新增/编辑/删除/标记完成
+5. 刷新页面后代办数据保留（localStorage）
