@@ -27,3 +27,26 @@
 ### 参考文档
 - `docs/superpowers/specs/2026-04-30-register-html-update-design.md`
 - `docs/superpowers/plans/2026-04-30-register-html-update-plan.md`
+
+---
+
+## user.html 密码重置功能改造
+
+### 背景
+将 user.html 中的"修改密码"功能改为"重置密码"功能。管理员可为任意用户重置密码，无需验证旧密码。
+
+### 接口信息
+- URL: `POST /api/users/{userId}/password/reset`
+- 方法: POST
+- 认证: JWT Token
+- 请求体: `{ "newPassword": "123456" }`
+
+### 改动点
+1. 删除 `#passwordModal`（修改密码弹窗）
+2. 按钮文案从"修改密码"改为"重置密码"
+3. 点击重置按钮 → confirm 确认 → 调用重置接口
+4. 成功后 Toast 提示"重置成功，密码已重置为 123456"
+
+### 参考文档
+- `docs/superpowers/specs/2026-04-30-user-password-reset-design.md`
+- `docs/superpowers/plans/2026-04-30-user-password-reset-plan.md`

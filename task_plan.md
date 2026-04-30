@@ -1,75 +1,57 @@
-# 任务计划
+# 用户密码重置功能实施计划
 
-## 项目目标
-调整 register.html 表单结构，适配新的用户注册接口字段
+## 目标
 
-## 文件结构
-| 文件 | 说明 |
+将 user.html 中的"修改密码"功能改为"重置密码"功能，管理员可直接重置用户密码为默认密码 123456
+
+## 架构
+
+移除密码修改弹窗，改为点击重置按钮后直接 confirm 确认，然后调用重置接口
+
+## 技术栈
+
+原生 HTML/CSS/JavaScript（无框架）
+
+---
+
+## 文件映射
+
+| 文件 | 操作 |
 |------|------|
-| `html/login/register.html` | 注册页面 - 表单结构调整和 JS 逻辑更新 |
+| `html/sys/user.html` | 修改：删除密码弹窗，更新按钮文案 |
+| `assets/script/user.js` | 修改：移除密码表单逻辑，改造重置按钮事件处理 |
 
 ---
 
-## 实现计划
+## 任务清单
 
-### Task 1: 调整 register.html HTML 结构
+### Task 1: 修改 user.html
 
-- [x] Step 1: 移除省份输入框（province）
-- [x] Step 2: 移除城市输入框（city）- 后面重新新增
-- [x] Step 3: 移除区县输入框（district）
-- [x] Step 4: 新增城市输入框（city）
-- [x] Step 5: 新增地址详情输入框（addrDetail）
-- [x] Step 6: git add html/login/register.html && git commit -m "feat: register.html移除省份区县字段，新增地址详情"
+**涉及文件:**
+- 修改: `html/sys/user.html:104-129`（删除密码弹窗）
+- 修改: `html/sys/user.html:320`（按钮文案）
 
-### Task 2: 调整 register.html JS 逻辑
+**步骤:**
+- [ ] Step 1: 删除密码弹窗 HTML（删除 #passwordModal）
+- [ ] Step 2: 修改按钮文案（"修改密码" → "重置密码"）
+- [ ] Step 3: git add html/sys/user.html && git commit -m "feat(user): 将修改密码改为重置密码功能"
 
-- [x] Step 1: 移除 province/city/district 变量，新增 city/addrDetail 变量
-- [x] Step 2: 更新 registerData payload，移除 province/district，新增 city/addrDetail
-- [x] Step 3: git commit -m "feat: register.html更新JS逻辑，适配新接口字段"
+### Task 2: 修改 user.js
 
-### Task 3: 验证
+**涉及文件:**
+- 修改: `assets/script/user.js:137-147`（改造重置按钮点击事件）
+- 修改: `assets/script/user.js:237-284`（删除密码表单逻辑）
 
-- [x] Step 1: 在浏览器中打开 register.html 验证表单结构
-- [x] Step 2: 检查 payload 是否正确
+**步骤:**
+- [ ] Step 1: 修改 changePwdBtn 点击事件（confirm + 调用重置接口）
+- [ ] Step 2: 删除密码表单相关代码（passwordForm、passwordCancelBtn、弹窗关闭数组中的 passwordModal）
+- [ ] Step 3: git add assets/script/user.js && git commit -m "feat(user): 重置密码功能实现"
 
 ---
 
-## 接口字段变更说明
+## 验证步骤
 
-### 移除字段
-- province（省份）
-- district（区县）
-
-### 新增字段
-- addrDetail（地址详情）
-
-### 保留字段
-- phone（手机号）
-- userName（用户名称）
-- email（邮箱）
-- city（城市）
-- hobby（爱好）
-- password（密码）
-
-### 新表单字段顺序
-1. 手机号（必填）
-2. 用户名称（必填）
-3. 邮箱（选填）
-4. 城市（选填）
-5. 地址详情（选填）
-6. 爱好（选填）
-7. 密码（必填）
-8. 确认密码（必填）
-
-### 提交 Payload
-```json
-{
-    "phone": "13900000001",
-    "userName": "张三",
-    "email": "zhangsan@example.com",
-    "city": "深圳市",
-    "addrDetail": "南山区xxx街道xxx号",
-    "hobby": "篮球",
-    "password": "password123"
-}
-```
+1. 在浏览器打开 user.html
+2. 找到任意用户的"重置密码"按钮并点击
+3. 确认弹出确认框提示"重置后密码为 123456"
+4. 点击确定后，验证 Toast 提示"重置成功，密码已重置为 123456"
