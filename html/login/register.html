@@ -119,9 +119,8 @@
                 var email = document.getElementById('email').value.trim();
                 var password = document.getElementById('password').value;
                 var confirmPassword = document.getElementById('confirmPassword').value;
-                var province = document.getElementById('province').value.trim();
                 var city = document.getElementById('city').value.trim();
-                var district = document.getElementById('district').value.trim();
+                var addrDetail = document.getElementById('addrDetail').value.trim();
                 var hobby = document.getElementById('hobby').value.trim();
 
                 // 前端验证
@@ -177,11 +176,10 @@
                     phone: phone,
                     userName: userName,
                     email: email,
-                    password: password,
-                    province: province,
                     city: city,
-                    district: district,
-                    hobby: hobby
+                    addrDetail: addrDetail,
+                    hobby: hobby,
+                    password: password
                 };
 
                 registerBtn.disabled = true;
