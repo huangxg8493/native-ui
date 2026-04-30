@@ -29,8 +29,8 @@
 
 ### Task 3: 验证
 
-- [ ] Step 1: 在浏览器中打开 register.html 验证表单结构
-- [ ] Step 2: 检查 payload 是否正确
+- [x] Step 1: 在浏览器中打开 register.html 验证表单结构
+- [x] Step 2: 检查 payload 是否正确
 
 ---
 
