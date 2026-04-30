@@ -32,9 +32,9 @@
 - 修改: `html/sys/user.html:320`（按钮文案）
 
 **步骤:**
-- [ ] Step 1: 删除密码弹窗 HTML（删除 #passwordModal）
-- [ ] Step 2: 修改按钮文案（"修改密码" → "重置密码"）
-- [ ] Step 3: git add html/sys/user.html && git commit -m "feat(user): 将修改密码改为重置密码功能"
+- [x] Step 1: 删除密码弹窗 HTML（删除 #passwordModal）
+- [x] Step 2: 修改按钮文案（"修改密码" → "重置密码"）
+- [x] Step 3: git add html/sys/user.html && git commit -m "feat(user): 将修改密码改为重置密码功能"
 
 ### Task 2: 修改 user.js
 
@@ -43,9 +43,9 @@
 - 修改: `assets/script/user.js:237-284`（删除密码表单逻辑）
 
 **步骤:**
-- [ ] Step 1: 修改 changePwdBtn 点击事件（confirm + 调用重置接口）
-- [ ] Step 2: 删除密码表单相关代码（passwordForm、passwordCancelBtn、弹窗关闭数组中的 passwordModal）
-- [ ] Step 3: git add assets/script/user.js && git commit -m "feat(user): 重置密码功能实现"
+- [x] Step 1: 修改 changePwdBtn 点击事件（confirm + 调用重置接口）
+- [x] Step 2: 删除密码表单相关代码（passwordForm、passwordCancelBtn、弹窗关闭数组中的 passwordModal）
+- [x] Step 3: git add assets/script/user.js && git commit -m "feat(user): 重置密码功能实现"
 
 ---
 
