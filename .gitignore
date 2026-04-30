@@ -20,3 +20,6 @@ logs/
 *.log
 
 *.iml
+
+# Worktrees
+.worktrees/
