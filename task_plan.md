@@ -14,18 +14,18 @@
 
 ### Task 1: 调整 register.html HTML 结构
 
-- [ ] Step 1: 移除省份输入框（province）
-- [ ] Step 2: 移除城市输入框（city）- 后面重新新增
-- [ ] Step 3: 移除区县输入框（district）
-- [ ] Step 4: 新增城市输入框（city）
-- [ ] Step 5: 新增地址详情输入框（addrDetail）
-- [ ] Step 6: git add html/login/register.html && git commit -m "feat: register.html移除省份区县字段，新增地址详情"
+- [x] Step 1: 移除省份输入框（province）
+- [x] Step 2: 移除城市输入框（city）- 后面重新新增
+- [x] Step 3: 移除区县输入框（district）
+- [x] Step 4: 新增城市输入框（city）
+- [x] Step 5: 新增地址详情输入框（addrDetail）
+- [x] Step 6: git add html/login/register.html && git commit -m "feat: register.html移除省份区县字段，新增地址详情"
 
 ### Task 2: 调整 register.html JS 逻辑
 
-- [ ] Step 1: 移除 province/city/district 变量，新增 city/addrDetail 变量
-- [ ] Step 2: 更新 registerData payload，移除 province/district，新增 city/addrDetail
-- [ ] Step 3: git commit -m "feat: register.html更新JS逻辑，适配新接口字段"
+- [x] Step 1: 移除 province/city/district 变量，新增 city/addrDetail 变量
+- [x] Step 2: 更新 registerData payload，移除 province/district，新增 city/addrDetail
+- [x] Step 3: git commit -m "feat: register.html更新JS逻辑，适配新接口字段"
 
 ### Task 3: 验证
 
