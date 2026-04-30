@@ -61,6 +61,15 @@
             pad(d.getHours()) + ':' + pad(d.getMinutes());
     }
 
+    // 自定义确认弹窗
+    var confirmCallback; // 确认回调
+    function showConfirm(title, message, onConfirm) {
+        document.getElementById('confirmTitle').textContent = title;
+        document.getElementById('confirmMessage').textContent = message;
+        confirmCallback = onConfirm;
+        document.getElementById('confirmModal').style.display = 'flex';
+    }
+
     // 绑定事件
     function bindEvents() {
         // 查询
@@ -137,15 +146,16 @@
             if (target.classList.contains('changePwdBtn')) {
                 var userId = parseInt(target.dataset.userid);
                 var phone = target.dataset.phone;
-                if (!confirm('确定要重置该用户密码吗？重置后密码为 123456')) return;
-                request('/api/users/' + userId + '/password/reset', 'POST', { newPassword: '123456' }).then(function(res) {
-                    if (res.code === '000000') {
-                        showToast('重置成功，密码已重置为 123456', 'success');
-                    } else {
-                        showToast(res.message || '重置失败', 'error');
-                    }
-                }).catch(function(err) {
-                    showToast('网络错误', 'error');
+                showConfirm('重置密码', '确定要重置该用户密码吗？重置后密码为 123456', function() {
+                    request('/api/users/' + userId + '/password/reset', 'POST', { newPassword: '123456' }).then(function(res) {
+                        if (res.code === '000000') {
+                            showToast('重置成功，密码已重置为 123456', 'success');
+                        } else {
+                            showToast(res.message || '重置失败', 'error');
+                        }
+                    }).catch(function(err) {
+                        showToast('网络错误', 'error');
+                    });
                 });
             }
         });
@@ -220,6 +230,27 @@
 
         document.getElementById('roleCancelBtn').addEventListener('click', function() {
             document.getElementById('roleModal').style.display = 'none';
+        });
+
+        // 确认弹窗按钮事件
+        document.getElementById('confirmOkBtn').addEventListener('click', function() {
+            document.getElementById('confirmModal').style.display = 'none';
+            if (confirmCallback) {
+                confirmCallback();
+                confirmCallback = null;
+            }
+        });
+
+        document.getElementById('confirmCancelBtn').addEventListener('click', function() {
+            document.getElementById('confirmModal').style.display = 'none';
+            confirmCallback = null;
+        });
+
+        document.getElementById('confirmModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                confirmCallback = null;
+            }
         });
 
         // 分页
