@@ -317,7 +317,7 @@
                 '<td>' + formatTime(user.updateTime) + '</td>' +
                 '<td>' +
                     '<button class="editBtn btn" data-userid="' + user.userId + '">编辑</button>' +
-                    '<button class="changePwdBtn btn" style="background-color:#faad14" data-userid="' + user.userId + '" data-phone="' + escapeHtml(user.phone) + '">修改密码</button>' +
+                    '<button class="changePwdBtn btn" style="background-color:#faad14" data-userid="' + user.userId + '" data-phone="' + escapeHtml(user.phone) + '">重置密码</button>' +
                     '<button class="deleteBtn btn" style="background-color:#ff4d4f" data-userid="' + user.userId + '">删除</button>' +
                     '<button class="roleBtn btn" data-userid="' + user.userId + '" data-phone="' + escapeHtml(user.phone) + '">分配角色</button>' +
                 '</td>' +
