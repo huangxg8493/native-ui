@@ -280,8 +280,15 @@
 
     // 渲染整个首页
     function render() {
-        container.innerHTML =
-            '<link rel="stylesheet" href="../assets/css/home.css">' +
+        // 防止 CSS 重复加载
+        if (!document.querySelector('link[href*="home.css"]')) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = '../assets/css/home.css';
+            document.head.appendChild(link);
+        }
+
+        container.innerHTML = '' +
             '<div class="home-container">' +
             '  <div class="home-left">' +
             '    <div class="user-info">' +

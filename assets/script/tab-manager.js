@@ -30,6 +30,9 @@
 
         // 关闭 Tab
         close: function(id) {
+            var tab = this.tabs.find(function(t) { return t.id === id; });
+            if (!tab) return;
+            if (tab.closable === false) return;  // 不可关闭
             var idx = this.tabs.findIndex(function(t) { return t.id === id; });
             if (idx === -1) return;
             this.tabs.splice(idx, 1);
