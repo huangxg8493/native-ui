@@ -16,8 +16,12 @@
 
         // 打开/激活 Tab
         open: function(id) {
+            console.log('[DEBUG] TabManager.open called, id:', id);
             var tab = this.tabs.find(function(t) { return t.id === id; });
-            if (!tab) return;
+            if (!tab) {
+                console.log('[DEBUG] Tab not found, tabs:', this.tabs.map(t => t.id));
+                return;
+            }
             this.activeId = id;
 
             // 隐藏欢迎页

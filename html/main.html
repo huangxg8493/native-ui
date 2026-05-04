@@ -514,6 +514,7 @@
             loadIconSprites().then(function() {
                 // 注册首页 Tab（不可关闭，最左端）
                 TabManager.register('home', '首页', function() {
+                    console.log('[DEBUG] home Tab renderFn called');
                     HomeModule.init(document.getElementById('tabContent'));
                 }, false);
 
@@ -526,13 +527,20 @@
                     var closeBtn = e.target.closest('.tab-close');
                     if (closeBtn) {
                         var id = closeBtn.dataset.id;
+                        console.log('[DEBUG] 点击关闭按钮, id:', id);
                         TabManager.close(id);
+                        console.log('[DEBUG] 关闭后 tabs:', TabManager.tabs.map(t => t.id));
                         return;
                     }
                     var tabItem = e.target.closest('.tab-item');
                     if (tabItem) {
                         var id = tabItem.dataset.id;
+                        console.log('[DEBUG] 点击 Tab, id:', id);
+                        console.log('[DEBUG] 点击前 tabs:', TabManager.tabs.map(t => t.id));
+                        console.log('[DEBUG] 点击前 activeId:', TabManager.activeId);
                         TabManager.open(id);
+                        console.log('[DEBUG] open 后 tabs:', TabManager.tabs.map(t => t.id));
+                        console.log('[DEBUG] open 后 activeId:', TabManager.activeId);
                     }
                 });
             });
