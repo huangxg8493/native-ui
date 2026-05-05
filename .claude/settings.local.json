@@ -41,7 +41,10 @@
       "Bash(git ls-tree *)",
       "Bash(git checkout *)",
       "Bash(git merge *)",
-      "Bash(git branch *)"
+      "Bash(git branch *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk git *)",
+      "Bash(grep -E \"\\\\.\\(html|css|js\\)$\")"
     ]
   }
 }
