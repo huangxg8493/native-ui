@@ -11,7 +11,7 @@ html, body {
 body {
     font-family: "Microsoft YaHei", Arial, sans-serif;
     background-color: #f5f5f5;
-    font-size: 14px;
+    font-size: 11px;
 }
 
 .container {
@@ -19,38 +19,38 @@ body {
     /*margin: 20px auto;*/
     /*padding: 20px;*/
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     height: 100%;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     color: #333;
 }
 
 .search-bar {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .search-bar-row {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .search-bar-row label {
-    margin-right: 8px;
+    margin-right: 6px;
     font-weight: 500;
     color: #333;
 }
 
 .search-bar input {
-    padding: 8px 12px;
+    padding: 6px 10px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    width: 200px;
-    font-size: 14px;
+    border-radius: 3px;
+    width: 160px;
+    font-size: 11px;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -61,11 +61,11 @@ h1 {
 }
 
 .search-bar select {
-    padding: 8px 12px;
+    padding: 6px 10px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
+    border-radius: 3px;
     width: auto;
-    font-size: 14px;
+    font-size: 11px;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -76,16 +76,16 @@ h1 {
 }
 
 .search-bar button {
-    padding: 8px 16px;
+    padding: 6px 13px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
 #queryBtn {
     background-color: #1890ff;
     color: white;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
 #queryBtn:hover {
@@ -104,12 +104,12 @@ h1 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 10px;
     text-align: left;
 }
 
@@ -126,10 +126,10 @@ th {
 }
 
 .pagination button {
-    padding: 6px 12px;
+    padding: 5px 10px;
     border: 1px solid #ddd;
     background: white;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -139,10 +139,10 @@ th {
 }
 
 .pagination select {
-    padding: 6px 8px;
+    padding: 5px 6px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 3px;
+    font-size: 11px;
     cursor: pointer;
 }
 
@@ -160,42 +160,42 @@ th {
 
 .modal-content {
     background: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 400px;
+    padding: 24px;
+    border-radius: 6px;
+    width: 320px;
 }
 
 .modal-content h2 {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .confirm-modal-content {
-    width: 360px;
+    width: 288px;
     text-align: center;
 }
 
 .confirm-modal-content h2 {
-    font-size: 18px;
+    font-size: 14px;
     color: #333;
-    margin-bottom: 16px;
+    margin-bottom: 13px;
 }
 
 .confirm-modal-content p {
-    font-size: 14px;
+    font-size: 11px;
     color: #666;
-    margin-bottom: 24px;
+    margin-bottom: 19px;
     line-height: 1.5;
 }
 
 .form-row {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .form-row label {
-    width: 80px;
-    line-height: 32px;
+    width: 64px;
+    line-height: 26px;
     font-weight: 500;
 }
 
@@ -203,10 +203,10 @@ th {
 .form-row select,
 .form-row textarea {
     flex: 1;
-    padding: 8px;
+    padding: 6px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 3px;
+    font-size: 11px;
 }
 
 .form-row textarea {
@@ -215,14 +215,14 @@ th {
 
 .form-actions {
     text-align: right;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .form-actions button {
-    padding: 8px 20px;
-    margin-left: 10px;
+    padding: 6px 16px;
+    margin-left: 8px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -251,11 +251,11 @@ th {
 #confirmCancelBtn {
     background-color: #999;
     color: white;
-    padding: 8px 24px;
+    padding: 6px 19px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
-    margin-right: 12px;
+    margin-right: 10px;
 }
 
 #confirmCancelBtn:hover {
@@ -263,19 +263,19 @@ th {
 }
 
 #confirmOkBtn {
-    padding: 8px 24px;
+    padding: 6px 19px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
     color: white;
 }
 
 /* user 页面专用样式 */
 .editBtn, .deleteBtn, .roleBtn {
-    padding: 4px 8px;
-    margin-right: 5px;
+    padding: 3px 6px;
+    margin-right: 4px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -300,7 +300,7 @@ th {
 .role-item {
     display: flex;
     align-items: center;
-    padding: 8px 0;
+    padding: 6px 0;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -309,7 +309,7 @@ th {
 }
 
 .role-item input {
-    margin-right: 8px;
+    margin-right: 6px;
 }
 
 .role-item label {
@@ -317,8 +317,8 @@ th {
 }
 
 #roleList {
-    margin: 15px 0;
-    max-height: 300px;
+    margin: 12px 0;
+    max-height: 240px;
     overflow-y: auto;
 }
 
@@ -327,10 +327,10 @@ th {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 12px 24px;
-    border-radius: 4px;
+    padding: 10px 19px;
+    border-radius: 3px;
     color: #fff;
-    font-size: 14px;
+    font-size: 11px;
     z-index: 10000;
 }
 
@@ -339,7 +339,7 @@ th {
 .toast.info { background: #1890ff; }
 
 @keyframes toastIn {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; transform: translateY(-16px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -353,9 +353,9 @@ th {
     background-color: #faad14 !important;
     color: #fff !important;
     border: none;
-    padding: 4px 12px;
-    border-radius: 4px;
+    padding: 3px 10px;
+    border-radius: 3px;
     cursor: pointer;
-    font-size: 14px;
-    margin-right: 4px;
+    font-size: 11px;
+    margin-right: 3px;
 }
