@@ -44,7 +44,8 @@
       "Bash(git branch *)",
       "Bash(rtk ls *)",
       "Bash(rtk git *)",
-      "Bash(grep -E \"\\\\.\\(html|css|js\\)$\")"
+      "Bash(grep -E \"\\\\.\\(html|css|js\\)$\")",
+      "Bash(rtk grep *)"
     ]
   }
 }
