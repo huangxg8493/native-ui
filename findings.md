@@ -1,23 +1,31 @@
 # 发现记录
 
-## Home 模块文件重组
+## 全局缩放 80%
 
 ### 背景
-当前 `home` 模块只有 `assets/script/home.js` 和 `assets/css/home.css`，缺少 `home.html`，与其他模块（如 `user`）的文件组织风格不一致。
+用户要求将所有页面等比例缩小到原来的 80%
 
-### 现有架构
-- `main.html` — 登录后主框架，包含顶部导航和 Tab 区域
-- `home.js` + `home.css` — 首页模块资源，被 main.html 动态加载
-- `home.js` 中 `render()` 函数通过字符串拼接生成 HTML
+### 缩放规则
+- px 值：乘以 0.8，四舍五入取整
+- % 值：乘以 0.8，四舍五入取整
+- 所有 CSS 属性适用
 
-### 参考模块
-- `html/sys/user.html` — HTML 片段风格（其他模块参考）
-- `html/login/login.html` — 独立页面风格
+### CSS 文件
+- assets/css/icons.css
+- assets/icons/icons.css
+- assets/css/login.css
+- assets/css/address.css
+- assets/css/user.css
+- assets/css/home.css
 
-### 设计决策
-- 采用 A 方案：从 JS render() 提取 HTML 为真实 HTML 片段
-- `home.html` 走 HTML 模式加载（type: 'html'），与 user 模块一致
+### HTML 内联样式
+- html/main.html
+- html/home/home.html
+- html/login/login.html
+- html/login/register.html
+- html/client/address.html
+- html/sys/user.html
 
 ### 参考文档
-- `docs/superpowers/specs/2026-05-05-home-module-restructuring-design.md`
-- `docs/superpowers/plans/2026-05-05-home-module-restructuring-plan.md`
+- docs/superpowers/specs/2026-05-05-global-scale-down-design.md
+- docs/superpowers/plans/2026-05-05-global-scale-down-plan.md

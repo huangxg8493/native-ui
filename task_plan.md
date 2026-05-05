@@ -1,16 +1,16 @@
-# Home 模块文件重组实施计划
+# 全局缩放 80% 实施计划
 
 ## 目标
 
-将 home 模块重组为 `html/home/home.html` + `home.js` + `home.css`，与 user 模块风格一致
+将所有页面等比例缩小到原来的 80%
 
 ## 架构
 
-将 `home.js` 中 `render()` 的 HTML 字符串提取为真实 HTML 片段；CSS 文件迁移到 `html/home/` 目录；`main.html` 的 `moduleMap` 添加 home 模块的 HTML 路径，使 home 走 HTML 模式加载。
+纯机械替换，所有 px 值和 % 值乘以 0.8，四舍五入取整
 
 ## 技术栈
 
-原生 HTML/CSS/JS，IIFE 模式
+手动编辑 CSS 和 HTML 文件
 
 ---
 
@@ -18,68 +18,104 @@
 
 | 文件 | 操作 |
 |------|------|
-| `html/home/home.html` | 新建：首页 HTML 片段 |
-| `html/home/home.css` | 新建：从 assets/css/home.css 迁移 |
-| `assets/script/home.js` | 修改：改造 render 函数 |
-| `assets/css/home.css` | 删除：已迁移到 html/home/home.css |
-| `html/main.html` | 修改：moduleMap 添加 home 条目 |
+| `assets/css/icons.css` | 修改：px/% 缩放 |
+| `assets/icons/icons.css` | 修改：px/% 缩放 |
+| `assets/css/login.css` | 修改：px/% 缩放 |
+| `assets/css/address.css` | 修改：px/% 缩放 |
+| `assets/css/user.css` | 修改：px/% 缩放 |
+| `assets/css/home.css` | 修改：px/% 缩放 |
+| `html/main.html` | 修改：内联样式 px/% 缩放 |
+| `html/home/home.html` | 修改：内联样式 px/% 缩放 |
+| `html/login/login.html` | 修改：内联样式 px/% 缩放 |
+| `html/login/register.html` | 修改：内联样式 px/% 缩放 |
+| `html/client/address.html` | 修改：内联样式 px/% 缩放 |
+| `html/sys/user.html` | 修改：内联样式 px/% 缩放 |
 
 ---
 
 ## 任务清单
 
-### Task 1: 创建 `html/home/home.html`
+### Task 1: `assets/css/icons.css`
 
 **涉及文件:**
-- 新建: `html/home/home.html`
+- 修改: `assets/css/icons.css`
 
 **步骤:**
-- [ ] Step 1: 创建 home.html（提取自 home.js render() 函数的 HTML 字符串）
-- [ ] Step 2: git add html/home/home.html && git commit -m "feat(home): 创建 home.html 主页模块 HTML 片段"
+- [ ] Step 1: 读取文件，找到所有 px 和 % 值，乘 0.8 取整，写回文件
+- [ ] Step 2: git add assets/css/icons.css && git commit -m "style(icons): 全局缩放 80%"
 
-### Task 2: 创建 `html/home/home.css`
+### Task 2: `assets/icons/icons.css`
 
 **涉及文件:**
-- 新建: `html/home/home.css`
+- 修改: `assets/icons/icons.css`
 
 **步骤:**
-- [ ] Step 1: 从 assets/css/home.css 读取内容，写入 html/home/home.css
-- [ ] Step 2: git add html/home/home.css && git commit -m "feat(home): 迁移 home.css 到 html/home 目录"
+- [ ] Step 1: 读取文件，找到所有 px 和 % 值，乘 0.8 取整，写回文件
+- [ ] Step 2: git add assets/icons/icons.css && git commit -m "style(icons): 全局缩放 80%"
 
-### Task 3: 改造 `assets/script/home.js`
+### Task 3: `assets/css/login.css`
 
 **涉及文件:**
-- 修改: `assets/script/home.js`
+- 修改: `assets/css/login.css`
 
 **步骤:**
-- [ ] Step 1: render() 函数从拼接 HTML 改为数据绑定（调用 renderUserInfo/renderCalendar/renderNotice/renderTodos）
-- [ ] Step 2: 删除 CSS 动态加载逻辑（loadModule 统一处理）
-- [ ] Step 3: git add assets/script/home.js && git commit -m "refactor(home): 改造 render 函数，从拼接 HTML 改为数据绑定"
+- [ ] Step 1: 读取文件，找到所有 px 和 % 值，乘 0.8 取整，写回文件
+- [ ] Step 2: git add assets/css/login.css && git commit -m "style(login): 全局缩放 80%"
 
-### Task 4: 删除 `assets/css/home.css`
+### Task 4: `assets/css/address.css`
 
 **涉及文件:**
-- 删除: `assets/css/home.css`
+- 修改: `assets/css/address.css`
 
 **步骤:**
-- [ ] Step 1: git rm assets/css/home.css
-- [ ] Step 2: git commit -m "refactor(home): 删除已迁移的 assets/css/home.css"
+- [ ] Step 1: 读取文件，找到所有 px 和 % 值，乘 0.8 取整，写回文件
+- [ ] Step 2: git add assets/css/address.css && git commit -m "style(address): 全局缩放 80%"
 
-### Task 5: 更新 `main.html` 的 moduleMap
+### Task 5: `assets/css/user.css`
+
+**涉及文件:**
+- 修改: `assets/css/user.css`
+
+**步骤:**
+- [ ] Step 1: 读取文件，找到所有 px 和 % 值，乘 0.8 取整，写回文件
+- [ ] Step 2: git add assets/css/user.css && git commit -m "style(user): 全局缩放 80%"
+
+### Task 6: `assets/css/home.css`
+
+**涉及文件:**
+- 修改: `assets/css/home.css`
+
+**步骤:**
+- [ ] Step 1: 读取文件，找到所有 px 和 % 值，乘 0.8 取整，写回文件
+- [ ] Step 2: git add assets/css/home.css && git commit -m "style(home): 全局缩放 80%"
+
+### Task 7: `html/main.html`
 
 **涉及文件:**
 - 修改: `html/main.html`
 
 **步骤:**
-- [ ] Step 1: 在 moduleMap 中添加 `'home': { type: 'html', html: 'html/home/home.html' }`
-- [ ] Step 2: git add html/main.html && git commit -m "feat(main): 注册 home 模块到 moduleMap，走 HTML 模式加载"
+- [ ] Step 1: 读取文件，找到内联 style 中的 px 和 % 值，乘 0.8 取整
+- [ ] Step 2: git add html/main.html && git commit -m "style(main): 全局缩放 80%"
+
+### Task 8: 其他 HTML 文件内联样式
+
+**涉及文件:**
+- 修改: `html/home/home.html`
+- 修改: `html/login/login.html`
+- 修改: `html/login/register.html`
+- 修改: `html/client/address.html`
+- 修改: `html/sys/user.html`
+
+**步骤:**
+- [ ] Step 1: 读取每个文件，找到内联 style 中的 px 和 % 值，乘 0.8 取整
+- [ ] Step 2: git add 所有修改的 HTML 文件 && git commit -m "style: 全局缩放 80%（其他页面）"
 
 ---
 
 ## 验证步骤
 
-1. 登录系统，确认首页 Tab 能正常打开
-2. 检查 Network 面板，确认 `html/home/home.html` 和 `html/home/home.css` 被请求
-3. 确认用户信息、日历、公告、代办事项均正常显示
-4. 确认新增/编辑/删除代办功能正常
-5. 确认新增代办后刷新页面数据仍保留（localStorage）
+每个 CSS 文件改完后刷新页面确认：
+1. 布局是否正常（无元素溢出、无遮挡）
+2. 各模块（登录页、地址管理、用户管理、首页）显示正常
+3. 按钮、输入框、表格等交互元素大小合适
