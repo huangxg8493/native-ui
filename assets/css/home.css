@@ -8,12 +8,12 @@
 
 /* 左侧区域 */
 .home-left {
-    width: 30%;
-    min-width: 280px;
-    padding: 16px;
+    width: 24%;
+    min-width: 224px;
+    padding: 13px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 13px;
     background: #fff;
     border-right: 1px solid #e8e8e8;
     overflow-y: auto;
@@ -22,7 +22,7 @@
 /* 右侧区域 */
 .home-right {
     flex: 1;
-    padding: 16px;
+    padding: 13px;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -31,25 +31,25 @@
 
 /* 用户信息区块 */
 .user-info {
-    padding: 16px;
+    padding: 13px;
     background: #fafafa;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #e8e8e8;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .user-avatar {
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: #1890ff;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     flex-shrink: 0;
 }
@@ -60,31 +60,31 @@
 }
 
 .user-name {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
     color: #333;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
 }
 
 .user-phone {
-    font-size: 13px;
+    font-size: 10px;
     color: #999;
 }
 
 /* 日历区块 */
 .calendar-block {
-    padding: 16px;
+    padding: 13px;
     background: #fafafa;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #e8e8e8;
 }
 
 .section-title {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 600;
     color: #333;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
     border-bottom: 1px solid #e8e8e8;
 }
 
@@ -92,11 +92,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .calendar-title {
-    font-size: 14px;
+    font-size: 11px;
     color: #333;
     font-weight: 500;
 }
@@ -104,21 +104,21 @@
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
+    gap: 3px;
     text-align: center;
 }
 
 .calendar-weekday {
-    font-size: 12px;
+    font-size: 10px;
     color: #999;
-    padding: 4px 0;
+    padding: 3px 0;
 }
 
 .calendar-day {
-    font-size: 12px;
+    font-size: 10px;
     color: #333;
-    padding: 6px 4px;
-    border-radius: 4px;
+    padding: 5px 3px;
+    border-radius: 3px;
     cursor: default;
 }
 
@@ -134,9 +134,9 @@
 
 /* 公告区块 */
 .notice-block {
-    padding: 16px;
+    padding: 13px;
     background: #fafafa;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #e8e8e8;
     flex: 1;
     overflow-y: auto;
@@ -149,9 +149,9 @@
 }
 
 .notice-item {
-    padding: 10px 8px;
+    padding: 8px 6px;
     border-bottom: 1px solid #f0f0f0;
-    font-size: 13px;
+    font-size: 10px;
     color: #666;
     display: flex;
     align-items: center;
@@ -163,19 +163,19 @@
 
 .notice-item::before {
     content: '';
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: #1890ff;
     border-radius: 50%;
-    margin-right: 8px;
+    margin-right: 6px;
     flex-shrink: 0;
 }
 
 .notice-empty {
     color: #999;
-    font-size: 13px;
+    font-size: 10px;
     text-align: center;
-    padding: 20px 0;
+    padding: 16px 0;
 }
 
 /* 代办事项区块 */
@@ -190,16 +190,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 13px;
 }
 
 .todo-add-btn {
-    padding: 6px 16px;
+    padding: 5px 13px;
     background: #1890ff;
     color: #fff;
     border: none;
-    border-radius: 4px;
-    font-size: 13px;
+    border-radius: 3px;
+    font-size: 10px;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -216,11 +216,11 @@
 .todo-item {
     display: flex;
     align-items: flex-start;
-    padding: 12px;
+    padding: 10px;
     background: #fafafa;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #e8e8e8;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     transition: border-color 0.2s;
 }
 
@@ -237,9 +237,9 @@
 }
 
 .todo-checkbox {
-    width: 18px;
-    height: 18px;
-    margin-right: 12px;
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
     margin-top: 2px;
     cursor: pointer;
     accent-color: #1890ff;
@@ -251,30 +251,30 @@
 }
 
 .todo-title {
-    font-size: 14px;
+    font-size: 11px;
     color: #333;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
     word-break: break-word;
 }
 
 .todo-text {
-    font-size: 12px;
+    font-size: 10px;
     color: #999;
     word-break: break-word;
 }
 
 .todo-actions {
     display: flex;
-    gap: 8px;
-    margin-left: 8px;
+    gap: 6px;
+    margin-left: 6px;
 }
 
 .todo-edit-btn,
 .todo-delete-btn {
-    padding: 4px 8px;
+    padding: 3px 6px;
     border: none;
-    border-radius: 4px;
-    font-size: 12px;
+    border-radius: 3px;
+    font-size: 10px;
     cursor: pointer;
     transition: opacity 0.2s;
 }
@@ -299,9 +299,9 @@
 
 .todo-empty {
     color: #999;
-    font-size: 13px;
+    font-size: 10px;
     text-align: center;
-    padding: 40px 0;
+    padding: 32px 0;
 }
 
 /* 新增/编辑弹窗 */
@@ -312,7 +312,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.36);
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -324,42 +324,42 @@
 
 .modal-box {
     background: #fff;
-    border-radius: 8px;
-    padding: 24px;
-    min-width: 400px;
-    max-width: 500px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    padding: 19px;
+    min-width: 320px;
+    max-width: 400px;
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.12);
 }
 
 .modal-title {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .modal-form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 13px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
 }
 
 .form-label {
-    font-size: 13px;
+    font-size: 10px;
     color: #666;
 }
 
 .form-input {
-    padding: 8px 12px;
+    padding: 6px 10px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 3px;
+    font-size: 11px;
     outline: none;
     transition: border-color 0.2s;
 }
@@ -369,23 +369,23 @@
 }
 
 textarea.form-input {
-    min-height: 80px;
+    min-height: 64px;
     resize: vertical;
 }
 
 .modal-buttons {
     display: flex;
     justify-content: flex-end;
-    gap: 12px;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 6px;
 }
 
 .btn-cancel {
-    padding: 8px 20px;
+    padding: 6px 16px;
     border: 1px solid #d9d9d9;
     background: #fff;
-    border-radius: 4px;
-    font-size: 13px;
+    border-radius: 3px;
+    font-size: 10px;
     cursor: pointer;
     color: #666;
 }
@@ -396,12 +396,12 @@ textarea.form-input {
 }
 
 .btn-primary {
-    padding: 8px 20px;
+    padding: 6px 16px;
     border: none;
     background: #1890ff;
     color: #fff;
-    border-radius: 4px;
-    font-size: 13px;
+    border-radius: 3px;
+    font-size: 10px;
     cursor: pointer;
 }
 
