@@ -528,7 +528,7 @@
                 console.log('[loadModule] 开始加载模块, moduleId:', moduleId);
                 var moduleMap = {
                     'user': { type: 'html', html: '../html/sys/user.html' },
-                    'home': { type: 'html', html: 'html/home/home.html' }
+                    'home': { type: 'html', html: 'html/home/home.html', css: 'html/home/home.css' }
                 };
                 var mod = moduleMap[moduleId];
                 console.log('[loadModule] 查找预配置映射:', mod);
@@ -560,10 +560,11 @@
                             console.log('[loadModule] HTML加载成功，长度:', html.length);
                             contentEl.innerHTML = html;
 
-                            // 手动加载 CSS
+                            // 手动加载 CSS（优先使用 moduleMap 中指定的 CSS 路径，否则使用默认路径）
+                            var cssHref = (mod && mod.css) ? mod.css : '../assets/css/' + moduleId + '.css';
                             var cssLink = document.createElement('link');
                             cssLink.rel = 'stylesheet';
-                            cssLink.href = '../assets/css/' + moduleId + '.css';
+                            cssLink.href = cssHref;
                             console.log('[loadModule] 加载CSS:', cssLink.href);
                             document.head.appendChild(cssLink);
 
