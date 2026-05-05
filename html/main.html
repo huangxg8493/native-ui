@@ -442,42 +442,20 @@
                                 });
                                 if (child.menuUrl) {
                                     var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
-                                    console.log('[菜单点击] 转换后的 moduleId:', moduleId);
-
-                                    // 如果 tab 已关闭，需要重新注册
-                                    if (!TabManager.tabs.some(function(t) { return t.id === moduleId; })) {
-                                        console.log('[菜单点击] Tab 不存在，重新注册:', moduleId);
-                                        TabManager.register(moduleId, child.menuName, function() {
-                                            loadModule(moduleId);
-                                        });
-                                    }
-
-                                    console.log('[菜单点击] 调用 TabManager.open()');
+                                    // open 会自动从 pendingTabs 激活，所以直接调用
                                     TabManager.open(moduleId);
                                 }
                             });
                             dropdown.appendChild(item);
                         });
 
-                        // 为每个菜单项预注册 Tab（循环结束后统一注册）
+                        // 为每个菜单项预注册 Tab（写入预注册池，不渲染）
                         leafMenus.forEach(function(child) {
-                            console.log('[Tab注册] 检查菜单项是否需要注册:', {
-                                menuId: child.menuId,
-                                menuName: child.menuName,
-                                menuUrl: child.menuUrl,
-                                menuType: child.menuType
-                            });
                             if (child.menuType === 'MENU' && child.menuUrl) {
                                 var moduleId = child.menuUrl.replace(/^\//, '').replace(/\//g, '-');
-                                console.log('[Tab注册] 转换后的 moduleId:', moduleId);
                                 if (moduleId) {
                                     (function(mid, mname) {
-                                        console.log('[Tab注册] 注册 Tab:', {
-                                            moduleId: mid,
-                                            menuName: mname
-                                        });
-                                        TabManager.register(mid, mname, function() {
-                                            console.log('[Tab注册] Tab 激活回调触发, moduleId:', mid);
+                                        TabManager.registerPending(mid, mname, function() {
                                             loadModule(mid);
                                         });
                                     })(moduleId, child.menuName);
