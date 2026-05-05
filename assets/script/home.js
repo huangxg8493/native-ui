@@ -169,6 +169,8 @@
 
     // 绑定事件（使用事件委托避免重复绑定）
     var eventsBound = false;
+    var isSubmitting = false;  // 防止重复提交标志
+
     function bindEvents() {
         // 防止重复绑定
         if (eventsBound) return;
@@ -235,10 +237,15 @@
 
             // 弹窗确认
             if (action === 'submit') {
+                // 防止重复提交
+                if (isSubmitting) return;
+                isSubmitting = true;
+
                 var title = document.getElementById('todoTitleInput').value.trim();
                 var content = document.getElementById('todoContentInput').value.trim();
 
                 if (!title) {
+                    isSubmitting = false;
                     alert('请输入标题');
                     return;
                 }
@@ -265,6 +272,7 @@
                 saveTodos(todos);
                 document.getElementById('todoModal').classList.remove('show');
                 editingId = null;
+                isSubmitting = false;
                 renderTodos();
                 return;
             }
