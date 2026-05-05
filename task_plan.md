@@ -1,16 +1,16 @@
-# 首页实施计划
+# Home 模块文件重组实施计划
 
 ## 目标
 
-在 main.html 中实现首页 Tab，左侧 30% 展示用户信息/日历/公告，右侧 70% 展示待办事项 CRUD
+将 home 模块重组为 `html/home/home.html` + `home.js` + `home.css`，与 user 模块风格一致
 
 ## 架构
 
-首页作为 TabManager 中的一个 Tab，渲染到 `#tabContent` 区域。模块独立加载，复用现有 `loadModule` 约定路径机制。
+将 `home.js` 中 `render()` 的 HTML 字符串提取为真实 HTML 片段；CSS 文件迁移到 `html/home/` 目录；`main.html` 的 `moduleMap` 添加 home 模块的 HTML 路径，使 home 走 HTML 模式加载。
 
 ## 技术栈
 
-原生 JS (IIFE)，localStorage 存储，TabManager 动态渲染
+原生 HTML/CSS/JS，IIFE 模式
 
 ---
 
@@ -18,59 +18,68 @@
 
 | 文件 | 操作 |
 |------|------|
-| `assets/css/home.css` | 新建：首页样式 |
-| `assets/script/tab-manager.js` | 修改：增加不可关闭 Tab 支持 |
-| `assets/script/home.js` | 新建：首页模块 |
-| `html/main.html` | 修改：注册首页 Tab |
+| `html/home/home.html` | 新建：首页 HTML 片段 |
+| `html/home/home.css` | 新建：从 assets/css/home.css 迁移 |
+| `assets/script/home.js` | 修改：改造 render 函数 |
+| `assets/css/home.css` | 删除：已迁移到 html/home/home.css |
+| `html/main.html` | 修改：moduleMap 添加 home 条目 |
 
 ---
 
 ## 任务清单
 
-### Task 1: 创建首页样式
+### Task 1: 创建 `html/home/home.html`
 
 **涉及文件:**
-- 新建: `assets/css/home.css`
+- 新建: `html/home/home.html`
 
 **步骤:**
-- [ ] Step 1: 创建 home.css（简洁商务风格样式）
-- [ ] Step 2: git add assets/css/home.css && git commit -m "feat(home): 创建首页样式文件"
+- [ ] Step 1: 创建 home.html（提取自 home.js render() 函数的 HTML 字符串）
+- [ ] Step 2: git add html/home/home.html && git commit -m "feat(home): 创建 home.html 主页模块 HTML 片段"
 
-### Task 2: 修改 TabManager 支持不可关闭 Tab
+### Task 2: 创建 `html/home/home.css`
 
 **涉及文件:**
-- 修改: `assets/script/tab-manager.js`（register 和 render 方法）
+- 新建: `html/home/home.css`
 
 **步骤:**
-- [ ] Step 1: 修改 register 方法，增加 closable 参数（默认 true）
-- [ ] Step 2: 修改 render 方法，closable 为 false 时不显示关闭按钮
-- [ ] Step 3: git add assets/script/tab-manager.js && git commit -m "feat(tab-manager): 支持不可关闭 Tab"
+- [ ] Step 1: 从 assets/css/home.css 读取内容，写入 html/home/home.css
+- [ ] Step 2: git add html/home/home.css && git commit -m "feat(home): 迁移 home.css 到 html/home 目录"
 
-### Task 3: 创建首页模块
+### Task 3: 改造 `assets/script/home.js`
 
 **涉及文件:**
-- 新建: `assets/script/home.js`
+- 修改: `assets/script/home.js`
 
 **步骤:**
-- [ ] Step 1: 创建 home.js（用户信息、日历、公告、代办 CRUD）
-- [ ] Step 2: git add assets/script/home.js && git commit -m "feat(home): 创建首页模块"
+- [ ] Step 1: render() 函数从拼接 HTML 改为数据绑定（调用 renderUserInfo/renderCalendar/renderNotice/renderTodos）
+- [ ] Step 2: 删除 CSS 动态加载逻辑（loadModule 统一处理）
+- [ ] Step 3: git add assets/script/home.js && git commit -m "refactor(home): 改造 render 函数，从拼接 HTML 改为数据绑定"
 
-### Task 4: 修改 main.html 注册首页 Tab
+### Task 4: 删除 `assets/css/home.css`
+
+**涉及文件:**
+- 删除: `assets/css/home.css`
+
+**步骤:**
+- [ ] Step 1: git rm assets/css/home.css
+- [ ] Step 2: git commit -m "refactor(home): 删除已迁移的 assets/css/home.css"
+
+### Task 5: 更新 `main.html` 的 moduleMap
 
 **涉及文件:**
 - 修改: `html/main.html`
 
 **步骤:**
-- [ ] Step 1: 添加 home.js 引用
-- [ ] Step 2: 注册首页 Tab（不可关闭），默认打开
-- [ ] Step 3: git add html/main.html && git commit -m "feat(home): 注册首页 Tab，默认打开"
+- [ ] Step 1: 在 moduleMap 中添加 `'home': { type: 'html', html: 'html/home/home.html' }`
+- [ ] Step 2: git add html/main.html && git commit -m "feat(main): 注册 home 模块到 moduleMap，走 HTML 模式加载"
 
 ---
 
 ## 验证步骤
 
-1. 登录后跳转到 main.html
-2. Tab 栏左侧显示"首页" Tab，无关闭按钮
-3. 左侧显示用户信息（姓名、头像、手机号）、日历（今日高亮）、公告列表
-4. 右侧显示待办事项列表，可新增/编辑/删除/标记完成
-5. 刷新页面后代办数据保留（localStorage）
+1. 登录系统，确认首页 Tab 能正常打开
+2. 检查 Network 面板，确认 `html/home/home.html` 和 `html/home/home.css` 被请求
+3. 确认用户信息、日历、公告、代办事项均正常显示
+4. 确认新增/编辑/删除代办功能正常
+5. 确认新增代办后刷新页面数据仍保留（localStorage）

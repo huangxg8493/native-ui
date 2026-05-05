@@ -1,14 +1,18 @@
 # 进度记录
 
-## 当前状态: user.html 密码重置功能改造 - 全部完成
+## 当前状态: Home 模块文件重组
 
 ## 已完成任务
-- [x] Task 1: register.html 接口字段调整（HTML 结构）
-- [x] Task 2: register.html 接口字段调整（JS 逻辑）
-- [x] Task 3: register.html 验证
+- [x] 设计文档: docs/superpowers/specs/2026-05-05-home-module-restructuring-design.md
+- [x] 实施计划: docs/superpowers/plans/2026-05-05-home-module-restructuring-plan.md
+- [x] task_plan.md / progress.md / findings.md 更新
 
 ## 进行中任务
-- [ ] Task 4: 修改 user.html（删除密码弹窗、更新按钮文案）
-- [ ] Task 5: 修改 user.js（改造重置按钮事件、删除密码表单逻辑）
+- [ ] Task 1: 创建 html/home/home.html
+- [ ] Task 2: 创建 html/home/home.css
+- [ ] Task 3: 改造 assets/script/home.js
+- [ ] Task 4: 删除 assets/css/home.css
+- [ ] Task 5: 更新 main.html moduleMap
 
 ## 待开始任务
+(无)
