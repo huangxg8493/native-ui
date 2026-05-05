@@ -1,0 +1,410 @@
+/* 首页样式 - 简洁商务风格 */
+
+.home-container {
+    display: flex;
+    height: 100%;
+    background: #f0f2f5;
+}
+
+/* 左侧区域 */
+.home-left {
+    width: 30%;
+    min-width: 280px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #fff;
+    border-right: 1px solid #e8e8e8;
+    overflow-y: auto;
+}
+
+/* 右侧区域 */
+.home-right {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    overflow-y: auto;
+}
+
+/* 用户信息区块 */
+.user-info {
+    padding: 16px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #1890ff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.user-details {
+    flex: 1;
+    overflow: hidden;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.user-phone {
+    font-size: 13px;
+    color: #999;
+}
+
+/* 日历区块 */
+.calendar-block {
+    padding: 16px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.calendar-title {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+}
+
+.calendar-weekday {
+    font-size: 12px;
+    color: #999;
+    padding: 4px 0;
+}
+
+.calendar-day {
+    font-size: 12px;
+    color: #333;
+    padding: 6px 4px;
+    border-radius: 4px;
+    cursor: default;
+}
+
+.calendar-day.other-month {
+    color: #ccc;
+}
+
+.calendar-day.today {
+    background: #1890ff;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* 公告区块 */
+.notice-block {
+    padding: 16px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.notice-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notice-item {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.notice-item:last-child {
+    border-bottom: none;
+}
+
+.notice-item::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #1890ff;
+    border-radius: 50%;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.notice-empty {
+    color: #999;
+    font-size: 13px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* 代办事项区块 */
+.todo-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.todo-add-btn {
+    padding: 6px 16px;
+    background: #1890ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.todo-add-btn:hover {
+    background: #40a9ff;
+}
+
+.todo-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+}
+
+.todo-item:hover {
+    border-color: #1890ff;
+}
+
+.todo-item.completed {
+    opacity: 0.6;
+}
+
+.todo-item.completed .todo-title {
+    text-decoration: line-through;
+}
+
+.todo-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #1890ff;
+}
+
+.todo-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.todo-title {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+.todo-text {
+    font-size: 12px;
+    color: #999;
+    word-break: break-word;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 8px;
+}
+
+.todo-edit-btn,
+.todo-delete-btn {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.todo-edit-btn {
+    background: #faad14;
+    color: #fff;
+}
+
+.todo-edit-btn:hover {
+    opacity: 0.8;
+}
+
+.todo-delete-btn {
+    background: #ff4d4f;
+    color: #fff;
+}
+
+.todo-delete-btn:hover {
+    opacity: 0.8;
+}
+
+.todo-empty {
+    color: #999;
+    font-size: 13px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* 新增/编辑弹窗 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    min-width: 400px;
+    max-width: 500px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-size: 13px;
+    color: #666;
+}
+
+.form-input {
+    padding: 8px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: #1890ff;
+}
+
+textarea.form-input {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-cancel {
+    padding: 8px 20px;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #666;
+}
+
+.btn-cancel:hover {
+    color: #333;
+    border-color: #333;
+}
+
+.btn-primary {
+    padding: 8px 20px;
+    border: none;
+    background: #1890ff;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #40a9ff;
+}
