@@ -8,9 +8,9 @@
 
 /* 左侧区域 */
 .home-left {
-    width: 24%;
+width: 24%;
     min-width: 224px;
-    padding: 13px;
+    padding: 2px 13px 13px 13px;
     display: flex;
     flex-direction: column;
     gap: 13px;
@@ -22,7 +22,7 @@
 /* 右侧区域 */
 .home-right {
     flex: 1;
-    padding: 13px;
+padding: 2px 13px 13px 13px;
     display: flex;
     flex-direction: column;
     background: #fff;
