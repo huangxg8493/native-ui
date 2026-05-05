@@ -11,40 +11,40 @@ body {
 
 .container {
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 16px auto;
+    padding: 16px;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     color: #333;
 }
 
 .search-bar {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .search-bar-row {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .search-bar-row label {
-    margin-right: 8px;
+    margin-right: 6px;
     font-weight: 500;
     color: #333;
 }
 
 .search-bar input {
-    padding: 8px 12px;
+    padding: 6px 10px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    width: 200px;
-    font-size: 14px;
+    border-radius: 3px;
+    width: 160px;
+    font-size: 11px;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -55,16 +55,16 @@ h1 {
 }
 
 .search-bar button {
-    padding: 8px 16px;
+    padding: 6px 13px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
 #queryBtn {
     background-color: #1890ff;
     color: white;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
 #addBtn {
@@ -75,12 +75,12 @@ h1 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 10px;
     text-align: left;
 }
 
@@ -92,15 +92,15 @@ th {
 .pagination {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     justify-content: flex-end;
 }
 
 .pagination button {
-    padding: 6px 12px;
+    padding: 5px 10px;
     border: 1px solid #ddd;
     background: white;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -110,10 +110,10 @@ th {
 }
 
 .pagination select {
-    padding: 6px 8px;
+    padding: 5px 6px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 3px;
+    font-size: 11px;
     cursor: pointer;
 }
 
@@ -131,44 +131,44 @@ th {
 
 .modal-content {
     background: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 400px;
+    padding: 24px;
+    border-radius: 6px;
+    width: 320px;
 }
 
 .modal-content h2 {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     font-weight: 500;
 }
 
 .form-row {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .form-row label {
-    width: 80px;
-    line-height: 32px;
+    width: 64px;
+    line-height: 26px;
     font-weight: 500;
 }
 
 .form-row select,
 .form-row textarea {
     flex: 1;
-    padding: 8px;
+    padding: 6px;
     border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 3px;
+    font-size: 11px;
 }
 
 .form-row textarea {
@@ -179,13 +179,13 @@ th {
     display: inline-flex !important;
     align-items: center;
     width: auto !important;
-    margin-right: 20px;
+    margin-right: 16px;
     font-weight: normal !important;
     cursor: pointer;
 }
 
 .checkbox-label input {
-    margin-right: 6px;
+    margin-right: 5px;
 }
 
 .radio-group {
@@ -197,33 +197,33 @@ th {
     display: inline-flex !important;
     align-items: center;
     width: auto !important;
-    margin-right: 15px;
+    margin-right: 12px;
     font-weight: normal !important;
     cursor: pointer;
 }
 
 .radio-label input {
-    margin-right: 4px;
+    margin-right: 3px;
 }
 
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 8px;
+    padding: 6px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
 .form-actions {
     text-align: right;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .form-actions button {
-    padding: 8px 20px;
-    margin-left: 10px;
+    padding: 6px 16px;
+    margin-left: 8px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -238,10 +238,10 @@ th {
 }
 
 .editBtn, .deleteBtn {
-    padding: 4px 8px;
-    margin-right: 5px;
+    padding: 3px 6px;
+    margin-right: 4px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -267,20 +267,20 @@ th {
 
 .toast {
     position: fixed;
-    top: 20px;
+    top: 16px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 12px 24px;
-    border-radius: 4px;
+    padding: 10px 19px;
+    border-radius: 3px;
     color: #fff;
-    font-size: 14px;
+    font-size: 11px;
     z-index: 10000;
 }
 .toast.success { background: #52c41a; }
 .toast.error { background: #ff4d4f; }
 .toast.info { background: #1890ff; }
 @keyframes toastIn {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; transform: translateY(-16px); }
     to { opacity: 1; transform: translateY(0); }
 }
 @keyframes toastOut {
