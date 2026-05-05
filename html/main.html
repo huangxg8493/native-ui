@@ -493,7 +493,7 @@
                 // 注册首页 Tab（不可关闭，最左端）
                 TabManager.register('home', '首页', function() {
                     console.log('[DEBUG] home Tab renderFn called');
-                    HomeModule.init(document.getElementById('tabContent'));
+                    loadModule('home');
                 }, false);
 
                 // 默认打开首页
